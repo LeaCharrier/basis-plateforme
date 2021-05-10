@@ -1,20 +1,28 @@
-// import { ComposantForm } from '../models/jsonFigma.model.js';
-
-// export async function push(req, res) {
-//     const {isbn, category, edition, volume, language, status} = req.body;
-
-//     try {
-//         const book = await BookModel.create({isbn, category, edition, volume, language, status});
-//         res.status(201).json({book: book._id});
-//     }
-//     catch(err) {
-//         res.status(400).send({err});
-//     }
-// }
+import { jsonModel } from '../models/jsonFigma.model.js';
 
 export async function get(req, res) {
     try {
-        res.status(200).json({book: 'hello'});
+        res.status(200).json({
+		   "colors": {
+		      "grey": {
+		         "value":"rgba(255, 255, 255, 1)"
+		      },
+		      "blue": {
+		         "value":"rgba(255, 255, 255, 1)"
+		      }
+		   }
+		});
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+export async function push(req, res) {
+    const {title} = req.body
+
+    try {
+        const json = await jsonModel.create({category: title});
+        res.status(201).json({item: json._id});
     }
     catch(err) {
         res.status(400).send({err});

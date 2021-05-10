@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors'
 import * as fs from 'fs';
 import './config/database.js';
 import { bookRoutes } from './routes/book.routes.js';
@@ -12,6 +13,8 @@ dotenv.config({path: './config/.env'});
 app.use(express.json({
     limit: '50mb'
 }));
+
+app.use(cors());
 
 // routes
 app.use('/api/book', bookRoutes);
