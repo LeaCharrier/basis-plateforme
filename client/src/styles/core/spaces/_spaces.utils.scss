@@ -1,0 +1,35 @@
+$rootSizes: 
+    12px, //xs
+    14px, //sm
+    16px, //md
+    16px, //lg
+    16px; //xl
+
+$spaces: (
+    0:  0,
+    1:  .125,
+    2:  .25,
+    3:  .5,
+    4:  .75,
+    5:  1,
+    6:  1.25,
+    7:  1.5,
+    8:  1.75,
+    9:  2,
+    10: 3,
+    11: 4,
+    12: 5,
+    13: 6
+);
+
+@function space($identifier) {
+    $raw-query: map-get($spaces, $identifier);
+
+    @if $raw-query == null {
+        @error 'No value found for `#{$identifier}`. '
+        + 'Please make sure it is defined in `$spaces` map.';
+    } @else {
+        // @return $raw-query;
+        @return var(--space-#{$identifier});
+    }
+}

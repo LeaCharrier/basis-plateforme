@@ -1,0 +1,5 @@
+button {
+    & + button {
+        margin-top: space(3);
+    }
+}

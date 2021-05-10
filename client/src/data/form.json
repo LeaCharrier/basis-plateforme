@@ -1,0 +1,176 @@
+{
+    "category": {
+        "label": "Category",
+        "component": "TextInput",
+        "validator": true,
+        "autocomplete": [
+            {
+                "label": "Sudoku",
+                "value": "sudoku"
+            },
+            {
+                "label": "Maze",
+                "value": "maze"
+            },
+            {
+                "label": "Sprouts",
+                "value": "sprouts"
+            },
+            {
+                "label": "Hangman",
+                "value": "hangman"
+            },
+            {
+                "label": "Battleship",
+                "value": "battleship"
+            },
+            {
+                "label": "Mastermind",
+                "value": "mastermind"
+            }
+        ]
+    },
+    "edition": {
+        "label": "Edition",
+        "component": "TextInput",
+        "validator": true,
+        "autocomplete": [
+            {
+                "label": "Original Edition",
+                "value": "original"
+            },
+            {
+                "label": "Deluxe Edition",
+                "value": "deluxe"
+            },
+            {
+                "label": "Black Edition",
+                "value": "black"
+            },
+            {
+                "label": "Gold Edition",
+                "value": "gold"
+            },
+            {
+                "label": "Kids Edition",
+                "value": "kids"
+            },
+            {
+                "label": "Pro Edition",
+                "value": "pro"
+            }
+        ]
+    },
+    "size": {
+        "label": "Size",
+        "component": "TextInput",
+        "validator": true,
+        "autocomplete": [
+            {
+                "label": "12.7 × 20.32 cm",
+                "value": 160
+            },
+            {
+                "label": "12.85 × 19.84 cm",
+                "value": 154.396887
+            },
+            {
+                "label": "13.34 × 20.32 cm",
+                "value": 152.323838
+            },
+            {
+                "label": "13.97 × 21.59 cm",
+                "value": 154.545455
+            },
+            {
+                "label": "15.24 × 22.86 cm",
+                "value": 150
+            },
+            {
+                "label": "15.6 × 23.39 cm",
+                "value": 149.935897
+            },
+            {
+                "label": "16.99 × 24.41 cm",
+                "value": 143.672749
+            },
+            {
+                "label": "17.78 × 25.4 cm",
+                "value": 142.857143
+            },
+            {
+                "label": "18.9 × 24.61 cm",
+                "value": 130.21164
+            },
+            {
+                "label": "19.05 × 23.5 cm",
+                "value": 123.35958
+            },
+            {
+                "label": "20.32 × 25.4 cm",
+                "value": 125
+            },
+            {
+                "label": "20.96 × 15.24 cm",
+                "value": 72.709924
+            },
+            {
+                "label": "20.96 × 20.96 cm",
+                "value": 100
+            },
+            {
+                "label": "21.59 × 21.59 cm",
+                "value": 100
+            },
+            {
+                "label": "21.59 × 27.94 cm",
+                "value": 129.411765
+            },
+            {
+                "label": "21 × 29.7 cm",
+                "value": 141.428571
+            }
+        ]
+    },
+    "difficulty": {
+        "label": "Difficulty",
+        "component": "TextInput",
+        "validator": true,
+        "autocomplete": [
+            {
+                "label": "Easy",
+                "value": "easy"
+            },
+            {
+                "label": "Medium",
+                "value": "medium"
+            },
+            {
+                "label": "Difficult",
+                "value": "difficult"
+            },
+            {
+                "label": "Easy to Difficult",
+                "value": "easy-difficult"
+            },
+            {
+                "label": "Easy to Medium",
+                "value": "easy-medium"
+            },
+            {
+                "label": "Medium to Difficult",
+                "value": "medium-difficult"
+            }
+        ]
+    },
+    "pages_number": {
+        "label": "Number of pages",
+        "component": "TextInput",
+        "validator": true
+    },
+    "books_number": {
+        "label": "Number of books",
+        "component": "TextInput",
+        "validator": true
+    }
+}

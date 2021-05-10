@@ -1,0 +1,61 @@
+$colors: (
+    light: (
+        neutral: (
+            grayscale: (
+                1000 : 0 0 0,
+                900  : 19 19 19,
+                800  : 51 51 51,
+                700  : 102 102 102,
+                600  : 153 153 153,
+                500  : 204 204 204,
+                400  : 222 222 222,
+                300  : 239 239 239,
+                200  : 250 250 250,
+                100  : 255 255 255
+            )
+        ),
+        status: (
+            error: (
+                500  : 207 67 59,
+            )
+        )
+    )
+);
+
+@function color($palette: primary, $color: base, $shade: 500, $opacity: 1, $theme: light) {
+    
+    @if map-has-key($colors, $theme) == false {
+        
+        @error 'No value found for #{$theme}. '
+        + 'Please make sure it is defined in `$colors` map.';
+        
+    } @else if map-has-key(map-get($colors, $theme), $palette) == false {
+        
+        @error 'No value found for #{$palette}. '
+        + 'Please make sure it is defined in `$colors` map.';
+        
+    } @else if map-has-key(map-deep-get($colors, $theme, $palette), $color) == false {
+        
+        @error 'No value found for #{$color}. '
+        + 'Please make sure it is defined in `$colors` map.';
+        
+    } @else if map-has-key(map-deep-get($colors, $theme, $palette, $color), $shade) == false {
+        
+        @error 'No value found for #{$shade}. '
+        + 'Please make sure it is defined in `$colors` map.';
+        
+    } @else if ($opacity < 0) or ($opacity > 1) {
+        
+        @error '#{$opacity} must be between 0 and 1.';
+        
+    } @else {
+        
+        @if $opacity < 1 {
+            @return rgba(var(--color-#{$palette}-#{$color}-#{$shade}), $opacity);
+        } @else {
+            @return rgb(var(--color-#{$palette}-#{$color}-#{$shade}));
+        }
+        
+    }
+    
+}

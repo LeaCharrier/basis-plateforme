@@ -1,0 +1,13 @@
+@import './colors.utils';
+
+@each $theme, $palettes in $colors {
+    :root[data-theme='#{$theme}'] {
+        @each $palette, $tints in $palettes {
+            @each $color, $shades in $tints {
+                @each $shade, $rgb in $shades {
+                    --color-#{$palette}-#{$color}-#{$shade}: #{str-replace(#{$rgb}, ' ', ', ')};
+                }
+            }
+        }
+    }
+}

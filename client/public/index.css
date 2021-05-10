@@ -1,0 +1,53 @@
+html {
+    background: #efefef;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+/* Helvetica Now Display */
+@font-face {
+    font-family: 'HelveticaBlack';
+    src: url('./assets/fonts/HelveticaNowDisplay-Black.woff2') format('woff2'),
+         url('./assets/fonts/HelveticaNowDisplay-Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaBold';
+    src: url('./assets/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2'),
+         url('./assets/fonts/HelveticaNowDisplay-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaMedium';
+    src: url('./assets/fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+         url('./assets/fonts/HelveticaNowDisplay-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaRegular';
+    src: url('./assets/fonts/HelveticaNowDisplay-Regular.woff2') format('woff2'),
+         url('./assets/fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HelveticaLight';
+    src: url('./assets/fonts/HelveticaNowDisplay-Light.woff2') format('woff2'),
+         url('./assets/fonts/HelveticaNowDisplay-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

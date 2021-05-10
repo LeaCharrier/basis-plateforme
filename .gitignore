@@ -1,0 +1,17 @@
+# IDE - VSCode
+.vscode
+
+# Dependencies
+node_modules
+
+# Output
+dist
+
+# System files
+.DS_Store
+
+# Environment variables
+config/.env
+
+# Bookshelf
+bookshelf

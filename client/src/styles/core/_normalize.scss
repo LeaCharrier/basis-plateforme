@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+input,
+button {
+    -webkit-appearance: none;
+    outline: 0;
+    text-overflow: ellipsis;
+    background: transparent;
+    border: none;
+}
