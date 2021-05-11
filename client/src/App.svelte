@@ -4,6 +4,9 @@
     import { Router, Route } from 'svelte-routing';
     import Accordions from './modules/accordions';
     import Header from './templates/layout/Header.svelte';
+    import Aside from './templates/layout/Aside.svelte';
+    import TitleandDescription from './templates/components/TitleandDescription.svelte';
+    import Navigation from './templates/components/Navigation.svelte';
 
     export let url = '';
 
@@ -17,6 +20,13 @@
 <Router primary={false} url={url}>
     <main>
         <Header/>
+        <div class="container">
+            <Aside />
+            <div class="content">
+               <TitleandDescription />
+               <Navigation />
+            </div>
+        </div>
     </main>
 </Router>
 
@@ -24,9 +34,16 @@
     @import './templates/utils';
 
     main {
-        background: color(neutral, grayscale, 300);
-        display: flex;
-        justify-content: center;
+        background: $bgGrey;
         min-height: 100vh;
+
+        .container {
+            display: flex;
+
+            .content {
+                padding: 48px;
+                width: calc(100% - 260px);
+            }
+        }
     }
 </style>

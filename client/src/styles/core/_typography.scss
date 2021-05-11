@@ -1,124 +1,27 @@
-/// Scale factor : Perfect Fifth
-$scaleFactor: 1.5;
-
-@function rootSizePower($power: 0) {
-    $font_size: space(5);
-
-    @if($power < 0) {
-        $font_size: calc(#{$font_size} / #{pow($scaleFactor, abs($power))});
-    } @else {
-        $font_size: calc(#{$font_size} * #{pow($scaleFactor, $power)});
-    }
-
-    @return $font_size;
+.txt_body {
+    // font-family: 'InterRegular';
+    font-size: 14px;
+    line-height: 16px;
 }
 
-@function lineHeightFactor($power: 0, $factor: 1) {
-    @return calc(#{rootSizePower($power)} * #{$factor});
+.txt_title {
+    font-family: 'InterSemiBold';
+    font-size: 24px;
+    line-height: 32px;
 }
 
-$fonts: (
-    note: (
-        xs:(
-            font-family: 'HelveticaRegular',
-            font-size: rootSizePower(-1),
-            line-height: lineHeightFactor(-1, 1.213346),
-            color: color(neutral, grayscale, 800)
-        )
-    ),
-    caption: (
-        xs:(
-            font-family: 'HelveticaBold',
-            font-size: rootSizePower(-1),
-            line-height: lineHeightFactor(0, 1.1875),
-            color: color(neutral, grayscale, 800),
-            text-transform: 'uppercase',
-            letter-spacing: space(1)
-        )
-    ),
-    body: (
-        xs:(
-            font-family: 'HelveticaRegular',
-            font-size: rootSizePower(0),
-            line-height: lineHeightFactor(0, 1.1875),
-            color: color(neutral, grayscale, 800)
-        )
-    ),
-    subtitle: (
-        xs:(
-            font-family: 'HelveticaMedium',
-            font-size: rootSizePower(1),
-            line-height: lineHeightFactor(1, 1.158748),
-            color: color(neutral, grayscale, 1000)
-        )
-    ),
-    title: (
-        xs:(
-            font-family: 'HelveticaBold',
-            font-size: rootSizePower(2),
-            line-height: lineHeightFactor(2, 1.169730),
-            color: color(neutral, grayscale, 1000)
-        )
-        
-    ),
-    headline: (
-        xs:(
-            font-family: 'HelveticaBold',
-            font-size: rootSizePower(3),
-            line-height: lineHeightFactor(3, 1.165707),
-            color: color(neutral, grayscale, 1000)
-        )
-    )
-);
-
-.txt {
-    @each $reading_level, $breakpoints in $fonts {
-        @each $breakpoint, $styles in $breakpoints {
-
-            &_#{$reading_level} {
-                @if $breakpoint == 'xs' {
-                    @each $property, $value in $styles {
-                        #{$property}: #{$value};
-                    }
-                } @else {
-                    @include breakpoint($breakpoint) {
-                        @each $property, $value in $styles {
-                            #{$property}: #{$value};
-                        }
-                    }
-                }
-            }
-
-        }
-    }
+.txt_note {
+    // font-family: 'InterRegular';
+    font-size: 10px;
+    line-height: 16px;
 }
 
-$font_transform: 'uppercase', 'capitalize', 'lowercase';
-@each $transformation in $font_transform {
-    .txt_#{$transformation} {
-        text-transform: #{$transformation};
-
-        @if $transformation == 'uppercase' {
-            letter-spacing: .125rem;
-        }
-    }
+.txt_caption {
+    // font-family: 'InterRegular';
+    font-size: 12px;
+    line-height: 16px;
 }
 
-@each $palette, $colors in map-get($colors, light) {
-    @each $color, $value in $colors {
-        .txt_#{$palette}_#{$color} {
-            color: color($palette, $color);
-        }
-    }
-}
-
-$font_colors: (
-    'neutral': 'grayscale'
-);
-@each $palette, $color in $font_colors {
-    @each $shade, $value in map-deep-get($colors, light, $palette, $color) {
-        .txt_#{$palette}_#{$color}_#{$shade} {
-            color: color($palette, $color, $shade);
-        }
-    }
+p,h1,h2,h3,h4,h5,span {
+    font-family: 'InterRegular';
 }
