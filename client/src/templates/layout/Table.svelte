@@ -1,9 +1,9 @@
 <!-- Table.svelte -->
 <script>
-    // console.log('Hello Basis from Header.svelte');
     import Dropdown from '../fields/Dropdown.svelte';
     import Search from '../fields/Search.svelte';
     import LineTableColor from '../components/LineTableColor.svelte';
+    import BarCheckboxSelect from '../components/BarCheckboxSelect.svelte'
 </script>
 
 <div class=table>
@@ -14,7 +14,7 @@
 
     <div class="table-title">
         <div class="grow1 input">
-            <input type="checkbox" id="scales" name="scales">
+            <input type="checkbox">
         </div>
         <div class="grow2">
             <p class="txt_caption">Token name</p>
@@ -36,9 +36,13 @@
         </div>
     </div>
 
-    <LineTableColor />
-    <LineTableColor />
-    <LineTableColor />
+    <div>
+        <LineTableColor />
+        <LineTableColor />
+        <LineTableColor />
+    </div>
+
+    <BarCheckboxSelect />
 </div>
 
 <style lang="scss">

@@ -3,3 +3,13 @@ button {
         margin-top: space(3);
     }
 }
+
+.button {
+    padding: 6px 12px;
+    font-family: $bold;
+    font-size: 14px;
+    color: $white;
+    text-decoration: none;
+    background: $blueDark;
+    border-radius: 4px;
+}

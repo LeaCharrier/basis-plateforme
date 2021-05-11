@@ -45,6 +45,7 @@
             .content {
                 padding: 48px;
                 width: calc(100% - 260px);
+                position: relative;
             }
         }
     }
