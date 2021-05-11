@@ -19,6 +19,7 @@
         display: flex;
         width: 100%;
         border-bottom: 1px solid $greyLight;
+        margin-bottom: 20px;
 
         &-item {
             padding: 12px 16px;

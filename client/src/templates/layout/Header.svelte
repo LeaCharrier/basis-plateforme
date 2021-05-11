@@ -13,8 +13,13 @@
     </div>
 
     <div class="user">
-        <img src="./assets/media/user-img.png" alt="logo user" class="user-img">
-        <p class="user-name txt_body">Sabrina Nedjah</p>
+        <div class="user-infos">
+            <img src="./assets/media/user-img.png" alt="logo user" class="user-infos-img">
+            <p class="user-infos-name txt_body">Sabrina Nedjah</p>
+        </div>
+        <a class="user-settings">
+            <img src="./assets/media/settings.svg" alt="settings" class="item">
+        </a>
     </div>
 </header>
 
@@ -53,8 +58,24 @@
         display: flex;
         align-items: center;
 
-        &-name {
-            margin-left: 8px;
+        &-infos {
+            display: flex;
+            align-items: center;
+
+            &-name {
+                margin-left: 8px;
+            }
+        }
+
+        &-settings {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+
+            .item {
+                width: 20px;
+                height: 20px;
+            }
         }
     }
 

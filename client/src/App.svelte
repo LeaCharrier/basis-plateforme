@@ -7,6 +7,7 @@
     import Aside from './templates/layout/Aside.svelte';
     import TitleandDescription from './templates/components/TitleandDescription.svelte';
     import Navigation from './templates/components/Navigation.svelte';
+    import Table from './templates/layout/Table.svelte';
 
     export let url = '';
 
@@ -25,6 +26,7 @@
             <div class="content">
                <TitleandDescription />
                <Navigation />
+               <Table />
             </div>
         </div>
     </main>
