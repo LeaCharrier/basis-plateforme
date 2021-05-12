@@ -1,10 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors'
-import * as fs from 'fs';
 import './config/database.js';
-import { bookRoutes } from './routes/book.routes.js';
-import { jsonFigma } from './routes/jsonFigma.routes.js';
+import FigmaRoutes  from './routes/figma.routes.js'
 
 const app = express();
 dotenv.config({path: './config/.env'});
@@ -17,18 +15,12 @@ app.use(express.json({
 app.use(cors());
 
 // routes
-app.use('/api/book', bookRoutes);
-app.use('/api/jsonFigma', jsonFigma);
+app.use('/api/figma', FigmaRoutes);
 
 // server
-app.listen(process.env.PORT, () => {
-    console.log(`Example app listening at http://localhost:${process.env.PORT}`);
+app.listen(5000, () => {
+    console.log(`App listening at http://localhost:${5000}`);
 });
-
-
-
-
-
 
 
 /* CONNECTION TO FIGMA API
