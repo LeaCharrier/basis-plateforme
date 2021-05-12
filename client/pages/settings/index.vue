@@ -1,17 +1,17 @@
 <template>
   <div class="main">
-    <Header />
+    <Header page="settings" />
     <div class="container">
-      <Aside page="colors" />
+      <!-- <Aside /> -->
       <div class="contentProject">
         <BlockTitleDesc
-          :title="texts.COLORS_TITLE"
-          :description="texts.COLORS_DESCRIPTION"
+          :title="texts.SETTINGS_TITLE"
+          :description="texts.SETTINGS_DESCRIPTION"
         />
         <TabsNavigation
-          :items="texts.COLORS_NAV"
+          :items="texts.SETTINGS_NAV"
         />
-        <Table />
+        <!-- <Table /> -->
       </div>
     </div>
   </div>
@@ -20,19 +20,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
-import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
 import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
-import Table from '~/components/Table/Table'
+// import Table from '~/components/Table/Table'
 
 export default {
-  name: 'Colors',
+  name: 'Issues',
   components: {
     Header,
-    Aside,
     BlockTitleDesc,
-    TabsNavigation,
-    Table
+    TabsNavigation
   },
   computed: {
     ...mapGetters({

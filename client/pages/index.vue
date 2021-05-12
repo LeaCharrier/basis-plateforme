@@ -1,22 +1,23 @@
 <template>
   <div class="main">
-    <!-- EXEMPLE DE LIEN -->
-    <!--<router-link :to="{ name: 'about' }">VERS LA PAGE ABOUT</router-link>-->
     <Header />
     <div class="container">
       <Aside page="dashboard" />
       <div class="contentProject">
         <BlockTitleDesc
-          title="Dashboard"
-          description="Welcome back, Sabrina! You have <span>1 design token</span> <br> and <span>3 components</span> to check out for today."
+          :title="texts.DASHBOARD_TITLE"
+          :description="texts.DASHBOARD_DESCRIPTION"
         />
-        <TabsNavigation items="" />
+        <TabsNavigation
+          :items="texts.DASHBOARD_NAV"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
@@ -29,6 +30,14 @@ export default {
     Aside,
     BlockTitleDesc,
     TabsNavigation
+  },
+  computed: {
+    ...mapGetters({
+      getTexts: 'text/getTexts'
+    }),
+    texts () {
+      return this.getTexts
+    }
   }
 }
 </script>

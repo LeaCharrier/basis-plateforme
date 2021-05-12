@@ -1,52 +1,58 @@
 <template>
   <div>
-    <div class="tabs">
-      <div class="tabs-item is-active">
-        <p class="txt_body">Global</p>
-      </div>
-      <div class="tabs-item">
-        <p class="txt_body">Design</p>
-      </div>
-    </div>
-
-    <!-- <ul class="nav nav-tabs nav-justified">
-      <li class="nav-item">
-        <a class="nav-link" @click.prevent="setActive('home')" :class="{ active: isActive('home') }" href="#home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" @click.prevent="setActive('profile')" :class="{ active: isActive('profile') }" href="#profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" @click.prevent="setActive('contact')" :class="{ active: isActive('contact') }" href="#contact">Contact</a>
+    <ul class="tabs">
+      <li class="tabs-item" v-for="(item, i) in items" :key="`number-${i}`" :class="{ active: isActive(item.title) }">
+        <a class="nav-link" @click.prevent="setActive(item.title)" :href="'#' + item.title">{{ item.title }}</a>
       </li>
     </ul>
-    <div class="tab-content py-3" id="myTabContent">
-      <div class="tab-pane fade" :class="{ 'active show': isActive('home') }" id="home">Home content</div>
-      <div class="tab-pane fade" :class="{ 'active show': isActive('profile') }" id="profile">Profile content</div>
-      <div class="tab-pane fade" :class="{ 'active show': isActive('contact') }" id="contact">Contact content</div>
-    </div> -->
+    <div class="tab-content">
+      <div class="tab-pane" v-for="(item, i) in items" :key="`number-${i}`" :class="{ 'active show': isActive(item.title) }" :id="item.title">
+        <p>{{item.component}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+// import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
+// import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
+
 export default {
-  name: 'TabsNavigation'
-  // data: () => {
-  //   return {
-  //     activeItem: 'home'
-  //   }
+  name: 'TabsNavigation',
+  // components: {
+  //   BlockTitleDesc,
+  //   TabsNavigation
   // },
-  // methods: {
-  //   isActive (menuItem) {
-  //     return this.activeItem === menuItem
-  //   },
-  //   setActive (menuItem) {
-  //     this.activeItem = menuItem
-  //   }
-  // }
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+  data: () => {
+    return {
+      activeItem: 'Global'
+    }
+  },
+  methods: {
+    isActive (menuItem) {
+      return this.activeItem === menuItem
+    },
+    setActive (menuItem) {
+      this.activeItem = menuItem
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
 @import "TabsNavigation";
+
+.tab-content>.tab-pane {
+    display: none;
+}
+
+.tab-content>.active {
+    display: block;
+}
 </style>

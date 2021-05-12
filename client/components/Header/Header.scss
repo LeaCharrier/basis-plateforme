@@ -5,6 +5,27 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 64px;
+}
+
+.btn-return {
+  height: 32px;
+  border: 1px solid $greyLight;
+  position: relative;
+  padding: 10px 10px 10px 34px;
+  border-radius: 8px;
+  font-family: $interSemiBold;
+
+  &:before {
+    content: "";
+    position: absolute;
+    background-image: url('~assets/img/arrow_forward.svg');
+    width: 20px;
+    height: 20px;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .entreprise {

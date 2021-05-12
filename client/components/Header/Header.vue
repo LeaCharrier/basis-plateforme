@@ -1,6 +1,11 @@
 <template>
   <header>
-    <div class="entreprise">
+    <div v-if="page === 'settings'">
+      <router-link  :to="{ name: 'index' }" class="btn-return txt_body">
+        Back to dashboard
+      </router-link>
+    </div>
+    <div v-else class="entreprise">
       <img src="~assets/img/maze-logo.png" alt="logo entreprise" class="entreprise-img">
       <div>
         <p class="entreprise-name txt_caption">Maze</p>
@@ -8,7 +13,7 @@
       </div>
     </div>
 
-    <div class="user">
+    <router-link :to="{ name: 'settings' }" class="user" v-if="page !== 'settings'">
       <div class="user-infos">
         <img src="~assets/img/user-img.png" alt="logo user" class="user-infos-img">
         <p class="user-infos-name txt_body">Sabrina Nedjah</p>
@@ -16,16 +21,23 @@
       <a class="user-settings">
         <img src="~assets/img/settings.svg" alt="settings" class="item">
       </a>
-    </div>
+    </router-link>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  props: {
+    page: {
+      type: String,
+      required: false
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
 @import "Header";
+
 </style>

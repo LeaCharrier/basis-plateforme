@@ -1,0 +1,42 @@
+{
+    "DASHBOARD_TITLE": "Dashboard",
+    "DASHBOARD_DESCRIPTION": "Welcome back, Sabrina! You have <span>1 design token</span> <br> and <span>3 components</span> to check out for today.",
+    "DASHBOARD_NAV":[
+        {
+            "title": "Global",
+            "component": "TableColorRow"
+        },
+        {
+            "title": "Design",
+            "component": "BlockTitleDescription"
+        }
+    ],
+    "COLORS_TITLE": "Color (84 tokens)",
+    "COLORS_DESCRIPTION": "Colors are designed to be clear and accessible. They come in different <br> color themes, constituted each one of grays, semantic and label colors.",
+    "COLORS_NAV":[
+        {
+            "title": "Tokens",
+            "component": "TableColorRow"
+        }
+    ],
+    "ISSUES_TITLE": "Issues",
+    "ISSUES_DESCRIPTION": "An issue should describe a task with a clear, defined outcome. <br>This could be a piece of code, design, document, or action to be taken.",
+    "ISSUES_NAV":[
+        {
+            "title": "All issues",
+            "component": ""
+        }
+    ],
+    "SETTINGS_TITLE": "Settings",
+    "SETTINGS_DESCRIPTION": "Welcome back, Sabrina! You will find general information about your account",
+    "SETTINGS_NAV":[
+        {
+            "title": "Sources",
+            "component": ""
+        },
+        {
+            "title": "Destination",
+            "component": ""
+        }
+    ]
+}

@@ -2,14 +2,14 @@
   <div class="main">
     <Header />
     <div class="container">
-      <Aside page="colors" />
+      <Aside page="issue" />
       <div class="contentProject">
         <BlockTitleDesc
-          :title="texts.COLORS_TITLE"
-          :description="texts.COLORS_DESCRIPTION"
+          :title="texts.ISSUES_TITLE"
+          :description="texts.ISSUES_DESCRIPTION"
         />
         <TabsNavigation
-          :items="texts.COLORS_NAV"
+          :items="texts.ISSUES_NAV"
         />
         <Table />
       </div>
@@ -26,7 +26,7 @@ import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
 import Table from '~/components/Table/Table'
 
 export default {
-  name: 'Colors',
+  name: 'Issues',
   components: {
     Header,
     Aside,
