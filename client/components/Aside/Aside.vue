@@ -6,15 +6,25 @@
     <div class="groupes">
       <h3 class="groupes-title txt_caption">Overview</h3>
       <div class="groupes-items">
-        <p class="item txt_body icon-dash is-active">Dashboard</p>
-        <p class="item icon-issue txt_body">Issues</p>
+        <router-link  v-bind:class="[page === 'dashboard' ? 'is-active' : '']" :to="{ name: '/' }" class="item txt_body icon-dash">
+          Dashboard
+        </router-link>
+        <!-- <router-link  v-bind:class="[page === 'issue' ? 'is-active' : '']" :to="{ name: 'issues' }" class="item txt_body icon-issue">
+          Issues
+        </router-link> -->
       </div>
 
       <h3 class="groupes-title txt_caption">Design tokens</h3>
       <div class="groupes-items">
-        <p class="item txt_body icon-color">Color</p>
-        <p class="item icon-spacing txt_body">Spacings</p>
-        <p class="item icon-shadow txt_body">Shadows</p>
+        <router-link  v-bind:class="[page === 'colors' ? 'is-active' : '']" :to="{ name: 'colors' }" class="item txt_body icon-color">
+          Color
+        </router-link>
+        <!-- <router-link  v-bind:class="[page === 'spacing' ? 'is-active' : '']" :to="{ name: 'spacings' }" class="item txt_body icon-spacing">
+          Spacings
+        </router-link> -->
+        <!-- <router-link  v-bind:class="[page === 'shadow' ? 'is-active' : '']" :to="{ name: 'shadows' }" class="item txt_body icon-shadow">
+          Shadows
+        </router-link> -->
       </div>
     </div>
   </aside>
@@ -22,7 +32,13 @@
 
 <script>
 export default {
-  name: 'Aside'
+  name: 'Aside',
+  props: {
+    page: {
+      type: String,
+      required: false
+    }
+  }
 }
 </script>
 

@@ -1,16 +1,15 @@
 <template>
   <div class="main">
-    <!-- EXEMPLE DE LIEN -->
-    <!--<router-link :to="{ name: 'about' }">VERS LA PAGE ABOUT</router-link>-->
     <Header />
     <div class="container">
-      <Aside page="dashboard" />
+      <Aside page="colors" />
       <div class="contentProject">
         <BlockTitleDesc
-          title="Dashboard"
-          description="Welcome back, Sabrina! You have <span>1 design token</span> <br> and <span>3 components</span> to check out for today."
+          title="Colors (84 tokens)"
+          description="Colors are designed to be clear and accessible. They come in different <br> color themes, constituted each one of grays, semantic and label colors."
         />
-        <TabsNavigation items="" />
+        <TabsNavigation />
+        <Table />
       </div>
     </div>
   </div>
@@ -21,18 +20,20 @@ import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
 import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
+import Table from '~/components/Table/Table'
 
 export default {
-  name: 'Home',
+  name: 'Colors',
   components: {
     Header,
     Aside,
     BlockTitleDesc,
-    TabsNavigation
+    TabsNavigation,
+    Table
   }
 }
 </script>
 
 <style scoped lang="scss">
-@import "index";
+  @import "index";
 </style>

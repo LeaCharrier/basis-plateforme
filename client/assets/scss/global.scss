@@ -75,3 +75,18 @@ button {
   border-radius: 4px;
 }
 
+.main {
+  background: $bgGrey;
+  min-height: 100vh;
+
+  .container {
+    display: flex;
+
+    .contentProject {
+      padding: 48px;
+      width: calc(100% - 260px);
+      position: relative;
+    }
+  }
+}
+
