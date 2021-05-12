@@ -24,3 +24,32 @@ app.use('/api/jsonFigma', jsonFigma);
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening at http://localhost:${process.env.PORT}`);
 });
+
+
+
+
+
+
+
+/* CONNECTION TO FIGMA API
+
+//Connection to figma API
+var express = require('express')
+const fetch = require("node-fetch")
+var app = express()
+
+//Our API Key
+const figmaAPIKey = '188412-a7e3661b-26ae-4f7b-907b-efe7e9b7bee8'
+
+//Our TEAM ID
+const figmaTeamID = '973851200669792478'
+
+//Our PROJECT ID
+const figmaProjectID = '30695899'
+
+//Our Demo File
+const figmaFileID = 'ZVJ69KKErtjtx2Rz2F7NBw'
+*/
+
+
+

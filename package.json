@@ -6,7 +6,7 @@
     "start": "nodemon --experimental-modules server.js"
   },
   "keywords": [],
-  "author": "Léa Charrier",
+  "author": "Léa & Sab <3",
   "license": "MIT",
   "type": "module",
   "dependencies": {
@@ -14,7 +14,11 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.0",
     "nodemon": "^2.0.7",
-    "validator": "^13.5.2"
+    "validator": "^13.5.2",
+    "create-react-app": "^1.5.2",
+    "express-generator": "^4.16.0",
+    "figma-api": "^1.5.5",
+    "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
     "cors": "^2.8.5"
