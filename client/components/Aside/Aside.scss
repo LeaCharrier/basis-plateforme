@@ -1,0 +1,80 @@
+aside {
+  background: $bgBlack;
+  width: 260px;
+  padding: 24px;
+  height: 100%;
+  min-height: calc(100vh - 64px);
+
+  .design {
+    &-title {
+      color: $white;
+      font-family: $interSemiBold;
+      margin-bottom: 5px;
+    }
+
+    &-subtitle {
+      color: $grey2;
+      text-decoration: underline;
+    }
+  }
+
+  .groupes {
+    &-title {
+      color: $grey2;
+      text-transform: uppercase;
+      font-family: $interSemiBold;
+      margin-bottom: 8px;
+      margin-top: 32px;
+    }
+
+    &-items {
+      .item {
+        color: $white;
+        font-family: $interSemiBold;
+        position: relative;
+        padding: 8px 8px 8px 40px;
+        margin-bottom: 5px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          background-image: url('~assets/img/picto-aside/dashboard.png');
+          background-size: contain;
+          width: 24px;
+          height: 24px;
+          left: 8px;
+          top: 5px;
+        }
+
+        &.is-active {
+          background: rgba(39, 39, 41, 1);
+          border-radius: 8px;
+        }
+
+        &.icon-issue {
+          &:before {
+            background-image: url('~assets/img/picto-aside/bug_report.png');
+          }
+        }
+
+        &.icon-color {
+          &:before {
+            background-image: url('~assets/img/picto-aside/color.png');
+          }
+        }
+
+        &.icon-spacing {
+          &:before {
+            background-image: url('~assets/img/picto-aside/spacings.png');
+          }
+        }
+
+        &.icon-shadow {
+          &:before {
+            background-image: url('~assets/img/picto-aside/shadow.png');
+          }
+        }
+      }
+    }
+  }
+}

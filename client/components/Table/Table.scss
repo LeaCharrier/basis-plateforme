@@ -1,0 +1,40 @@
+.table {
+  background: $white;
+  border-radius: 8px;
+  box-shadow: $shadowheader;
+
+  &-search {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-top: 1px solid $greyLight;
+    background: $bgGrey;
+
+    div {
+      flex: 1 1;
+
+      p {
+        color: $grey;
+        text-transform: uppercase;
+        font-family: $interSemiBold;
+        color: $grey2;
+      }
+
+      &.grow1 {
+        flex-grow: 1;
+      }
+      &.grow2 {
+        flex-grow: 2;
+      }
+      &.input {
+        max-width: 30px;
+      }
+    }
+  }
+}

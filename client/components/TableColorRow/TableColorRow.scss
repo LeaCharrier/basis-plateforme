@@ -1,0 +1,34 @@
+.lineTablet {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px solid $greyLight;
+  border-bottom: 1px solid $greyLight;
+  margin-bottom: -1px;
+
+  &.is-select {
+    background: $bgBlue;
+    border-top: 1px solid $blue;
+    border-bottom: 1px solid $blue;
+    z-index: 2;
+    position: relative;
+  }
+
+  div {
+    flex: 1 1;
+
+    p {
+      color: $grey;
+    }
+
+    &.grow1 {
+      flex-grow: 1;
+    }
+    &.grow2 {
+      flex-grow: 2;
+    }
+    &.input {
+      max-width: 30px;
+    }
+  }
+}

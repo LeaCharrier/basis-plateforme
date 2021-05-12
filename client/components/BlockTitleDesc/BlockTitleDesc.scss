@@ -1,0 +1,17 @@
+.block {
+  margin-bottom: 40px;
+
+  .title {
+    margin-bottom: 8px;
+  }
+
+  .description {
+    color: $grey;
+    line-height: 22px;
+
+    span {
+      font-family: $interSemiBold;
+      color: $black;
+    }
+  }
+}

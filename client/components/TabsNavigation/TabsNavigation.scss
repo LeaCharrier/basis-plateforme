@@ -1,0 +1,33 @@
+.tabs {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid $greyLight;
+  margin-bottom: 20px;
+
+  &-item {
+    padding: 12px 16px;
+    position: relative;
+
+    p {
+      font-family: $interSemiBold;
+      color: $grey2;
+    }
+
+    &.is-active {
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: $black;
+        height: 1px;
+      }
+
+      p {
+        color: $black;
+      }
+    }
+  }
+}

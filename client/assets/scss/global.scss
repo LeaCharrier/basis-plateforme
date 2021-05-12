@@ -1,0 +1,77 @@
+// Global Scss Properties
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+html {
+  background: #efefef;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+// TXT
+.txt_body {
+  // font-family: 'InterRegular';
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.txt_title {
+  font-family: $interSemiBold;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.txt_note {
+  // font-family: 'InterRegular';
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.txt_caption {
+  // font-family: 'InterRegular';
+  font-size: 12px;
+  line-height: 16px;
+}
+
+p,h1,h2,h3,h4,h5,span {
+  font-family: $interRegular;
+}
+
+// BUTTON
+button {
+  -webkit-appearance: none;
+  outline: 0;
+  text-overflow: ellipsis;
+  background: transparent;
+  border: none;
+}
+
+button {
+  & + button {
+    margin-top: space(3);
+  }
+}
+
+.button {
+  padding: 6px 12px;
+  font-family: $interSemiBold;
+  font-size: 14px;
+  color: $white;
+  text-decoration: none;
+  background: $blueDark;
+  border-radius: 4px;
+}
+

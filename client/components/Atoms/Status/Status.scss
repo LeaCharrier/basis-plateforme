@@ -1,0 +1,25 @@
+.tag {
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-block;
+
+  p {
+    font-family: $interSemiBold;
+  }
+}
+
+.is-green {
+  background: $bgGreen;
+
+  p {
+    color: $green;
+  }
+}
+
+.is-orange {
+  background: $bgOrange;
+
+  p {
+    color: $orange;
+  }
+}
