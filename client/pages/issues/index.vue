@@ -11,7 +11,7 @@
         <TabsNavigation
           :items="texts.ISSUES_NAV"
         />
-        <Table />
+        <TableIssue />
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
 import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
-import Table from '~/components/Table/Table'
+import TableIssue from '~/components/TableIssue/TableIssue'
 
 export default {
   name: 'Issues',
@@ -32,7 +32,7 @@ export default {
     Aside,
     BlockTitleDesc,
     TabsNavigation,
-    Table
+    TableIssue
   },
   computed: {
     ...mapGetters({

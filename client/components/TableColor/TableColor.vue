@@ -46,7 +46,7 @@ import TableColorRow from '~/components/TableColorRow/TableColorRow'
 import BarCheckboxSelect from '~/components/BarCheckboxSelect/BarCheckboxSelect'
 
 export default {
-  name: 'Table',
+  name: 'TableColor',
   components: {
     Search,
     Dropdown,
@@ -57,5 +57,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "Table";
+@import "TableColor";
 </style>

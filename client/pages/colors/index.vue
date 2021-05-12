@@ -11,7 +11,7 @@
         <TabsNavigation
           :items="texts.COLORS_NAV"
         />
-        <Table />
+        <TableColor />
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@ import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
 import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
-import Table from '~/components/Table/Table'
+import TableColor from '~/components/TableColor/TableColor'
 
 export default {
   name: 'Colors',
@@ -32,7 +32,7 @@ export default {
     Aside,
     BlockTitleDesc,
     TabsNavigation,
-    Table
+    TableColor
   },
   computed: {
     ...mapGetters({
