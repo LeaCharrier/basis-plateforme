@@ -31,7 +31,6 @@
       <TableIssueRow />
       <TableIssueRow />
     </div>
-
   </div>
 </template>
 

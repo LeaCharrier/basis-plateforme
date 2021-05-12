@@ -8,6 +8,7 @@
     <div class="tab-content">
       <div class="tab-pane" v-for="(item, i) in items" :key="`number-${i}`" :class="{ 'active show': isActive(item.title) }" :id="item.title">
         <p>{{item.component}}</p>
+        <BtnImportJson />
       </div>
     </div>
   </div>
@@ -16,13 +17,15 @@
 <script>
 // import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
 // import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
+import BtnImportJson from '~/components/Atoms/BtnImportJson/BtnImportJson'
 
 export default {
   name: 'TabsNavigation',
-  // components: {
-  //   BlockTitleDesc,
-  //   TabsNavigation
-  // },
+  components: {
+    // BlockTitleDesc,
+    // TabsNavigation
+    BtnImportJson
+  },
   props: {
     items: {
       type: Array,
