@@ -23,6 +23,20 @@
             "component": ""
         }
     ],
+    "ISSUES_STATUS": [
+        {
+            "title": "Progress",
+            "value": "progress"
+        },
+        {
+            "title": "Backlog",
+            "value": "backlog"
+        },
+        {
+            "title": "Done",
+            "value": "done"
+        }
+    ],
     "SETTINGS_TITLE": "Settings",
     "SETTINGS_DESCRIPTION": "Welcome back, Sabrina! You will find general information about your account",
     "SETTINGS_NAV":[

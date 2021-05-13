@@ -24,6 +24,10 @@
           text-transform: uppercase;
           font-family: $interSemiBold;
           color: $grey2;
+
+          &.is-underline {
+            text-decoration: underline;
+          }
         }
 
         &.grow1 {

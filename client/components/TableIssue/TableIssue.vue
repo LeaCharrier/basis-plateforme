@@ -2,15 +2,12 @@
   <div class="table">
     <div class="table-search">
       <Search />
-      <Dropdown />
+      <BtnAdd />
     </div>
 
     <div class="table-title">
-      <div class="grow1 input">
-        <input id="all" v-model="checkedCategories" type="checkbox" value="all" @change="check($event)">
-      </div>
       <div class="grow1">
-        <p class="txt_caption">
+        <p class="txt_caption is-underline">
           Id
         </p>
       </div>
@@ -46,19 +43,19 @@
 
 <script>
 import Search from '~/components/Fields/Search/Search'
-import Dropdown from '~/components/Fields/Dropdown/Dropdown'
 import TableIssueRow from '~/components/TableIssueRow/TableIssueRow'
+import BtnAdd from '~/components/Atoms/BtnAdd/BtnAdd'
 
 export default {
   name: 'TableIssue',
   components: {
     Search,
-    Dropdown,
-    TableIssueRow
+    TableIssueRow,
+    BtnAdd
   },
-  methods: {
-    check () {
-      // console.log(this.checkedCategories)
+  data () {
+    return {
+      isOpen: false
     }
   }
 }

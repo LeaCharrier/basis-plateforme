@@ -1,0 +1,126 @@
+.bgPopin {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $bgPopin;
+    display: table;
+    transition: opacity 0.3s ease;
+  }
+
+  .popin {
+    background: $white;
+    box-shadow: $shadowPopin;
+    border-radius: 16px;
+    width: 630px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .popinTitle {
+      padding: 24px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: $interSemiBold;
+
+      .titlePopin {
+        font-size: 20px;
+        line-height: 16px;
+      }
+
+      .cross {
+        display: block;
+        background-image: url('~assets/img/cross-grey.svg');
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+    }
+
+    form {
+      border-top: 1px solid $greyLight;
+
+      .popinContent {
+        padding: 12px 24px;
+
+        .description {
+          border-radius: 8px;
+          border: 1px solid $greyLight;
+          resize: none;
+        }
+
+        &-input {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .online {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          margin-bottom: 40px;
+
+          .popinContent-input {
+            width: calc(50% - 20px);
+          }
+        }
+
+        &.border {
+          border-bottom: 1px solid $greyLight;
+        }
+
+        &.btns {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          button {
+            font-size: 16px;
+            line-height: 16px;
+            font-family: $interSemiBold;
+            padding: 14px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+          }
+
+          .cancel {
+            border: 1px solid $grey;
+          }
+
+          .delete {
+            border: 1px solid $red;
+            color: $red;
+          }
+
+          .create {
+            color: $white;
+            background-color: $blue2;
+            padding-right: 40px;
+            position: relative;
+
+            &:before {
+              content: "";
+              position: absolute;
+              background-image: url('~assets/img/arrow_forward_white.svg');
+              width: 24px;
+              height: 24px;
+              right: 8px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+
+    .title {
+      font-size: 14px;
+      line-height: 20px;
+      font-family: $interSemiBold;
+      margin-bottom: 5px;
+    }
+  }

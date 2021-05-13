@@ -1,5 +1,5 @@
 <template>
-  <a class="lineTablet" :class="{'is-select': checked}" href="/">
+  <div class="lineTablet" >
     <div class="grow1">
       <p class="txt_body"> MAZE-300</p>
     </div>
@@ -15,7 +15,7 @@
     <div class="grow2">
       <Status />
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -25,12 +25,12 @@ export default {
   name: 'TableIssueRow',
   components: {
     Status
-  },
-  data () {
-    return {
-      checked: false
-    }
   }
+  // data () {
+  //   return {
+  //     checked: false
+  //   }
+  // }
 }
 </script>
 

@@ -9,6 +9,7 @@ $greyLight: rgba(228, 228, 230, 1);
 $bgBlack: #18181A;
 $bgGrey: #F4F4F4;
 $bgGrey2: rgba(244, 244, 244, 1);
+$bgPopin: rgba(0, 0, 0, 0.4);
 
 $green: #037957;
 $bgGreen: #D0FAE4;
@@ -19,11 +20,14 @@ $blue: #68B0FE;
 $blue2: rgba(5, 104, 253, 1);
 $blueDark: rgba(0, 29, 121, 1);
 $blue3: rgba(2, 59, 182, 1);
+$red: rgba(228, 13, 13, 1);
+
 
 /**
  * Shadow
  */
 $shadowheader: 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 8px rgba(0, 0, 0, 0.04);
+$shadowPopin: 0px 4px 16px rgba(0, 0, 0, 0.12), 0px 2px 8px rgba(0, 0, 0, 0.08);
 
 /**
  * Fonts
