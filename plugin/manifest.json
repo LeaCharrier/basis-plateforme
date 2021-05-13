@@ -1,0 +1,10 @@
+{
+  "name": "Design Tokens",
+  "id": "888356646278934516",
+  "api": "1.0.0",
+  "main": "dist/plugin.js",
+  "ui": "dist/ui.html",
+  "menu": [
+    {"name": "Send Design Tokens", "command": "export"}
+  ]
+}

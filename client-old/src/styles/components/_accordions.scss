@@ -1,7 +1,0 @@
-.accordion {
-    overflow: hidden;
-
-    &[data-state=closed] {
-        height: 0;
-    }
-}
