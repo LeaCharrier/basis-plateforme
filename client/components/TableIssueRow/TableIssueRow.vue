@@ -1,16 +1,24 @@
 <template>
-  <div class="lineTablet" >
+  <div class="lineTablet" @click="handleClick">
     <div class="grow1">
-      <p class="txt_body"> MAZE-300</p>
+      <p class="txt_body">
+        MAZE-300
+      </p>
     </div>
     <div class="grow3 description">
-      <p class="txt_body"> Fix column gap value for desktop sd</p>
+      <p class="txt_body">
+        Fix column gap value for desktop sd
+      </p>
     </div>
     <div class="grow2">
-      <p class="txt_body">Sabrina Nedjah </p>
+      <p class="txt_body">
+        Sabrina Nedjah
+      </p>
     </div>
     <div class="grow2">
-      <p class="txt_body">Rebranding</p>
+      <p class="txt_body">
+        Rebranding
+      </p>
     </div>
     <div class="grow2">
       <Status />
@@ -19,18 +27,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Status from '~/components/Atoms/Status/Status'
 
 export default {
   name: 'TableIssueRow',
   components: {
     Status
+  },
+  methods: {
+    ...mapActions({
+      triggerPopin: 'issues/setPopin'
+    }),
+    handleClick () {
+      this.triggerPopin({ isOpen: true, isNew: false, userId: '', statusId: '', content: '' })
+    }
   }
-  // data () {
-  //   return {
-  //     checked: false
-  //   }
-  // }
 }
 </script>
 

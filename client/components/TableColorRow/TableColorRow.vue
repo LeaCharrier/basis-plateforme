@@ -1,7 +1,7 @@
 <template>
-  <div class="lineTable" :class="{'is-select': checked}">
+  <div class="lineTable" :class="{'is-select': checked}" @click="$refs.input.click()">
     <div class="grow1 input">
-      <input v-model="checked" type="checkbox" @change="check">
+      <input ref="input" v-model="checked" type="checkbox" @change="check">
     </div>
     <div class="grow2">
       <p class="txt_body">
@@ -43,6 +43,12 @@ export default {
     Status,
     Preview
   },
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       checked: false
@@ -58,21 +64,17 @@ export default {
   },
   watch: {
     selectedColors (val) {
-      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]')
+      const isSelected = val.filter(i => i.id === this.item.id)
 
-      if (val === checkboxes.length) {
-        this.checked = true
-      }
+      this.checked = !!isSelected.length
     }
   },
   methods: {
     ...mapActions({
-      setSelectedLength: 'colors/setSelected'
+      pushSelected: 'colors/pushSelected'
     }),
     check () {
-      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]:checked')
-
-      this.setSelectedLength(checkboxes.length)
+      this.pushSelected(this.item)
     }
   }
 }

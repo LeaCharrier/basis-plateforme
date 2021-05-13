@@ -5,11 +5,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import text from '~/data/text.json'
 
 export default {
   mounted () {
-    this.$store.dispatch('text/setTexts', text)
+    this.setTexts(text)
+  },
+  methods: {
+    ...mapActions({
+      setTexts: 'text/setTexts'
+    })
   }
 }
 </script>

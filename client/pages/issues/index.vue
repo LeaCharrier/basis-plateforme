@@ -8,6 +8,10 @@
           :title="texts.ISSUES_TITLE"
           :description="texts.ISSUES_DESCRIPTION"
         />
+        <TabsNavigation
+          v-if="texts.ISSUES_NAV && texts.ISSUES_NAV.length"
+          :items="texts.ISSUES_NAV"
+        />
         <TableIssue />
       </div>
     </div>
@@ -19,6 +23,7 @@ import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
+import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
 import TableIssue from '~/components/TableIssue/TableIssue'
 
 export default {
@@ -27,6 +32,7 @@ export default {
     Header,
     Aside,
     BlockTitleDesc,
+    TabsNavigation,
     TableIssue
   },
   computed: {

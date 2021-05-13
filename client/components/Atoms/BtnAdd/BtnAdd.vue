@@ -1,24 +1,22 @@
 <template>
   <div>
-    <button class="txt_body" @click="isOpen = true">
+    <button class="txt_body" @click="handleClick">
       Add an issue
     </button>
-
-    <IssuePopin v-if="isOpen" open="isOpen" title="Add an issue" statut="add" />
   </div>
 </template>
 
 <script>
-import IssuePopin from '~/components/IssuePopin/IssuePopin'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'BtnAdd',
-  components: {
-    IssuePopin
-  },
-  data () {
-    return {
-      isOpen: false
+  methods: {
+    ...mapActions({
+      triggerPopin: 'issues/setPopin'
+    }),
+    handleClick () {
+      this.triggerPopin({ isOpen: true, isNew: true })
     }
   }
 }

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/plugin/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin/.idea/design-tokens-main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugin/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <updated>1620773465563</updated>
       <workItem from="1620773466885" duration="7796000" />
       <workItem from="1620850976610" duration="15822000" />
-      <workItem from="1620935438605" duration="8663000" />
+      <workItem from="1620935438605" duration="8973000" />
     </task>
     <servers />
   </component>

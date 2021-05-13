@@ -46,12 +46,10 @@
     </div>
 
     <div>
-      <TableColorRow />
-      <TableColorRow />
-      <TableColorRow />
+      <TableColorRow v-for="item in items" :key="item.id" :item="item" />
     </div>
 
-    <BarCheckboxSelect v-if="selectedColors > 0" :nbr-select="selectedColors" />
+    <BarCheckboxSelect />
   </div>
 </template>
 
@@ -72,36 +70,43 @@ export default {
   },
   data () {
     return {
-      checked: false
+      checked: false,
+      items: [
+        {
+          id: '1'
+        },
+        {
+          id: '2'
+        },
+        {
+          id: '3'
+        }
+      ]
     }
   },
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts',
-      getSelectedLength: 'colors/getSelected'
+      getSelectedLength: 'colors/getSelectedLength'
     }),
     texts () {
       return this.getTexts
     },
-    selectedColors () {
+    selectedColorsLength () {
       return this.getSelectedLength
     }
   },
   watch: {
-    selectedColors (val) {
-      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]')
-
-      this.checked = val === checkboxes.length
+    selectedColorsLength (val) {
+      this.checked = val === this.items.length
     }
   },
   methods: {
     ...mapActions({
-      setSelectedLength: 'colors/setSelected'
+      setSelected: 'colors/setSelected'
     }),
     check () {
-      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]')
-
-      this.setSelectedLength(checkboxes.length)
+      this.setSelected((this.checked) ? this.items : [])
     }
   }
 }

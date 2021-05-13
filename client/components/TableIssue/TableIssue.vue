@@ -1,5 +1,6 @@
 <template>
   <div class="table">
+    <IssuePopin />
     <div class="table-search">
       <Search />
       <BtnAdd />
@@ -45,13 +46,15 @@
 import Search from '~/components/Fields/Search/Search'
 import TableIssueRow from '~/components/TableIssueRow/TableIssueRow'
 import BtnAdd from '~/components/Atoms/BtnAdd/BtnAdd'
+import IssuePopin from '~/components/IssuePopin/IssuePopin'
 
 export default {
   name: 'TableIssue',
   components: {
     Search,
     TableIssueRow,
-    BtnAdd
+    BtnAdd,
+    IssuePopin
   },
   data () {
     return {
