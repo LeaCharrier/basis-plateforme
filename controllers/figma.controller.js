@@ -205,3 +205,20 @@ export async function push(req, res) {
         res.status(400).send({err});
     }
 }
+
+
+/**
+ * @Route /api/figma/test
+ *
+ * @param req
+ * @param res
+ */
+export async function test(req, res) {
+    try {
+        console.log(req.body)
+        res.status(201).json(req.body);
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}

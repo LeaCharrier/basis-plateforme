@@ -8,6 +8,7 @@ import {
     getFileByIndex,
     getTeamProjectFileByIndexes,
     push,
+    test
 } from '../controllers/figma.controller.js';
 
 const router = express.Router();
@@ -37,5 +38,10 @@ router.get('/projects/:projectId/files/i/:fileIndex', getFileByIndex);
 
 // Get Team Project File by indexes
 router.get('/team/:teamId/projects/i/:projectIndex/files/i/:fileIndex', getTeamProjectFileByIndexes);
+
+
+// TEST ROUTE ANLY FOR DEV PURPOSES
+router.post('/test', test);
+
 
 export default router;
