@@ -1,19 +1,25 @@
 <template>
   <div class="lineTable" :class="{'is-select': checked}">
     <div class="grow1 input">
-      <input type="checkbox" v-model="checked">
+      <input v-model="checked" type="checkbox" @change="check">
     </div>
     <div class="grow2">
-      <p class="txt_body"> Blue / Blue-500</p>
+      <p class="txt_body">
+        Blue / Blue-500
+      </p>
     </div>
     <div class="grow1">
       <Preview />
     </div>
     <div class="grow1">
-      <p class="txt_body">#2345678</p>
+      <p class="txt_body">
+        #2345678
+      </p>
     </div>
     <div class="grow2">
-      <p class="txt_body">14/06/2021 by sabnjdh</p>
+      <p class="txt_body">
+        14/06/2021 by sabnjdh
+      </p>
     </div>
     <div class="grow1">
       <Status />
@@ -25,6 +31,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Source from '~/components/Atoms/Source/Source'
 import Status from '~/components/Atoms/Status/Status'
 import Preview from '~/components/Atoms/Preview/Preview'
@@ -39,6 +46,33 @@ export default {
   data () {
     return {
       checked: false
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getSelectedLength: 'colors/getSelected'
+    }),
+    selectedColors () {
+      return this.getSelectedLength
+    }
+  },
+  watch: {
+    selectedColors (val) {
+      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]')
+
+      if (val === checkboxes.length) {
+        this.checked = true
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      setSelectedLength: 'colors/setSelected'
+    }),
+    check () {
+      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]:checked')
+
+      this.setSelectedLength(checkboxes.length)
     }
   }
 }

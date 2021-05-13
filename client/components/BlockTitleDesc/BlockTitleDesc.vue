@@ -1,7 +1,7 @@
 <template>
   <div class="block">
-    <h1 class="txt_title title" v-html="title"></h1>
-    <p class="txt_body description" v-html="description"></p>
+    <h1 class="txt_title title" v-html="title" />
+    <p class="txt_body description" v-html="description" />
   </div>
 </template>
 
@@ -11,11 +11,13 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     description: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     }
   }
 }

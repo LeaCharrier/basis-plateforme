@@ -7,22 +7,32 @@
 
     <div class="table-title">
       <div class="grow1 input">
-        <input type="checkbox" value="all" id="all" v-model="checkedCategories" @change="check($event)">
+        <input id="all" v-model="checkedCategories" type="checkbox" value="all" @change="check($event)">
       </div>
       <div class="grow1">
-        <p class="txt_caption">Id</p>
+        <p class="txt_caption">
+          Id
+        </p>
       </div>
       <div class="grow3">
-        <p class="txt_caption">Description</p>
+        <p class="txt_caption">
+          Description
+        </p>
       </div>
       <div class="grow2">
-        <p class="txt_caption">Assignee</p>
+        <p class="txt_caption">
+          Assignee
+        </p>
       </div>
       <div class="grow2">
-        <p class="txt_caption">Project</p>
+        <p class="txt_caption">
+          Project
+        </p>
       </div>
       <div class="grow2">
-        <p class="txt_caption">Status</p>
+        <p class="txt_caption">
+          Status
+        </p>
       </div>
     </div>
 
@@ -48,7 +58,7 @@ export default {
   },
   methods: {
     check () {
-      console.log(this.checkedCategories)
+      // console.log(this.checkedCategories)
     }
   }
 }

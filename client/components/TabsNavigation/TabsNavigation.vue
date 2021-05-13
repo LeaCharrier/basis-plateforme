@@ -1,13 +1,13 @@
 <template>
   <div>
     <ul class="tabs">
-      <li class="tabs-item" v-for="(item, i) in items" :key="`number-${i}`" :class="{ active: isActive(item.title) }">
-        <a class="nav-link" @click.prevent="setActive(item.title)" :href="'#' + item.title">{{ item.title }}</a>
+      <li v-for="(item, i) in items" :key="`number-${i}`" :class="{ active: isActive(item.title) }" class="tabs-item">
+        <a class="nav-link" :href="'#' + item.title" @click.prevent="setActive(item.title)">{{ item.title }}</a>
       </li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane" v-for="(item, i) in items" :key="`number-${i}`" :class="{ 'active show': isActive(item.title) }" :id="item.title">
-        <p>{{item.component}}</p>
+      <div v-for="(item, i) in items" :key="`number-${i}`" :id="item.title" class="tab-pane" :class="{ 'active show': isActive(item.title) }">
+        <p>{{ item.component }}</p>
       </div>
     </div>
   </div>

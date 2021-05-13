@@ -11,25 +11,37 @@
 
     <div class="table-title">
       <div class="grow1 input">
-        <input type="checkbox" value="all" id="all" v-model="checkedAll" v-on:click="check(source)">
+        <input id="all" v-model="checked" type="checkbox" value="all" @change="check">
       </div>
       <div class="grow2">
-        <p class="txt_caption">Token name</p>
+        <p class="txt_caption">
+          Token name
+        </p>
       </div>
       <div class="grow1">
-        <p class="txt_caption">Preview</p>
+        <p class="txt_caption">
+          Preview
+        </p>
       </div>
       <div class="grow1">
-        <p class="txt_caption">Value</p>
+        <p class="txt_caption">
+          Value
+        </p>
       </div>
       <div class="grow2">
-        <p class="txt_caption">Last update</p>
+        <p class="txt_caption">
+          Last update
+        </p>
       </div>
       <div class="grow1">
-        <p class="txt_caption">Status</p>
+        <p class="txt_caption">
+          Status
+        </p>
       </div>
       <div class="grow2">
-        <p class="txt_caption">Source</p>
+        <p class="txt_caption">
+          Source
+        </p>
       </div>
     </div>
 
@@ -39,12 +51,12 @@
       <TableColorRow />
     </div>
 
-    <BarCheckboxSelect v-if="display" :nbrSelect="nbrCheck" />
+    <BarCheckboxSelect v-if="selectedColors > 0" :nbr-select="selectedColors" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Search from '~/components/Fields/Search/Search'
 import Dropdown from '~/components/Fields/Dropdown/Dropdown'
 import TableColorRow from '~/components/TableColorRow/TableColorRow'
@@ -60,28 +72,36 @@ export default {
   },
   data () {
     return {
-      display: false,
-      nbrCheck: 0
+      checked: false
     }
   },
   computed: {
     ...mapGetters({
-      getTexts: 'text/getTexts'
+      getTexts: 'text/getTexts',
+      getSelectedLength: 'colors/getSelected'
     }),
     texts () {
       return this.getTexts
+    },
+    selectedColors () {
+      return this.getSelectedLength
+    }
+  },
+  watch: {
+    selectedColors (val) {
+      const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]')
+
+      this.checked = val === checkboxes.length
     }
   },
   methods: {
+    ...mapActions({
+      setSelectedLength: 'colors/setSelected'
+    }),
     check () {
-      console.log(this.checkedAll)
       const checkboxes = document.querySelectorAll('.lineTable input[type="checkbox"]')
-      for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].checked = !this.checkedAll
-      }
-      const nbrCheck = checkboxes.length
-      this.nbrCheck = nbrCheck
-      this.display = !this.checkedAll
+
+      this.setSelectedLength(checkboxes.length)
     }
   }
 }

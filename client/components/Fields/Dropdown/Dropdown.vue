@@ -1,14 +1,18 @@
 <template>
   <div class="dropdown">
-    <p class="title txt_body">{{ title }} </p>
+    <p class="title txt_body">
+      {{ title }}
+    </p>
 
     <select class="form-control" :required="true">
       <option
         v-for="(option, i) in options"
-        v-bind:value="option.value"
         :key="`number-${i}`"
+        :value="option.value"
         :selected="option.text == 'select'"
-      >{{ option.text }}</option>
+      >
+        {{ option.text }}
+      </option>
     </select>
   </div>
 </template>
@@ -19,15 +23,18 @@ export default {
   props: {
     options: {
       type: Array,
-      required: true
+      required: false,
+      default: () => []
     },
     title: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     selected: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     }
   }
 }
