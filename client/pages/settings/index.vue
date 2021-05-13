@@ -2,7 +2,7 @@
   <div class="main">
     <Header page="settings" />
     <div class="container">
-      <!-- <Aside /> -->
+      <Aside />
       <div class="contentProject">
         <BlockTitleDesc
           :title="texts.SETTINGS_TITLE"
