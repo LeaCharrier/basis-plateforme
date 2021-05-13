@@ -1,11 +1,13 @@
 .searchBar {
+  width: 100%;
+  margin-right: 30px;
 
   &-form {
     display: flex;
     align-items: center;
     background: $bgGrey2;
     border-radius: 8px;
-    width: 620px;
+    // width: 620px;
   }
 
   &-button {

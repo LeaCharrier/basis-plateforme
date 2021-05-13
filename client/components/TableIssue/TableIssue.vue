@@ -7,7 +7,7 @@
 
     <div class="table-title">
       <div class="grow1 input">
-        <input type="checkbox">
+        <input type="checkbox" value="all" id="all" v-model="checkedCategories" @change="check($event)">
       </div>
       <div class="grow1">
         <p class="txt_caption">Id</p>
@@ -45,6 +45,11 @@ export default {
     Search,
     Dropdown,
     TableIssueRow
+  },
+  methods: {
+    check () {
+      console.log(this.checkedCategories)
+    }
   }
 }
 </script>

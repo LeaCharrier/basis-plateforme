@@ -2,7 +2,7 @@
   <div class="barCheckox" :class="{ 'is-hidden': !active }">
     <div class="flex">
       <img src="~assets/img/cross.svg" alt="cross" class="cross" @click="handleClick">
-      <p class='txt_body text'>1 token selected</p>
+      <p class='txt_body text'>{{ nbrSelect }} token selected</p>
     </div>
     <a href="/" class="button">See analytics</a>
   </div>
@@ -11,6 +11,12 @@
 <script>
 export default {
   name: 'BarCheckboxSelect',
+  props: {
+    nbrSelect: {
+      type: Number,
+      required: true
+    }
+  },
   data () {
     return {
       active: true

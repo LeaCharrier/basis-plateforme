@@ -1,5 +1,5 @@
 <template>
-  <div class="lineTablet" :class="{'is-select': checked}">
+  <div class="lineTable" :class="{'is-select': checked}">
     <div class="grow1 input">
       <input type="checkbox" v-model="checked">
     </div>

@@ -1,8 +1,5 @@
 <template>
   <a class="lineTablet" :class="{'is-select': checked}" href="/">
-    <div class="grow1 input">
-      <input type="checkbox" v-model="checked">
-    </div>
     <div class="grow1">
       <p class="txt_body"> MAZE-300</p>
     </div>

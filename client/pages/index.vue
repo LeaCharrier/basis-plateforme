@@ -8,9 +8,6 @@
           :title="texts.DASHBOARD_TITLE"
           :description="texts.DASHBOARD_DESCRIPTION"
         />
-        <TabsNavigation
-          :items="texts.DASHBOARD_NAV"
-        />
       </div>
     </div>
   </div>
@@ -21,15 +18,13 @@ import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
-import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Aside,
-    BlockTitleDesc,
-    TabsNavigation
+    BlockTitleDesc
   },
   computed: {
     ...mapGetters({
