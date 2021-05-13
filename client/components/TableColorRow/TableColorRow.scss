@@ -5,6 +5,7 @@
   border-top: 1px solid $greyLight;
   border-bottom: 1px solid $greyLight;
   margin-bottom: -1px;
+  cursor: pointer;
 
   &.is-select {
     background: $bgBlue;
@@ -28,6 +29,7 @@
       flex-grow: 2;
     }
     &.input {
+      pointer-events: none;
       max-width: 30px;
     }
   }
