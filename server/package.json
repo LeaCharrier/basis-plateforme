@@ -21,7 +21,9 @@
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1"
   }
 }

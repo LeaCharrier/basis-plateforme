@@ -6,6 +6,14 @@ import {
 } from "../actions/index.js";
 import fileFormat from "../utils/FileFormat.js";
 
+
+/**
+ * @Route /api/figma/
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
 export async function get(req, res) {
     try {
         res.status(200).json({
@@ -27,6 +35,7 @@ export async function get(req, res) {
 
 /**
  * @Route /api/figma/team/:teamId/projects
+ * @Method GET
  *
  * @param req
  * @param res
@@ -49,6 +58,7 @@ export async function getTeamProjects(req, res) {
 /**
  * @Route /api/figma/team/:teamId/projects/:projectId/files
  * @Route /api/figma/projects/:projectId/files
+ * @Method GET
  *
  * @param req
  * @param res
@@ -70,6 +80,7 @@ export async function getProjectFiles(req, res) {
 
 /**
  * @Route /api/figma/team/:teamId/projects/i/:projectIndex/files
+ * @Method GET
  *
  * @param req
  * @param res
@@ -100,6 +111,7 @@ export async function getTeamProjectFilesByIndex(req, res) {
  * @Route /api/figma/team/:teamId/projects/:projectId/files/fileId
  * @Route /api/figma/projects/:projectId/files/fileId
  * @Route /api/figma/files/:fileId
+ * @Method GET
  *
  * @param req
  * @param res
@@ -124,6 +136,7 @@ export async function getFile(req, res) {
 /**
  * @Route /api/figma/team/:teamId/projects/:projectId/files/i/:fileIndex
  * @Route /api/figma/projects/:projectId/files/i/:fileIndex
+ * @Method GET
  *
  * @param req
  * @param res
@@ -156,6 +169,7 @@ export async function getFileByIndex(req, res) {
 
 /**
  * @Route /api/figma/team/:teamId/projects/i/:projectIndex/files/i/:fileIndex
+ * @Method GET
  *
  * @param req
  * @param res
@@ -194,6 +208,13 @@ export async function getTeamProjectFileByIndexes(req, res) {
 }
 
 
+/**
+ * @Route /api/figma/push
+ * @Method POST
+ *
+ * @param req
+ * @param res
+ */
 export async function push(req, res) {
     const {title} = req.body
 
@@ -209,6 +230,7 @@ export async function push(req, res) {
 
 /**
  * @Route /api/figma/test
+ * @Method POST
  *
  * @param req
  * @param res

@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors'
 import './config/database.js';
 import FigmaRoutes  from './routes/figma.routes.js'
+import AuthRoutes  from './routes/auth.routes.js'
 
 const app = express();
 dotenv.config({path: './config/.env'});
@@ -16,6 +17,7 @@ app.use(cors());
 
 // routes
 app.use('/api/figma', FigmaRoutes);
+app.use('/api/auth', AuthRoutes);
 
 // server
 app.listen(5000, () => {
