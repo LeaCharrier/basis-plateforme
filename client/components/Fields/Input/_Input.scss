@@ -1,0 +1,19 @@
+.input {
+    margin-bottom: 30px;
+
+    .label {
+        font-family: $interSemiBold;
+        margin-bottom: 6px;
+    }
+
+    input {
+        border: 1px solid $greyLight;
+        padding: 16px;
+        border-radius: 4px;
+        width: 100%;
+
+        &:placeholder {
+            color: $grey2;
+        }
+    }
+}

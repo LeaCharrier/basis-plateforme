@@ -27,12 +27,6 @@
         <router-link :class="[page === 'colors' ? 'is-active' : '']" :to="{ name: 'colors' }" class="item txt_body icon-color">
           Color
         </router-link>
-        <!-- <router-link  v-bind:class="[page === 'spacing' ? 'is-active' : '']" :to="{ name: 'spacings' }" class="item txt_body icon-spacing">
-          Spacings
-        </router-link> -->
-        <!-- <router-link  v-bind:class="[page === 'shadow' ? 'is-active' : '']" :to="{ name: 'shadows' }" class="item txt_body icon-shadow">
-          Shadows
-        </router-link> -->
       </div>
     </div>
   </aside>

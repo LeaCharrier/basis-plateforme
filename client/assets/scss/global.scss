@@ -101,3 +101,12 @@ p span {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.bgDashboard {
+  height: 100vh;
+  width: 100Vw;
+  background-image: url('~assets/img/bgDashboard.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}

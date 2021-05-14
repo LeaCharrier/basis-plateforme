@@ -1,0 +1,88 @@
+.popin {
+    background: $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 16px;
+
+    .content {
+        display: flex;
+
+        &.log-in {
+            .popin-bgPopin {
+                background: $yellow;
+            }
+        }
+    }
+
+    &-contentForm {
+        width: 420px;
+        padding: 56px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            margin-bottom: 16px;
+            font-family: $goshaRegular;
+            font-size: 36px;
+            line-height: 32px;
+        }
+
+        .subtitle {
+            color: $grey2;
+            margin-bottom: 22px;
+        }
+
+        .btn {
+            &.is-blue {
+                background: $blue2;
+                color: $white;
+                width: 100%;
+                text-align: center;
+                padding: 14px;
+                border-radius: 8px;
+                margin-top: 10px;
+                cursor: pointer;
+                p {
+                    font-family: $interSemiBold;
+                    position: relative;
+                    display: inline-block;
+                    padding-right: 40px;
+
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        background-image: url('~assets/img/arrow_forward_white.svg');
+                        width: 20px;
+                        height: 20px;
+                        right: 8px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+
+        .link {
+            margin-top: 40px;
+
+            &-item {
+                color: $blue2;
+            }
+        }
+    }
+
+    &-bgPopin {
+        width: 630px;
+        padding: 100px 60px;
+        background: black;
+        position: relative;
+        border-radius: 0 16px 16px 0;
+
+        .img {
+            width: 500px;
+        }
+    }
+}
