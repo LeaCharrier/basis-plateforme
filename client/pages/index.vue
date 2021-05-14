@@ -10,6 +10,8 @@
         />
       </div>
     </div>
+
+    <OnboardingPopin />
   </div>
 </template>
 
@@ -18,13 +20,15 @@ import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
+import OnboardingPopin from '~/components/OnboardingPopin/OnboardingPopin'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Aside,
-    BlockTitleDesc
+    BlockTitleDesc,
+    OnboardingPopin
   },
   computed: {
     ...mapGetters({

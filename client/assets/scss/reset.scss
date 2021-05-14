@@ -57,3 +57,24 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.slick-dots {
+	li {
+		width: 10px;
+		button {
+			width: 10px;
+
+			&:before {
+				color: $grey2 !important;
+				width: 10px;
+				font-size: 10px;
+			}
+		}
+
+		&.slick-active {
+			button:before {
+				color: $white !important;
+			}
+		}
+	}
+}

@@ -35,36 +35,6 @@
             margin-bottom: 22px;
         }
 
-        .btn {
-            &.is-blue {
-                background: $blue2;
-                color: $white;
-                width: 100%;
-                text-align: center;
-                padding: 14px;
-                border-radius: 8px;
-                margin-top: 10px;
-                cursor: pointer;
-                p {
-                    font-family: $interSemiBold;
-                    position: relative;
-                    display: inline-block;
-                    padding-right: 40px;
-
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        background-image: url('~assets/img/arrow_forward_white.svg');
-                        width: 20px;
-                        height: 20px;
-                        right: 8px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-                }
-            }
-        }
-
         .link {
             margin-top: 40px;
 
