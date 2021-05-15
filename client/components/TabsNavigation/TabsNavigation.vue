@@ -6,23 +6,26 @@
       </li>
     </ul>
     <div class="tab-content">
-      <div v-for="(item, i) in items" :key="`number-${i}`" :id="item.title" class="tab-pane" :class="{ 'active show': isActive(item.title) }">
-        <p>{{ item.component }}</p>
+      <div v-for="(item, i) in items" :id="item.title" :key="`number-${i}`" class="tab-pane" :class="{ 'active show': isActive(item.title) }">
+        <FormUpdateUser v-show="item.title === 'My account'" />
+        <BlockConnected v-show="item.title === 'Sources'" tab='Sources' />
+        <BlockConnected v-show="item.title === 'Destinations'" tab='Destinations' />
+        <BlockConnected v-show="item.title === 'Integrations'" tab='Integrations' />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
-// import TabsNavigation from '~/components/TabsNavigation/TabsNavigation'
+import FormUpdateUser from '~/components/FormUpdateUser/FormUpdateUser'
+import BlockConnected from '~/components/BlockConnected/BlockConnected'
 
 export default {
   name: 'TabsNavigation',
-  // components: {
-  //   // BlockTitleDesc,
-  //   // TabsNavigation
-  // },
+  components: {
+    FormUpdateUser,
+    BlockConnected
+  },
   props: {
     items: {
       type: Array,
@@ -31,7 +34,7 @@ export default {
   },
   data: () => {
     return {
-      activeItem: 'Global'
+      activeItem: 'My account'
     }
   },
   methods: {

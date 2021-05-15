@@ -17,38 +17,74 @@
   "COLORS_SELECTED": "HEX",
   "ISSUES_TITLE": "Issues",
   "ISSUES_DESCRIPTION": "An issue should describe a task with a clear, defined outcome. <br>This could be a piece of code, design, document, or action to be taken.",
-  "ISSUES_NAV":[
-    {
-      "title": "All issues",
-      "component": ""
-    }
-  ],
-  "ISSUES_STATUS": [
-    {
-      "title": "Progress",
-      "value": "progress"
-    },
-    {
-      "title": "Backlog",
-      "value": "backlog"
-    },
-    {
-      "title": "Done",
-      "value": "done"
-    }
-  ],
-  "ISSUES_STATUS_POPIN_NEW_TITLE": "ISSUES_STATUS_POPIN_NEW_TITLE",
-  "ISSUES_STATUS_POPIN_UPDATE_TITLE": "ISSUES_STATUS_POPIN_UPDATE_TITLE",
+  "ISSUES_STATUS_POPIN_NEW_TITLE": "Edit Issue",
+  "ISSUES_STATUS_POPIN_UPDATE_TITLE": "Add an issue",
   "SETTINGS_TITLE": "Settings",
-  "SETTINGS_DESCRIPTION": "Welcome back, Sabrina! You will find general information about your account",
+  "SETTINGS_DESCRIPTION": "Welcome back, Sabrina! You will find general <br> information about your account",
   "SETTINGS_NAV":[
     {
-      "title": "Sources",
-      "component": ""
+      "title": "My account",
+      "component": "my-account"
     },
     {
-      "title": "Destination",
-      "component": ""
+      "title": "Sources",
+      "component": "sources"
+    },
+    {
+      "title": "Destinations",
+      "component": "destinations"
+    },
+    {
+      "title": "Integrations",
+      "component": "integrations"
+    }
+  ],
+  "CONNECTED_SOURCES_TITLE": "Connected sources",
+  "CONNECTED_SOURCES": [
+    {
+      "title": "Figma",
+      "img": "figma.svg"
+    }
+  ],
+  "CONNECTED_SOURCES_SOON_TITLE": "Coming soon sources",
+  "CONNECTED_SOON_SOURCES": [
+    {
+      "title": "Sketch",
+      "img": "sketch.svg"
+    },
+    {
+      "title": "Adobe XD",
+      "img": "adobe.svg"
+    }
+  ],
+  "CONNECTED_DESTINATIONS_SOON_TITLE": "Coming soon destinations",
+  "CONNECTED_SOON_DESTINATIONS": [
+    {
+      "title": "Github",
+      "img": "github.svg"
+    },
+    {
+      "title": "Gitlab",
+      "img": "gitlab.svg"
+    },
+    {
+      "title": "Linear",
+      "img": "linear.svg"
+    },
+    {
+      "title": "Jira",
+      "img": "jira.svg"
+    },
+    {
+      "title": "StoryBook",
+      "img": "storybook.svg"
+    }
+  ],
+  "CONNECTED_INTEGRATIONS_SOON_TITLE": "Connected integration",
+  "CONNECTED_SOON_INTEGRATIONS": [
+    {
+      "title": "Slack",
+      "img": "slack.svg"
     }
   ]
 }

@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <router-link :to="{ name: 'settings' }" class="user" v-if="page !== 'settings'">
+    <router-link :to="{ name: 'settings' }" class="user">
       <div class="user-infos">
         <img src="~assets/img/user-img.png" alt="logo user" class="user-infos-img">
         <p class="user-infos-name txt_body">Sabrina Nedjah</p>

@@ -1,0 +1,54 @@
+.connected {
+    &-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content {
+        background: $white;
+        border-radius: 8px;
+        width: calc(50% - 15px);
+        padding: 15px;
+        min-height: 320px;
+        box-shadow: $shadowPopin2;
+
+        .title {
+            font-family: $interSemiBold;
+            color: $grey;
+            margin-bottom: 15px;
+        }
+
+        .img {
+            margin-right: 20px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .tag {
+            padding: 10px;
+            font-family: $interSemiBold;
+            background-color: $white;
+            color: $grey;
+            border-radius: 8px;
+            border: 1px solid $bgGrey;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .name {
+            font-size: 16px;
+            color: $black;
+            font-family: $interSemiBold;
+        }
+    }
+}

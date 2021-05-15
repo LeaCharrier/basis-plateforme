@@ -100,9 +100,6 @@ export default {
       e.preventDefault()
       const step1 = document.getElementsByClassName('step1')
       const step2 = document.getElementsByClassName('step2')
-      // console.log(step1, step2)
-      // step1.classList.add('is-hidden')
-      // step2.classList.remove('is-hidden')
 
       for (let n = 0; n < step1.length; n++) {
         step1[n].classList.add('is-hidden')
