@@ -1,6 +1,5 @@
 <template>
-  <div class="preview">
-  </div>
+  <div class="preview" />
 </template>
 
 <script>

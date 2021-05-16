@@ -2,7 +2,9 @@
   <div class="source">
     <div class="content">
       <img src="~assets/img/figma-logo.svg" alt="logo">
-      <p class="txt_caption">Ariane Design System</p>
+      <p class="txt_caption">
+        Ariane Design System
+      </p>
     </div>
   </div>
 </template>
