@@ -19,7 +19,7 @@ export const getters = {
     return state.token
   },
   getUser (state) {
-    return VueJwtDecode.decode(state.token)
+    return (state.token) ? VueJwtDecode.decode(state.token) : null
   },
   getOnBoarding (state) {
     return state.onBoarding
@@ -29,6 +29,9 @@ export const getters = {
 export const actions = {
   setToken ({ commit }, value) {
     commit('setToken', value)
+  },
+  logout ({ commit }) {
+    commit('setToken', null)
   },
   setOnBoarding ({ commit }, value) {
     commit('setOnBoarding', value)

@@ -3,6 +3,7 @@
     <IssuePopin />
     <div class="table-search">
       <Search />
+      <CheckIssue />
       <BtnAdd />
     </div>
 
@@ -47,6 +48,7 @@ import Search from '~/components/Fields/Search/Search'
 import TableIssueRow from '~/components/TableIssueRow/TableIssueRow'
 import BtnAdd from '~/components/Atoms/BtnAdd/BtnAdd'
 import IssuePopin from '~/components/IssuePopin/IssuePopin'
+import CheckIssue from '~/components/CheckIssue/CheckIssue'
 
 export default {
   name: 'TableIssue',
@@ -54,7 +56,8 @@ export default {
     Search,
     TableIssueRow,
     BtnAdd,
-    IssuePopin
+    IssuePopin,
+    CheckIssue
   },
   data () {
     return {

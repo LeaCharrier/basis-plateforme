@@ -17,24 +17,36 @@
       </div>
     </div>
 
-    <router-link :to="{ name: 'settings' }" class="user">
-      <div class="user-infos">
+    <div class="dropdown" :class="{'open': isOpen}">
+      <div class="dropbtn" @click="handleDropDown">
         <div class="user-infos-img">
-          {{ getInitial(user.firstname, user.lastname) }}
+          <div v-if="user">
+            {{ getInitial(user.firstname, user.lastname) }}
+          </div>
         </div>
-        <p class="user-infos-name txt_body" :class="{'txt-load-white': !user}">
-          {{ user.firstname }} {{ user.lastname }}
-        </p>
+        <div class="user-infos-name txt_body" :class="{'txt-load-white empty-txt-small': !user}">
+          <p v-if="user">
+            {{ user.firstname }} {{ user.lastname }}
+          </p>
+          <p v-else>
+            firstname lastname
+          </p>
+        </div>
       </div>
-      <a class="user-settings">
-        <img src="~assets/img/settings.svg" alt="settings" class="item">
-      </a>
-    </router-link>
+      <div class="dropdown-content">
+        <router-link :to="{ name: 'settings' }">
+          Settings
+        </router-link>
+        <a @click="handleLogout">
+          Log out
+        </a>
+      </div>
+    </div>
   </header>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Header',
@@ -43,6 +55,11 @@ export default {
       type: String,
       required: false,
       default: ''
+    }
+  },
+  data () {
+    return {
+      isOpen: false
     }
   },
   computed: {
@@ -54,8 +71,18 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      logout: 'localStorage/logout'
+    }),
     getInitial (fname, lname) {
       return `${fname[0]}${lname[0]}`
+    },
+    handleDropDown () {
+      this.isOpen = !this.isOpen
+    },
+    handleLogout () {
+      this.handleDropDown()
+      this.logout()
     }
   }
 }
@@ -63,5 +90,4 @@ export default {
 
 <style scoped lang="scss">
 @import "Header";
-
 </style>

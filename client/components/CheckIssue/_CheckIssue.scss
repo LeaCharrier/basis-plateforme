@@ -1,0 +1,15 @@
+.checkIssue {
+    margin-right: 20px;
+
+    .content {
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        color: $grey2;
+        font-family: $interSemiBold;
+        white-space: nowrap;
+        margin-left: 10px;
+    }
+}
