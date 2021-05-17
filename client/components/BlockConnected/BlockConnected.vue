@@ -26,7 +26,9 @@
                 {{ item.title }}
               </p>
             </div>
-            <p class="tag">Coming soon</p>
+            <p class="tag">
+              Coming soon
+            </p>
           </div>
         </div>
       </div>
@@ -44,7 +46,9 @@
                 {{ item.title }}
               </p>
             </div>
-            <p class="tag">Coming soon</p>
+            <p class="tag">
+              Coming soon
+            </p>
           </div>
         </div>
       </div>

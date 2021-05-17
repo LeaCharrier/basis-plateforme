@@ -5,8 +5,9 @@
       <div class="aside" />
       <div class="contentProject">
         <BlockTitleDesc
+          v-if="user && user.firstname"
           :title="texts.SETTINGS_TITLE"
-          :description="texts.SETTINGS_DESCRIPTION"
+          :description="texts.SETTINGS_DESCRIPTION | str_replace('firstname', user.firstname)"
         />
         <TabsNavigation
           :items="texts.SETTINGS_NAV"
@@ -31,10 +32,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getTexts: 'text/getTexts'
+      getTexts: 'text/getTexts',
+      getUser: 'localStorage/getUser'
     }),
     texts () {
       return this.getTexts
+    },
+    user () {
+      return this.getUser
     }
   }
 }

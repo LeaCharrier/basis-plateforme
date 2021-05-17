@@ -5,13 +5,12 @@
       <Aside page="dashboard" />
       <div class="contentProject">
         <BlockTitleDesc
+          v-if="user && user.firstname"
           :title="texts.DASHBOARD_TITLE"
-          :description="texts.DASHBOARD_DESCRIPTION"
+          :description="texts.DASHBOARD_DESCRIPTION | str_replace('firstname', user.firstname)"
         />
       </div>
     </div>
-
-    <OnboardingPopin />
   </div>
 </template>
 
@@ -20,22 +19,24 @@ import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
-import OnboardingPopin from '~/components/OnboardingPopin/OnboardingPopin'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Aside,
-    BlockTitleDesc,
-    OnboardingPopin
+    BlockTitleDesc
   },
   computed: {
     ...mapGetters({
-      getTexts: 'text/getTexts'
+      getTexts: 'text/getTexts',
+      getUser: 'localStorage/getUser'
     }),
     texts () {
       return this.getTexts
+    },
+    user () {
+      return this.getUser
     }
   }
 }

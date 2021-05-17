@@ -1,6 +1,6 @@
-import rgbToHex from "./RgbToHex.js";
+import { rgbToHex } from "./ColorConvertor.js";
 
-export default function fileFormat(file) {
+export function fileFormat(file) {
     const res = file.document.children
         .filter(child => child.type === 'CANVAS')[0].children
         .filter(child => child.type === 'FRAME')[0].children
@@ -26,6 +26,50 @@ export default function fileFormat(file) {
             }
         })
         .filter((shade) => !!shade.name)
+
+    return res
+}
+
+export default function test(json) {
+    const res = {}
+    const keys = Object.keys(json)
+
+    keys.forEach((k) => {
+        const subKeys = Object.keys(json[k])
+
+        subKeys.forEach((s) => {
+            const data = json[k][s]
+
+            if (data.type) {
+                switch (data.type) {
+                    case 'color':
+                        if (!res.colors)
+                            res.colors = []
+
+                        const rgba = {
+                            r: data.value.match(/\d+/g)[0],
+                            g: data.value.match(/\d+/g)[1],
+                            b: data.value.match(/\d+/g)[2],
+                            a: data.value.match(/\d+/g)[3]
+                        }
+
+                        res.colors.push({
+                            prefix: k,
+                            name: s,
+                            hex: rgbToHex(rgba.r, rgba.g, rgba.b),
+                            rgba: {
+                                ...rgba,
+                                display: data.value
+                            },
+                        })
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+        })
+    })
 
     return res
 }

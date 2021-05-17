@@ -1,58 +1,80 @@
-.popin {
+.popin-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $bgPopin;
+
+  .popin {
     background: $white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 16px;
 
     .content {
-        display: flex;
+      display: flex;
 
-        &.log-in {
-            .popin-bgPopin {
-                background: $yellow;
-            }
+      &.log-in {
+        .popin-bgPopin {
+          background: $yellow;
         }
+      }
     }
 
     &-contentForm {
-        width: 420px;
-        padding: 56px 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      width: 420px;
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-        .title {
-            margin-bottom: 16px;
-            font-family: $goshaRegular;
-            font-size: 36px;
-            line-height: 32px;
+      .title {
+        margin-bottom: 16px;
+        font-family: $goshaRegular;
+        font-size: 36px;
+        line-height: 32px;
+      }
+
+      .subtitle {
+        color: $grey2;
+        margin-bottom: 22px;
+      }
+
+      .link {
+        margin-top: 40px;
+
+        &-item {
+          color: $blue2;
         }
-
-        .subtitle {
-            color: $grey2;
-            margin-bottom: 22px;
-        }
-
-        .link {
-            margin-top: 40px;
-
-            &-item {
-                color: $blue2;
-            }
-        }
+      }
     }
 
     &-bgPopin {
-        width: 630px;
-        padding: 100px 60px;
-        background: black;
-        position: relative;
-        border-radius: 0 16px 16px 0;
+      width: 630px;
+      padding: 100px 60px;
+      background: black;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 16px 16px 0;
+      overflow: hidden;
 
-        .img {
-            width: 500px;
-        }
+      .img-hidden {
+        opacity: 0;
+        width: 500px;
+      }
+
+      .img {
+        width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%, -50%))
+      }
     }
+  }
 }

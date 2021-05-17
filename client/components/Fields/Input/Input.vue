@@ -1,7 +1,7 @@
 <template>
   <div class="input">
     <p class="txt_body label" v-html="label" />
-    <input class="txt_body" v-model="message" :placeholder="placeholder" />
+    <input v-model="value" class="txt_body" :placeholder="placeholder" :type="type">
   </div>
 </template>
 
@@ -11,11 +11,23 @@ export default {
   props: {
     label: {
       type: String,
-      required: false
+      required: false,
+      default: ''
     },
     placeholder: {
       type: String,
-      required: false
+      required: false,
+      default: ''
+    },
+    type: {
+      type: String,
+      required: false,
+      default: 'text'
+    }
+  },
+  data () {
+    return {
+      value: ''
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "DASHBOARD_TITLE": "Dashboard",
-  "DASHBOARD_DESCRIPTION": "Welcome back, Sabrina! You have <span>1 design token</span> <br> and <span>3 components</span> to check out for today.",
+  "DASHBOARD_DESCRIPTION": "Welcome back, %firstname%! You have <span>1 design token</span> <br> and <span>3 components</span> to check out for today.",
   "COLORS_TITLE": "Color (84 tokens)",
   "COLORS_DESCRIPTION": "Colors are designed to be clear and accessible. They come in different <br> color themes, constituted each one of grays, semantic and label colors.",
   "COLORS_SELECT_TITLE_OPTIONS": "Color mode :",
@@ -20,7 +20,7 @@
   "ISSUES_STATUS_POPIN_NEW_TITLE": "Edit Issue",
   "ISSUES_STATUS_POPIN_UPDATE_TITLE": "Add an issue",
   "SETTINGS_TITLE": "Settings",
-  "SETTINGS_DESCRIPTION": "Welcome back, Sabrina! You will find general <br> information about your account",
+  "SETTINGS_DESCRIPTION": "Welcome back, %firstname%! You will find general <br> information about your account",
   "SETTINGS_NAV":[
     {
       "title": "My account",

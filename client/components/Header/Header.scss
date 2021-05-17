@@ -55,6 +55,21 @@ header {
     display: flex;
     align-items: center;
 
+    &-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $magenta-light;
+      color: $magenta;
+      width: 24px;
+      height: 24px;
+      font-family: $interSemiBold;
+      font-size: 10px;
+      line-height: 16px;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
     &-name {
       margin-left: 8px;
     }
