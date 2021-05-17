@@ -9,7 +9,12 @@
 
 <script>
 export default {
-  name: 'CheckIssue'
+  name: 'CheckIssue',
+  data () {
+    return {
+      checked: false
+    }
+  }
 }
 </script>
 

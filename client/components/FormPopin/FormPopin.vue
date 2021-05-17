@@ -14,8 +14,23 @@
             </div>
 
             <div>
-              <CustomInput ref="login-email" label="Email" placeholder="sab@gmail.com" type="mail" />
-              <CustomInput ref="login-pass" label="Password" placeholder="*****" type="password" />
+              <CustomInput
+                ref="login-email"
+                label="Email"
+                placeholder="sab@gmail.com"
+                type="mail"
+                :validator="(v) => checkEmail(v)"
+                error-msg="Champs invalide"
+              />
+
+              <CustomInput
+                ref="login-pass"
+                label="Password"
+                placeholder="*****"
+                type="password"
+                :validator="(v) => checkString(v, 3)"
+                error-msg="Champs invalide"
+              />
 
               <button class="btn is-blue" @click="handleLogin">
                 <p>
@@ -43,14 +58,56 @@
               </p>
 
               <div class="step1" :class="{ 'is-hidden': step !== 1 }">
-                <CustomInput ref="signup-firstname" label="Firstname" placeholder="Sabrina" type="text" />
-                <CustomInput ref="signup-lastname" label="Lastname" placeholder="Nedjah" type="text" />
-                <CustomInput ref="signup-email" label="Email" placeholder="sab@gmail.com" type="mail" />
+                <CustomInput
+                  ref="signup-firstname"
+                  label="Firstname"
+                  placeholder="Sabrina"
+                  type="text"
+                  :validator="(v) => checkString(v, 0)"
+                  error-msg="Champs invalide"
+                />
+                <CustomInput
+                  ref="signup-lastname"
+                  label="Lastname"
+                  placeholder="Nedjah"
+                  type="text"
+                  :validator="(v) => checkString(v, 0)"
+                  error-msg="Champs invalide"
+                />
+                <CustomInput
+                  ref="signup-email"
+                  label="Email"
+                  placeholder="sab@gmail.com"
+                  type="mail"
+                  :validator="(v) => checkEmail(v)"
+                  error-msg="Champs invalide"
+                />
               </div>
               <div class="step2" :class="{ 'is-hidden': step !== 2 }">
-                <CustomInput ref="signup-pass" label="Password" placeholder="***" type="password" />
-                <CustomInput ref="signup-check" label="Confirm Password" placeholder="***" type="password" />
-                <CustomInput ref="signup-team" label="Team ID" placeholder="23456787654323456" type="text" />
+                <CustomInput
+                  ref="signup-pass"
+                  label="Password"
+                  placeholder="***"
+                  type="password"
+                  :validator="(v) => checkString(v, 3)"
+                  error-msg="Champs invalide"
+                />
+                <CustomInput
+                  ref="signup-check"
+                  label="Confirm Password"
+                  placeholder="***"
+                  type="password"
+                  :validator="(v) => checkPassDouble(v)"
+                  error-msg="Champs invalide"
+                />
+                <CustomInput
+                  ref="signup-team"
+                  label="Team ID"
+                  placeholder="23456787654323456"
+                  type="text"
+                  :validator="(v) => checkString(v, 0)"
+                  error-msg="Champs invalide"
+                />
               </div>
             </div>
 
@@ -202,22 +259,43 @@ export default {
       }
     },
     checkLogin () {
-      const email = this.$refs['login-email'].value
-      const pass = this.$refs['login-pass'].value
+      const emailField = this.$refs['login-email']
+      const email = emailField.value
+      emailField.handleChange()
+
+      const passField = this.$refs['login-pass']
+      const pass = passField.value
+      passField.handleChange()
 
       return this.checkString(pass, 3) && this.checkEmail(email)
     },
     checkStep1 () {
-      const lastname = this.$refs['signup-lastname'].value
-      const firstname = this.$refs['signup-firstname'].value
-      const email = this.$refs['signup-email'].value
+      const lastnameField = this.$refs['signup-lastname']
+      const lastname = lastnameField.value
+      lastnameField.handleChange()
+
+      const firstnameField = this.$refs['signup-firstname']
+      const firstname = firstnameField.value
+      firstnameField.handleChange()
+
+      const emailField = this.$refs['signup-email']
+      const email = emailField.value
+      emailField.handleChange()
 
       return this.checkString(lastname, 0) && this.checkString(firstname, 0) && this.checkEmail(email)
     },
     checkStep2 () {
-      const pass = this.$refs['signup-pass'].value
-      const check = this.$refs['signup-check'].value
-      const team = this.$refs['signup-team'].value
+      const passField = this.$refs['signup-pass']
+      const pass = passField.value
+      passField.handleChange()
+
+      const checkField = this.$refs['signup-check']
+      const check = checkField.value
+      checkField.handleChange()
+
+      const teamField = this.$refs['signup-team']
+      const team = teamField.value
+      teamField.handleChange()
 
       return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0)
     },
@@ -228,6 +306,9 @@ export default {
       const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
       return regex.test(String(email).toLowerCase())
+    },
+    checkPassDouble (double) {
+      return this.$refs['signup-pass'].value === double
     }
   }
 }

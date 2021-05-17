@@ -1,7 +1,12 @@
 <template>
-  <div class="input">
+  <div class="input" :class="{ error }">
     <p class="txt_body label" v-html="label" />
-    <input v-model="value" class="txt_body" :placeholder="placeholder" :type="type">
+    <input v-model="value" class="txt_body" :placeholder="placeholder" :type="type" @input="handleChange">
+    <transition v-if="error && errorMsg.length" name="fade">
+      <div class="input__error">
+        {{ errorMsg }}
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -23,11 +28,29 @@ export default {
       type: String,
       required: false,
       default: 'text'
+    },
+    validator: {
+      type: Function,
+      required: false,
+      default: null
+    },
+    errorMsg: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data () {
     return {
-      value: ''
+      value: '',
+      error: false
+    }
+  },
+  methods: {
+    handleChange () {
+      if (this.validator) {
+        this.error = !this.validator(this.value)
+      }
     }
   }
 }
