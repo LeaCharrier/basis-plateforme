@@ -30,7 +30,7 @@ export function fileFormat(file) {
     return res
 }
 
-export default function test(json) {
+export function jsonFileFormat(json) {
     const res = {}
     const keys = Object.keys(json)
 

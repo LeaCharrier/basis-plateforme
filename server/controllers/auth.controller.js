@@ -10,7 +10,9 @@ import {userModel} from "../models/User.model.js";
 export async function register(req, res) {
     try {
         const {
-            name,
+            firstname,
+            lastname,
+            team,
             email,
             password
         } = req.body
@@ -24,7 +26,9 @@ export async function register(req, res) {
         }
 
         const user = new userModel({
-            name,
+            firstname,
+            lastname,
+            team,
             email,
             password
         })

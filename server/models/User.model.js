@@ -3,17 +3,25 @@ import bcrypt  from "bcryptjs";
 import jwt  from "jsonwebtoken";
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstname: {
         type: String,
-        required: [true, 'Please Include your name']
+        required: [true, 'firstname is missing']
+    },
+    lastname: {
+        type: String,
+        required: [true, 'lastname is missing']
     },
     email: {
         type: String,
-        required: [true, 'Please Include your email']
+        required: [true, 'email is missing']
     },
     password: {
         type: String,
-        required: [true, 'Please Include your password']
+        required: [true, 'password is missing']
+    },
+    team: {
+        type: String,
+        required: [true, 'team is missing']
     },
     tokens: [
         {
@@ -37,10 +45,19 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.generateAuthToken = async function() {
     const user = this;
 
+    const {
+        firstname,
+        lastname,
+        team,
+        email,
+    } = user
+
     const token = jwt.sign({
         _id: user._id,
-        name: user.name,
-        email: user.email
+        firstname,
+        lastname,
+        team,
+        email
     }, 'secret')
 
     user.tokens = user.tokens.concat({ token })
