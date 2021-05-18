@@ -21,7 +21,7 @@ header {
   &:before {
     content: "›";
     position: absolute;
-    font-family: 'InterSemiBold';
+    font-family: $interSemiBold;
     top: 50%;
     right: 10px;
     transform-origin: 50% 50%;
