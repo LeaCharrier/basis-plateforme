@@ -2,7 +2,7 @@
   <div class="table">
     <IssuePopin />
     <div class="table-search">
-      <Search />
+      <Search placeholder="Search issue" />
       <CheckIssue />
       <BtnAdd />
     </div>
