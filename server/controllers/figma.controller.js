@@ -237,6 +237,7 @@ export async function push(req, res) {
 export async function test(req, res) {
     try {
         console.log(req.body)
+        console.log(jsonFileFormat(req.body.content))
         res.status(201).json(req.body);
     }
     catch(err) {
