@@ -2,15 +2,6 @@
   <div class="input" :class="{ error }">
     <p class="txt_body label" v-html="label" />
     <input
-      v-if="model"
-      :value="model"
-      class="txt_body"
-      :placeholder="placeholder"
-      :type="type"
-      @input="handleChange"
-    >
-    <input
-      v-else
       v-model="value"
       class="txt_body"
       :placeholder="placeholder"
@@ -39,7 +30,7 @@ export default {
       required: false,
       default: ''
     },
-    model: {
+    baseValue: {
       type: String,
       required: false,
       default: ''
@@ -65,6 +56,9 @@ export default {
       value: '',
       error: false
     }
+  },
+  mounted () {
+    this.value = this.baseValue
   },
   methods: {
     handleChange () {

@@ -50,6 +50,7 @@ userSchema.methods.generateAuthToken = async function() {
         lastname,
         team,
         email,
+        password
     } = user
 
     const token = jwt.sign({
@@ -57,7 +58,8 @@ userSchema.methods.generateAuthToken = async function() {
         firstname,
         lastname,
         team,
-        email
+        email,
+        password
     }, 'secret')
 
     user.tokens = user.tokens.concat({ token })

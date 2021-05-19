@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/static/img/adobe.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/figma.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/github.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/gitlab.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/jira.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/linear.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/sketch.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/slack.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/static/img/storybook.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/BlockConnected/BlockConnected.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/BlockConnected/BlockConnected.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Fields/Input/Input.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Fields/Input/Input.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/FormUpdateUser/FormUpdateUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormUpdateUser/FormUpdateUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/settings/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/settings/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/User.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +63,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/store" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/static/img" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\wamp64\www\basis-plateforme\plugin\node_modules\typescript\lib" />
@@ -59,13 +81,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\basis-plateforme\client\static\img" />
+      <recent name="C:\wamp64\www\basis-plateforme\plugin\src\ui\modules" />
+      <recent name="C:\wamp64\www\basis-plateforme\server\models" />
       <recent name="C:\wamp64\www\basis-plateforme\client\store" />
-      <recent name="C:\wamp64\www\basis-plateforme\client\components\Atoms\Status" />
-      <recent name="C:\wamp64\www\basis-plateforme\client\components\Atoms\Source" />
-      <recent name="C:\wamp64\www\basis-plateforme\client\components\Table" />
-      <recent name="C:\wamp64\www\basis-plateforme\client\components\TabsNavigation" />
+      <recent name="C:\wamp64\www\basis-plateforme\server\controllers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\basis-plateforme\server\middleware" />
+      <recent name="C:\wamp64\www\basis-plateforme\server\models" />
       <recent name="C:\wamp64\www\basis-plateforme\client\src" />
     </key>
   </component>
@@ -79,11 +103,31 @@
       <updated>1620773465563</updated>
       <workItem from="1620773466885" duration="7796000" />
       <workItem from="1620850976610" duration="15822000" />
-      <workItem from="1620935438605" duration="9038000" />
+      <workItem from="1620935438605" duration="13379000" />
+      <workItem from="1620981920468" duration="108000" />
+      <workItem from="1621007888699" duration="660000" />
+      <workItem from="1621030062129" duration="5383000" />
+      <workItem from="1621096074228" duration="232000" />
+      <workItem from="1621191968411" duration="21142000" />
+      <workItem from="1621281687348" duration="3090000" />
+      <workItem from="1621343316137" duration="14000" />
+      <workItem from="1621367128295" duration="7248000" />
+      <workItem from="1621451103417" duration="7713000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/figma.controller.js</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

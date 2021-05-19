@@ -5,7 +5,7 @@
         <CustomInput
           ref="update-email"
           label="Email"
-          :model="user.email"
+          :base-value="user.email"
           type="mail"
           :validator="(v) => checkEmail(v)"
           error-msg="Champs invalide"
@@ -13,7 +13,7 @@
         <CustomInput
           ref="update-firstname"
           label="Firstname"
-          :model="user.firstname"
+          :base-value="user.firstname"
           type="text"
           :validator="(v) => checkString(v, 3)"
           error-msg="Champs invalide"
@@ -21,7 +21,7 @@
         <CustomInput
           ref="update-lastname"
           label="Lastname"
-          :model="user.lastname"
+          :base-value="user.lastname"
           type="text"
           :validator="(v) => checkString(v, 3)"
           error-msg="Champs invalide"
@@ -29,7 +29,7 @@
         <CustomInput
           ref="update-team"
           label="Team ID"
-          :model="user.team"
+          :base-value="user.team"
           type="text"
           :validator="(v) => checkString(v, 0)"
           error-msg="Champs invalide"

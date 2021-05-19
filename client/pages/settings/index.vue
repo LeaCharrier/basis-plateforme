@@ -10,6 +10,7 @@
           :description="texts.SETTINGS_DESCRIPTION | str_replace('firstname', user.firstname)"
         />
         <TabsNavigation
+          v-if="texts.SETTINGS_NAV && texts.SETTINGS_NAV.length"
           :items="texts.SETTINGS_NAV"
         />
       </div>
