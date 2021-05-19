@@ -19,16 +19,14 @@ header {
   border-radius: 8px;
 
   &:before {
-    content: "";
+    content: "›";
     position: absolute;
-    background-image: url('~assets/img/arrow.svg');
-    width: 20px;
-    height: 20px;
-    right: 8px;
+    font-family: $interSemiBold;
     top: 50%;
-    transform: translateY(-50%);
-    transition: all 250ms ease;
-    transform-origin: top;
+    right: 10px;
+    transform-origin: 50% 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transition: transform 250ms ease-in-out;
   }
 }
 
@@ -37,6 +35,11 @@ header {
   display: inline-block;
 
   &.open {
+    .dropbtn {
+      &:before {
+        transform: translateY(-50%) rotate(-90deg);
+      }
+    }
     .dropdown-content {
       display: block;
     }

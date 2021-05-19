@@ -1,7 +1,7 @@
 <template>
   <div class="table">
     <div class="table-search">
-      <Search />
+      <Search placeholder="Search color design token" />
       <Dropdown
         :title="texts.COLORS_SELECT_TITLE_OPTIONS"
         :options="texts.COLORS_SELECT_OPTIONS"

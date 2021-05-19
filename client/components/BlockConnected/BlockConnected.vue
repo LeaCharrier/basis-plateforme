@@ -1,5 +1,5 @@
 <template>
-  <div class="connected">
+  <div v-if="user" class="connected">
     <div v-show="tab === 'Sources'" class="connected-container">
       <div class="content">
         <p class="txt_body title">
@@ -86,10 +86,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getTexts: 'text/getTexts'
+      getTexts: 'text/getTexts',
+      getUser: 'localStorage/getUser'
     }),
     texts () {
       return this.getTexts
+    },
+    user () {
+      return this.getUser
     }
   }
 }
