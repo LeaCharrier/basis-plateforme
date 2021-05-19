@@ -1,7 +1,22 @@
 <template>
   <div class="input" :class="{ error }">
     <p class="txt_body label" v-html="label" />
-    <input v-model="value" class="txt_body" :placeholder="placeholder" :type="type" @input="handleChange">
+    <input
+      v-if="model"
+      :value="model"
+      class="txt_body"
+      :placeholder="placeholder"
+      :type="type"
+      @input="handleChange"
+    >
+    <input
+      v-else
+      v-model="value"
+      class="txt_body"
+      :placeholder="placeholder"
+      :type="type"
+      @input="handleChange"
+    >
     <transition v-if="error && errorMsg.length" name="fade">
       <div class="input__error">
         {{ errorMsg }}
@@ -20,6 +35,11 @@ export default {
       default: ''
     },
     placeholder: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    model: {
       type: String,
       required: false,
       default: ''
