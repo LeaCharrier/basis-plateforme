@@ -2,7 +2,7 @@
 export default {
   settingsDialog: {
     width: 550,
-    height: 565
+    height: 180
   },
   key: {
     lastVersionSettingsOpened: 'lastVersionSettingsOpened',

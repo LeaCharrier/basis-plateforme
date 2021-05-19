@@ -1,4 +1,5 @@
 import constants from "../../constants"
+import Settings from "../../../types/settings";
 
 const handleJsonRes = (parent, message: string, e = null) => {
   // send success messgae
@@ -13,7 +14,7 @@ const handleJsonRes = (parent, message: string, e = null) => {
     console.error('Export error: ', e)
 }
 
-const downloadJson = (parent, link: HTMLLinkElement, filename: string, json: string) => {
+const downloadJson = (parent, filename: string, json: string, settings: Settings) => {
   // if no tokens are present
   if (json === '[]') {
     handleJsonRes(parent, '⛔️ No design token detected!')
@@ -27,6 +28,7 @@ const downloadJson = (parent, link: HTMLLinkElement, filename: string, json: str
   try {
     const body = {
       name,
+      team: settings.teamId,
       content: JSON.parse(json),
       date: (new Date()).getTime()
     }
@@ -38,8 +40,6 @@ const downloadJson = (parent, link: HTMLLinkElement, filename: string, json: str
         'Content-Type': 'application/json'
       }
     }).then(async r => {
-      console.log(r)
-      console.log(await r.json())
       handleJsonRes(parent, '🎉 Design tokens sent succesfully!')
     }).catch(e => {
       handleJsonRes(parent, '⛔️ Sending failed!', e)

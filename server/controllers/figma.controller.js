@@ -4,7 +4,7 @@ import {
     apiGetFigmaProjectFiles,
     apiGetFigmaFile
 } from "../actions/index.js";
-import { jsonFileFormat } from "../utils/FileFormat.js";
+import { jsonFileFormat, fileFormat } from "../utils/FileFormat.js";
 
 /**
  * @Route /api/figma/
@@ -236,7 +236,7 @@ export async function push(req, res) {
  */
 export async function test(req, res) {
     try {
-        console.log(jsonFileFormat(req.body.content))
+        console.log(req.body)
         res.status(201).json(req.body);
     }
     catch(err) {

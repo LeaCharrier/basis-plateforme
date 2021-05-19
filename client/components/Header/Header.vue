@@ -70,6 +70,10 @@ export default {
       return this.getUser
     }
   },
+  // TODO: ROMOVE FOR PROD
+  mounted () {
+    console.log(this.user)
+  },
   methods: {
     ...mapActions({
       logout: 'localStorage/logout'

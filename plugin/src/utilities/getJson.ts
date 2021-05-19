@@ -4,19 +4,18 @@ import UserSettings from '../../types/settings'
 /**
  * @name getJson
  * @param {PluginAPI} figma
+ * @param userSettings
  * @param {boolean} stringify
  */
 const getJson = (figma: PluginAPI, userSettings: UserSettings, stringify: boolean = true) => {
   // construct figma data object
-  const figmaData = buildFigmaData(figma, {
-    prefix: userSettings.prefix,
-    excludePrefix: userSettings.excludePrefix
-  })
+  const figmaData = buildFigmaData(figma)
+
   if (stringify === false) {
-    return getTokenJson(figmaData, 'styleDictionary', userSettings.nameConversion)
+    return getTokenJson(figmaData, 'styleDictionary')
   }
   // get tokens as stringified json
-  return JSON.stringify(getTokenJson(figmaData, 'styleDictionary', userSettings.nameConversion))
+  return JSON.stringify(getTokenJson(figmaData, 'styleDictionary'))
 }
 
 export default getJson

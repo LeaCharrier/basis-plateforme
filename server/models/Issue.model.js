@@ -1,0 +1,20 @@
+import mongoose from "mongoose";
+
+const issueSchema = new mongoose.Schema({
+    content: {
+        type: String,
+        required: [true, 'content is missing']
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'user is missing']
+    },
+    status: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'IssueStatus',
+        required: [true, 'status is missing']
+    }
+})
+
+export const issueModel = mongoose.model('Issue', issueSchema)
