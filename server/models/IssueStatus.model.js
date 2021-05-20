@@ -12,7 +12,14 @@ const issueStatusSchema = new mongoose.Schema({
     closing: {
         type: Boolean,
         required: [true, 'closing is missing']
-    }
+    },
+    issues: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Issue',
+            required: true
+        }
+    ]
 })
 
 export const issueStatusModel = mongoose.model('IssueStatus', issueStatusSchema)

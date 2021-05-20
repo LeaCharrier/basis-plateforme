@@ -18,6 +18,13 @@ export const getters = {
   getToken (state) {
     return state.token
   },
+  getHeaders (state) {
+    return {
+      headers: {
+        Authorization: `Bearer ${state.token}`
+      }
+    }
+  },
   getUser (state) {
     return (state.token) ? VueJwtDecode.decode(state.token) : null
   },

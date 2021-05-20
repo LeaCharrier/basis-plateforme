@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/static/img/adobe.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/figma.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/github.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/gitlab.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/jira.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/linear.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/sketch.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/slack.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/static/img/storybook.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/BlockConnected/BlockConnected.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/BlockConnected/BlockConnected.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Fields/Input/Input.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Fields/Input/Input.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/FormUpdateUser/FormUpdateUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormUpdateUser/FormUpdateUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/settings/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/settings/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/User.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/store/localStorage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/store/localStorage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/IssueStatus.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/IssueStatus.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +102,7 @@
       <workItem from="1621281687348" duration="3090000" />
       <workItem from="1621343316137" duration="14000" />
       <workItem from="1621367128295" duration="7248000" />
-      <workItem from="1621451103417" duration="7713000" />
+      <workItem from="1621451103417" duration="14539000" />
     </task>
     <servers />
   </component>

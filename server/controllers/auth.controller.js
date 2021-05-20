@@ -72,6 +72,40 @@ export async function login(req, res) {
     }
 }
 
+/**
+ * @Route /api/auth/update
+ * @Method PUT
+ *
+ * @param req
+ * @param res
+ */
+export async function update(req, res) {
+    const {
+        firstname,
+        lastname,
+        team,
+        email,
+        id
+    } = req.body
+
+    const user = await userModel.findById(id)
+
+    if (firstname && firstname !== user.firstname)
+        user.firstname = firstname
+    if (lastname && lastname !== user.lastname)
+        user.lastname = lastname
+    if (team && team !== user.team)
+        user.team = team
+    if (email && email !== user.email)
+        user.email = email
+
+    const data = await user.save()
+
+    const token = await user.generateAuthToken();
+
+    await res.json({ data, token })
+}
+
 
 /**
  * @Route /api/auth/me

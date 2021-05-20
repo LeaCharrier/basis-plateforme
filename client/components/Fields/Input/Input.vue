@@ -61,10 +61,14 @@ export default {
     this.value = this.baseValue
   },
   methods: {
-    handleChange () {
+    async handleChange () {
       if (this.validator) {
-        this.error = !this.validator(this.value)
+        this.error = !(await this.validator(this.value))
       }
+    },
+    resetValue () {
+      this.error = false
+      this.value = ''
     }
   }
 }
