@@ -161,7 +161,9 @@ export default {
   data () {
     return {
       step: 1,
-      login: true
+      login: true,
+      errorLogin: false,
+      errorSignUp: false
     }
   },
   computed: {
@@ -192,6 +194,8 @@ export default {
       this.step = val
     },
     async handleLogin () {
+      this.errorLogin = false
+      this.errorSignUp = false
       if (!this.checkLogin()) {
         return false
       }
@@ -215,9 +219,12 @@ export default {
       } catch (err) {
         // eslint-disable-next-line no-console
         console.error('Error', err.response)
+        this.errorLogin = true
       }
     },
     async handleSignUp () {
+      this.errorLogin = false
+      this.errorSignUp = false
       if (!(this.checkStep1() && this.checkStep2())) {
         return false
       }
@@ -246,9 +253,11 @@ export default {
         } else {
           // eslint-disable-next-line no-console
           console.error('Error', 'Something Went Wrong')
+          this.errorSignUp = true
         }
       } catch (err) {
         const error = err.response
+        this.errorSignUp = true
         if (error.status === 409) {
           // eslint-disable-next-line no-console
           console.error('Error', error.data.message)
