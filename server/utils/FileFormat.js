@@ -1,33 +1,57 @@
-import { rgbToHex } from "./ColorConvertor.js";
+import {rgbToHex} from "./ColorConvertor.js";
+import slugify from 'slugify'
 
 export function fileFormat(file) {
-    const res = file.document.children
-        .filter(child => child.type === 'CANVAS')[0].children
-        .filter(child => child.type === 'FRAME')[0].children
+    const items = {
+        colors: []
+    }
 
-        //Get all rectangles using shades
-        .filter(child => child.type === 'RECTANGLE')
+    file.document.children
+        .filter(child => child.type === 'CANVAS')
+        .map(child => {
+            return child.children
+                .filter(child => child.type === 'FRAME')
+                .map(child => {
+                    const slug = slugify(child.name.toLowerCase())
+                    const id = slugify(child.id.replace(':', '_'))
 
-        //Get every colors
-        .filter(child => child.fills[0].color)
+                    items[`${slug}-${id}`] = {
+                        name: child.name,
+                        slug: slug,
+                        id: child.id,
+                        colors: []
+                    }
 
-        .map(shade => {
-            const { r, g, b } = shade.fills[0].color;
-            const nodeId = shade.fills;
+                    return child.children
+                        .filter(child => child.fills.length)
+                        .map(shade => {
+                            if (shade.fills[0] && shade.fills[0].color) {
+                                const {
+                                    r,
+                                    g,
+                                    b,
+                                    a
+                                } = shade.fills[0].color
 
-            return {
-                name: shade.name,
-                color: {
-                    r: shade.fills[0].color.r,
-                    g: shade.fills[0].color.g,
-                    b: shade.fills[0].color.b,
-                    hex: rgbToHex(r * 255, g * 255, b * 255),
-                }
-            }
+                                const color = {
+                                    name: shade.name,
+                                    type: shade.type,
+                                    r: r * 255,
+                                    g: g * 255,
+                                    b: b * 255,
+                                    a,
+                                    hex: rgbToHex(r * 255, g * 255, b * 255),
+                                    fillType: shade.fills[0].type
+                                }
+
+                                items[`${slug}-${id}`].colors.push(color)
+                                items.colors.push(color)
+                            }
+                        })
+                })
         })
-        .filter((shade) => !!shade.name)
 
-    return res
+    return items
 }
 
 export function jsonFileFormat(json) {
