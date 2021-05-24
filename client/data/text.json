@@ -1,6 +1,6 @@
 {
   "DASHBOARD_TITLE": "Dashboard",
-  "DASHBOARD_DESCRIPTION": "Welcome back, %firstname%! You have <span>1 design token</span> <br> and <span>3 components</span> to check out for today.",
+  "DASHBOARD_DESCRIPTION": "Welcome back, %firstname%! <br> Here you will find all the data related to your design system",
   "COLORS_TITLE": "Color (84 tokens)",
   "COLORS_DESCRIPTION": "Colors are designed to be clear and accessible. They come in different <br> color themes, constituted each one of grays, semantic and label colors.",
   "COLORS_SELECT_TITLE_OPTIONS": "Color mode :",

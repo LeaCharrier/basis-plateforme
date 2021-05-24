@@ -36,10 +36,23 @@ aside {
         margin-bottom: 5px;
         display: block;
 
+        &-soon {
+          color: $grey4;
+
+          .tag {
+            border: 1px solid $grey4;
+            border-radius: 6px;
+            padding: 6px;
+            color: $grey4;
+            font-size: 9px;
+            margin-left: 8px;
+          }
+        }
+
         &:before {
           content: "";
           position: absolute;
-          background-image: url('~assets/img/picto-aside/dashboard.png');
+          background-image: url('~assets/img/picto-aside/dashboard.svg');
           background-size: contain;
           width: 24px;
           height: 24px;
@@ -54,25 +67,50 @@ aside {
 
         &.icon-issue {
           &:before {
-            background-image: url('~assets/img/picto-aside/bug_report.png');
+            background-image: url('~assets/img/picto-aside/bug_report.svg');
           }
         }
 
         &.icon-color {
           &:before {
-            background-image: url('~assets/img/picto-aside/color.png');
+            background-image: url('~assets/img/picto-aside/color_lens.svg');
           }
         }
 
         &.icon-spacing {
           &:before {
-            background-image: url('~assets/img/picto-aside/spacings.png');
+            background-image: url('~assets/img/picto-aside/straighten.svg');
           }
         }
 
         &.icon-shadow {
           &:before {
-            background-image: url('~assets/img/picto-aside/shadow.png');
+            background-image: url('~assets/img/picto-aside/tonality.svg');
+          }
+        }
+        &.icon-type {
+          &:before {
+            background-image: url('~assets/img/picto-aside/format_shapes.svg');
+          }
+        }
+        &.icon-grid {
+          &:before {
+            background-image: url('~assets/img/picto-aside/border_all.svg');
+          }
+        }
+        &.icon-animation {
+          &:before {
+            background-image: url('~assets/img/picto-aside/play_circle_filled.svg');
+          }
+        }
+        &.icon-action {
+          &:before {
+            background-image: url('~assets/img/picto-aside/arrow_forward.svg');
+          }
+        }
+        &.icon-text {
+          &:before {
+            background-image: url('~assets/img/picto-aside/format_size.svg');
           }
         }
       }

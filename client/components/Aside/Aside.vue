@@ -25,8 +25,56 @@
       </h3>
       <div class="groupes-items">
         <router-link :class="[page === 'colors' ? 'is-active' : '']" :to="{ name: 'colors' }" class="item txt_body icon-color">
-          Color
+          Colors
         </router-link>
+        <div class="item txt_body icon-type item-soon">
+          Type
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
+        <div class="item txt_body icon-grid item-soon">
+          Grids
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
+        <div class="item txt_body icon-spacing item-soon">
+          Spacings
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
+        <div class="item txt_body icon-shadow item-soon">
+          Shadows
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
+        <div class="item txt_body icon-animation item-soon">
+          Animation
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
+      </div>
+
+      <h3 class="groupes-title txt_caption">
+        Aliases
+      </h3>
+      <div class="groupes-items">
+        <div class="item txt_body icon-action item-soon">
+          Action
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
+        <div class="item txt_body icon-text item-soon">
+          Text
+          <span class="tag">
+            Coming soon
+          </span>
+        </div>
       </div>
     </div>
   </aside>
