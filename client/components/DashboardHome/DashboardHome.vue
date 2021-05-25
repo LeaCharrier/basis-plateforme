@@ -29,7 +29,20 @@
        />
     </div>
     <div class="dashboard-colone">
-      <p>ze</p>
+      <!-- total designers mettre le nombre de personne connecté sur le team id du figma -->
+      <Team
+        title="Team members"
+        totalDesigners="1"
+        totalViewers="0"
+       />
+
+      <!-- mettre le chiffre entre parenthèse -->
+      <Pourcentage
+        title="Referenced colors (256)"
+        totalUsed="179"
+        totalUnused="77"
+        pourcentageUsed="70"
+       />
     </div>
   </div>
 </template>
@@ -38,13 +51,17 @@
 import List from '~/components/Analyses/List/List'
 import Date from '~/components/Analyses/Date/Date'
 import Issues from '~/components/Analyses/Issues/Issues'
+import Team from '~/components/Analyses/Team/Team'
+import Pourcentage from '~/components/Analyses/Pourcentage/Pourcentage'
 
 export default {
   name: 'DashboardHome',
   components: {
     List,
     Date,
-    Issues
+    Issues,
+    Team,
+    Pourcentage
   }
 }
 </script>

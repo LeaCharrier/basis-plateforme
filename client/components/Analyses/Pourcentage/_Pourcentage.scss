@@ -1,0 +1,19 @@
+.graph {
+    .number {
+        margin-bottom: 5px !important;
+    }
+
+    &-item {
+        max-width: 100%;
+        background: #DDF0FF;
+        border-radius: 0 4px 4px 0;
+
+        .jauge {
+            &-used {
+                background: $blueGraph;
+                left: 0;
+                border-radius: 4px 0 0 4px;
+            }
+        }
+    }
+}

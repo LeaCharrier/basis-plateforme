@@ -76,3 +76,79 @@
         }
     }
 }
+
+.graph {
+    .flex {
+        display: flex;
+        justify-content: space-between;
+
+        .number {
+            margin-bottom: 5px;
+        }
+    }
+
+    &-item {
+        height: 16px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        position: relative;
+        width: 100%;
+        display: block;
+
+        .jauge {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            max-width: 100%;
+
+            &-designers {
+                background: $blueGraph;
+                left: 0;
+                border-radius: 4px 0 0 4px;
+            }
+
+            &-viewers {
+                background: $blueGraph2;
+                right: 0;
+                border-radius: 0 4px 4px 0;
+            }
+        }
+    }
+    
+    &-infos {
+        .title {
+            font-size: 10px;
+            line-height: 12px;
+            color: $grey4;
+            position: relative;
+            
+            &:before {
+                content: "";
+                position: absolute;
+                height: 10px;
+                width: 10px;
+                border-radius: 100px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &-designer {
+                padding-left: 15px;
+
+                &:before {
+                    left: 0;
+                    background: $blueGraph;
+                }
+            }
+            &-viewers {
+                padding-right: 15px;
+
+                &:before {
+                    right: 0;
+                    background: $blueGraph2;
+                }
+            }
+        }
+    }
+}
