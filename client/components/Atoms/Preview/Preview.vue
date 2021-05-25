@@ -1,10 +1,23 @@
 <template>
-  <div class="preview" />
+  <div class="preview" :style="myStyle" />
 </template>
 
 <script>
 export default {
-  name: 'Preview'
+  name: 'Preview',
+  props: {
+    color: {
+      type: String,
+      required: true
+    }
+  },
+  data () {
+    return {
+      myStyle: {
+        backgroundColor: this.color
+      }
+    }
+  }
 }
 </script>
 

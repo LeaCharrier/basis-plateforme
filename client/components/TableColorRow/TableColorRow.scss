@@ -7,12 +7,37 @@
   margin-bottom: -1px;
   cursor: pointer;
 
-  &.is-select {
+  // &.is-select {
+  //   background: $bgBlue;
+  //   border-top: 1px solid $blue;
+  //   border-bottom: 1px solid $blue;
+  //   z-index: 2;
+  //   position: relative;
+  // }
+
+  &.is-select,
+  &:hover {
     background: $bgBlue;
     border-top: 1px solid $blue;
     border-bottom: 1px solid $blue;
     z-index: 2;
     position: relative;
+
+    .description p {
+      color: $blue3;
+      text-decoration: underline;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url('~assets/img/keyboard_arrow_right.svg');
+        width: 20px;
+        height: 20px;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
   }
 
   div {

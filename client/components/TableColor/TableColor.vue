@@ -10,9 +10,9 @@
     </div>
 
     <div class="table-title">
-      <div class="grow1 input">
+      <!-- <div class="grow1 input">
         <input id="all" v-model="checked" type="checkbox" value="all" @change="check">
-      </div>
+      </div> -->
       <div class="grow2">
         <p class="txt_caption">
           Token name

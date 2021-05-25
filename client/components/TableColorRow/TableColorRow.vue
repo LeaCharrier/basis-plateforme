@@ -1,15 +1,15 @@
 <template>
-  <div class="lineTable" :class="{'is-select': checked}" @click="$refs.input.click()">
-    <div class="grow1 input">
+  <div class="lineTable">
+    <!-- <div class="grow1 input">
       <input ref="input" v-model="checked" type="checkbox" @change="check">
-    </div>
+    </div> -->
     <div class="grow2">
       <p class="txt_body">
         Blue / Blue-500
       </p>
     </div>
     <div class="grow1">
-      <Preview />
+      <Preview color="#2345678" />
     </div>
     <div class="grow1">
       <p class="txt_body">
