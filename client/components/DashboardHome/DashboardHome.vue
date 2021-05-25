@@ -43,6 +43,11 @@
         totalUnused="77"
         pourcentageUsed="70"
        />
+
+       <Projects
+        title="Total projects"
+        total="3"
+       />
     </div>
   </div>
 </template>
@@ -53,6 +58,7 @@ import Date from '~/components/Analyses/Date/Date'
 import Issues from '~/components/Analyses/Issues/Issues'
 import Team from '~/components/Analyses/Team/Team'
 import Pourcentage from '~/components/Analyses/Pourcentage/Pourcentage'
+import Projects from '~/components/Analyses/Projects/Projects'
 
 export default {
   name: 'DashboardHome',
@@ -61,7 +67,8 @@ export default {
     Date,
     Issues,
     Team,
-    Pourcentage
+    Pourcentage,
+    Projects
   }
 }
 </script>

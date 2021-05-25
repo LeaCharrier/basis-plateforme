@@ -18,7 +18,6 @@
             {{ subtitle }}
           </p>
           <div class="items-list link" v-if="link === 'true'">
-            <!-- Si il y a + de 2 items & que ce n'est pas le dernier ajouter la class -->
               <a class="item item-link" >
                 <p class="item-title">danger-500</p>
                 <p class="item-data">84</p>
@@ -34,7 +33,6 @@
           </div>
 
           <div class="items-list link" v-if="link !== 'true'">
-            <!-- Si il y a + de 2 items & que ce n'est pas le dernier ajouter la class -->
               <div class="item">
                 <p class="item-title">danger-500</p>
                 <p class="item-data">84</p>

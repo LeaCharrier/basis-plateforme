@@ -1,0 +1,22 @@
+.list {
+    .number {
+        margin-bottom: 5px !important;
+    }
+
+    .items-list {
+        .item {
+            flex-direction: column;
+
+            &-title {
+                text-decoration: underline;
+            }
+
+            &-subtitle {
+                font-size: 12px !important;
+                line-height: 16px !important;
+                font-family: $interRegular !important;
+                color: $grey5 !important;
+            }
+        }
+    }
+}
