@@ -17,19 +17,19 @@
           <p class="items-title txt_caption">
             {{ subtitle }}
           </p>
-          <div class="items-list items-issues link">
-              <a class="item item-link" >
+          <div class="items-list items-issues">
+              <div class="item">
                 <p class="item-title issue-done">Done</p>
                 <p class="item-data">84</p>
-              </a>
-              <a class="item item-link">
+              </div>
+              <div class="item">
                 <p class="item-title issue-cancelled">Cancelled</p>
                 <p class="item-data">20</p>
-              </a>
-              <a class="item item-link">
+              </div>
+              <div class="item">
                 <p class="item-title issue-backlog">Backlog</p>
                 <p class="item-data">17</p>
-              </a>
+              </div>
           </div>
       </div>
 
@@ -38,18 +38,18 @@
             Latest Issues
           </p>
           <div class="items-list link">
-              <a class="item item-link" >
+              <div class="item">
                 <p class="item-title">Remove unused h1 mobile style</p>
                 <p class="item-info txt_caption">#47 opened on 14/06 by sabnjdh</p>
-              </a>
-              <a class="item item-link" >
+              </div>
+              <div class="item">
                 <p class="item-title">Remove unused h1 mobile style</p>
                 <p class="item-info txt_caption">#47 opened on 14/06 by sabnjdh</p>
-              </a>
-              <a class="item item-link" >
+              </div>
+              <div class="item">
                 <p class="item-title">Remove unused h1 mobile style</p>
                 <p class="item-info txt_caption">#47 opened on 14/06 by sabnjdh</p>
-              </a>
+              </div>
           </div>
       </div>
   </div>

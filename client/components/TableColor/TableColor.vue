@@ -1,13 +1,13 @@
 <template>
   <div class="table">
-    <div class="table-search">
+    <!-- <div class="table-search">
       <Search placeholder="Search color design token" />
       <Dropdown
         :title="texts.COLORS_SELECT_TITLE_OPTIONS"
         :options="texts.COLORS_SELECT_OPTIONS"
         :selected="texts.COLORS_SELECTED"
       />
-    </div>
+    </div> -->
 
     <div class="table-title">
       <!-- <div class="grow1 input">
@@ -55,16 +55,16 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import Search from '~/components/Fields/Search/Search'
-import Dropdown from '~/components/Fields/Dropdown/Dropdown'
+// import Search from '~/components/Fields/Search/Search'
+// import Dropdown from '~/components/Fields/Dropdown/Dropdown'
 import TableColorRow from '~/components/TableColorRow/TableColorRow'
 import BarCheckboxSelect from '~/components/BarCheckboxSelect/BarCheckboxSelect'
 
 export default {
   name: 'TableColor',
   components: {
-    Search,
-    Dropdown,
+    // Search,
+    // Dropdown,
     TableColorRow,
     BarCheckboxSelect
   },

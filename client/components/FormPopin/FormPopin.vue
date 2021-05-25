@@ -20,7 +20,7 @@
                 placeholder="sab@gmail.com"
                 type="mail"
                 :validator="(v) => checkEmail(v)"
-                error-msg="Champs invalide"
+                error-msg="Invalid fields"
               />
 
               <CustomInput
@@ -29,14 +29,17 @@
                 placeholder="*****"
                 type="password"
                 :validator="(v) => checkString(v, 3)"
-                error-msg="Champs invalide"
+                error-msg="Invalid fields"
               />
 
-              <button class="btn is-blue" @click="handleLogin">
-                <p>
-                  Log in
-                </p>
-              </button>
+              <div class="confirm">
+                <button class="btn is-blue" @click="handleLogin">
+                  <p>
+                    Log in
+                  </p>
+                </button>
+                <p v-if="errorLogin === true" class="error">Not all fields are good</p>
+              </div>
             </div>
 
             <div>
@@ -64,7 +67,7 @@
                   placeholder="Sabrina"
                   type="text"
                   :validator="(v) => checkString(v, 0)"
-                  error-msg="Champs invalide"
+                  error-msg="Invalid fields"
                 />
                 <CustomInput
                   ref="signup-lastname"
@@ -72,7 +75,7 @@
                   placeholder="Nedjah"
                   type="text"
                   :validator="(v) => checkString(v, 0)"
-                  error-msg="Champs invalide"
+                  error-msg="Invalid fields"
                 />
                 <CustomInput
                   ref="signup-email"
@@ -80,7 +83,7 @@
                   placeholder="sab@gmail.com"
                   type="mail"
                   :validator="(v) => checkEmail(v)"
-                  error-msg="Champs invalide"
+                  error-msg="Invalid fields"
                 />
               </div>
               <div class="step2" :class="{ 'is-hidden': step !== 2 }">
@@ -90,7 +93,7 @@
                   placeholder="***"
                   type="password"
                   :validator="(v) => checkString(v, 3)"
-                  error-msg="Champs invalide"
+                  error-msg="Invalid fields"
                 />
                 <CustomInput
                   ref="signup-check"
@@ -98,7 +101,7 @@
                   placeholder="***"
                   type="password"
                   :validator="(v) => checkPassDouble(v)"
-                  error-msg="Champs invalide"
+                  error-msg="Invalid fields"
                 />
                 <CustomInput
                   ref="signup-team"
@@ -106,7 +109,7 @@
                   placeholder="23456787654323456"
                   type="text"
                   :validator="(v) => checkString(v, 0)"
-                  error-msg="Champs invalide"
+                  error-msg="Invalid fields"
                 />
               </div>
             </div>
@@ -117,11 +120,14 @@
                   Get started
                 </p>
               </button>
-              <button class="btn is-blue step2" :class="{ 'is-hidden': step !== 2 }" @click="handleSignUp">
-                <p>
-                  Sign Up
-                </p>
-              </button>
+              <div class="confirm" :class="{ 'is-hidden': step !== 2 }">
+                <button class="btn is-blue step2"  @click="handleSignUp">
+                  <p>
+                    Sign Up
+                  </p>
+                </button>
+                <p v-if="errorSignUp === true" class="error">Not all fields are good</p>
+              </div>
             </div>
 
             <div>

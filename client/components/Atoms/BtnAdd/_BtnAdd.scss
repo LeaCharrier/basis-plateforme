@@ -1,12 +1,13 @@
 button {
-    border: 1px solid $greyLight;
+    border: 1px solid $bgGrey;
     padding: 10px 35px 10px 10px;
     border-radius: 8px;
     position: relative;
     white-space: nowrap;
     font-family: $interSemiBold;
-    box-shadow: $shadowheader;
     cursor: pointer;
+    background: $blueGraph;
+    color: $white;
 
     &:after {
         content: "";

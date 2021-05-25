@@ -2,13 +2,16 @@
   <div class="main">
     <Header />
     <div class="container">
-      <Aside page="issue" />
+      <Aside page="colors" />
       <div class="contentProject">
-        <BlockTitleDesc
-          :title="texts.ISSUES_TITLE"
-          :description="texts.ISSUES_DESCRIPTION"
-        />
-        <TableIssue />
+        <div class="nav">
+            <router-link :to="{ name: 'colors' }" class="backColor"></router-link>
+            <div class="color">
+                <p class="color-title"> Blue - 500</p>
+                <span class="color-item" style="background-color: #0568FD" />
+            </div>
+        </div>
+        <DashboardColor />
       </div>
     </div>
   </div>
@@ -18,16 +21,15 @@
 import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
-import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
-import TableIssue from '~/components/TableIssue/TableIssue'
+import DashboardColor from '~/components/DashboardColor/DashboardColor'
 
 export default {
-  name: 'Issues',
+  name: 'Colors',
   components: {
     Header,
     Aside,
-    BlockTitleDesc,
-    TableIssue
+    // BlockTitleDesc,
+    DashboardColor
   },
   computed: {
     ...mapGetters({

@@ -8,7 +8,7 @@
           :base-value="user.email"
           type="mail"
           :validator="(v) => checkEmail(v)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
         <CustomInput
           ref="update-firstname"
@@ -16,7 +16,7 @@
           :base-value="user.firstname"
           type="text"
           :validator="(v) => checkString(v, 3)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
         <CustomInput
           ref="update-lastname"
@@ -24,7 +24,7 @@
           :base-value="user.lastname"
           type="text"
           :validator="(v) => checkString(v, 3)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
         <CustomInput
           ref="update-team"
@@ -32,7 +32,7 @@
           :base-value="user.team"
           type="text"
           :validator="(v) => checkString(v, 0)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
       </div>
       <div class="form-column">
@@ -42,7 +42,7 @@
           placeholder="***"
           type="password"
           :validator="(v) => checkOldPass(v)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
         <CustomInput
           ref="update-pass"
@@ -50,7 +50,7 @@
           placeholder="***"
           type="password"
           :validator="(v) => checkString(v, 3)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
         <CustomInput
           ref="update-check"
@@ -58,7 +58,7 @@
           placeholder="***"
           type="password"
           :validator="(v) => checkPassDouble(v)"
-          error-msg="Champs invalide"
+          error-msg="Invalid fields"
         />
       </div>
     </div>

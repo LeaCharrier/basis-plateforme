@@ -1,0 +1,92 @@
+.graphTime {
+    display: flex;
+    margin-top: 20px;
+
+    &-pourcentage {
+        width: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 10px;
+
+        p {
+            font-size: 10px;
+            line-height: 12px;
+            color: $grey4;
+        }
+    }
+
+    &-month {
+        margin-left: 40px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        
+        p {
+            font-size: 10px;
+            line-height: 12px;
+            color: $grey4;
+        }
+    }
+
+    .graph {
+        border-left: 1px solid #E4E4E6;
+        border-bottom: 1px solid #E4E4E6;
+        height: 140px;
+        width: 100%;
+        position: relative;
+
+        &:before {
+            content: "›";
+            position: absolute;
+            font-family: $interSemiBold;
+            top: 1px;
+            color: #E4E4E6;
+            left: -5px;
+            transform-origin: 50% 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        &:after {
+            content: "›";
+            position: absolute;
+            font-family: $interSemiBold;
+            bottom: -7px;
+            color: #E4E4E6;
+            right: -2px;
+            transform-origin: 50% 50%;
+            transform: translateY(-50%) rotate(s0deg);
+        }
+
+        &-month {
+            bottom: 0;
+            right: 10px;
+            position: absolute;
+            width: 32px;
+            background: $blueGraph;
+        }
+
+        .lines {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 75%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            span {
+                border: 0.2px dashed $greyLight;
+
+                &.incolore {
+                    border: 0.2px dashed transparent;
+                }
+            }
+        }
+    }
+}

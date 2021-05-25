@@ -2,7 +2,6 @@
   <div class="table">
     <IssuePopin />
     <div class="table-search">
-      <Search placeholder="Search issue" />
       <CheckIssue />
       <BtnAdd />
     </div>
@@ -44,7 +43,6 @@
 </template>
 
 <script>
-import Search from '~/components/Fields/Search/Search'
 import TableIssueRow from '~/components/TableIssueRow/TableIssueRow'
 import BtnAdd from '~/components/Atoms/BtnAdd/BtnAdd'
 import IssuePopin from '~/components/IssuePopin/IssuePopin'
@@ -53,7 +51,6 @@ import CheckIssue from '~/components/CheckIssue/CheckIssue'
 export default {
   name: 'TableIssue',
   components: {
-    Search,
     TableIssueRow,
     BtnAdd,
     IssuePopin,

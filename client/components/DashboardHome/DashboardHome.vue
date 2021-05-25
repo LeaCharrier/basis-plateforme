@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard" v-if="user">
     <div class="dashboard-colone">
       <List
         title="Total colors on the library"
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import List from '~/components/Analyses/List/List'
 import Date from '~/components/Analyses/Date/Date'
 import Issues from '~/components/Analyses/Issues/Issues'
@@ -69,6 +70,18 @@ export default {
     Team,
     Pourcentage,
     Projects
+  },
+  computed: {
+    ...mapGetters({
+      getTexts: 'text/getTexts',
+      getUser: 'localStorage/getUser'
+    }),
+    texts () {
+      return this.getTexts
+    },
+    user () {
+      return this.getUser
+    }
   }
 }
 </script>

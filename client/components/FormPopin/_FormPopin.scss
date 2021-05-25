@@ -24,6 +24,19 @@
       }
     }
 
+    .confirm {
+      position: relative;
+      padding-bottom: 20px;
+
+      .error {
+        position: absolute;
+        color: $red;
+        bottom: 0px;
+        margin: 0 auto;
+        font-size: 12px;
+      }
+    }
+
     &-contentForm {
       width: 420px;
       padding: 56px 40px;
