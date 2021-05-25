@@ -9,6 +9,7 @@
           :title="texts.DASHBOARD_TITLE"
           :description="texts.DASHBOARD_DESCRIPTION | str_replace('firstname', user.firstname)"
         />
+        <DashboardHome />
       </div>
     </div>
   </div>
@@ -19,13 +20,15 @@ import { mapGetters } from 'vuex'
 import Header from '~/components/Header/Header'
 import Aside from '~/components/Aside/Aside'
 import BlockTitleDesc from '~/components/BlockTitleDesc/BlockTitleDesc'
+import DashboardHome from '~/components/DashboardHome/DashboardHome'
 
 export default {
   name: 'Home',
   components: {
     Header,
     Aside,
-    BlockTitleDesc
+    BlockTitleDesc,
+    DashboardHome
   },
   computed: {
     ...mapGetters({
