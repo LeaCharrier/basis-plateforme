@@ -3,6 +3,11 @@ aside {
   width: 260px;
   padding: 24px;
   min-height: calc(100vh - 64px);
+  position: fixed;
+  left: 0;
+  top: 64px;
+  height: calc(100vh - 64px);
+  z-index: 999;
 
   .design {
     &-title {

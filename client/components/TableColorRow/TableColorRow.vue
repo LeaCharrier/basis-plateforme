@@ -9,11 +9,11 @@
       </p>
     </div>
     <div class="grow1">
-      <Preview color="#2345678" />
+      <Preview color="#234567" />
     </div>
     <div class="grow1">
       <p class="txt_body">
-        #2345678
+        #234567
       </p>
     </div>
     <div class="grow2">

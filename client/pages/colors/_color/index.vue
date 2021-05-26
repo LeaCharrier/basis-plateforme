@@ -5,11 +5,13 @@
       <Aside page="colors" />
       <div class="contentProject">
         <div class="nav">
-            <router-link :to="{ name: 'colors' }" class="backColor"></router-link>
-            <div class="color">
-                <p class="color-title"> Blue - 500</p>
-                <span class="color-item" style="background-color: #0568FD" />
-            </div>
+          <router-link :to="{ name: 'colors' }" class="backColor" />
+          <div class="color">
+            <p class="color-title">
+              Blue - 500
+            </p>
+            <span class="color-item" style="background-color: #0568FD" />
+          </div>
         </div>
         <DashboardColor />
       </div>
@@ -43,5 +45,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "index";
+  @import "pages/colors/_color/index";
 </style>

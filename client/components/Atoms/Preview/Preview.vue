@@ -1,5 +1,5 @@
 <template>
-  <div class="preview" :style="bgColor" />
+  <div class="preview" :style="{ 'backgroundColor': color }" />
 </template>
 
 <script>
@@ -9,14 +9,6 @@ export default {
     color: {
       type: String,
       required: true
-    }
-  },
-  data () {
-    return {
-      // la couleur ne veut pas etre retourner jsp pq
-      bgColor: {
-        backgroundColor: this.color
-      }
     }
   }
 }
