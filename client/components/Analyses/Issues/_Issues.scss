@@ -1,43 +1,45 @@
 .block-analyse {
-    .items-issues {
-        .item-title {
-            padding-left: 40px;
-            position: relative;
+  .items-issues {
+    .item-title {
+      padding-left: 40px;
+      position: relative;
 
-            &:before {
-                content: '';
-                position: absolute;
-                width: 12px;
-                height: 12px;
-                background-color: $green2;
-                border: 6px solid $greenLight;
-                border-radius: 100px;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-       }
-       .issue {
-            &-cancelled{
-                &:before {
-                    background-color: $red2;
-                    border: 6px solid $red3;
-                }
-            }
-            &-backlog {
-                &:before {
-                    background-color: $grey6;
-                    border: 6px solid $grey7;  
-                }
-            }
-        }
+      &:before {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: $green2;
+        border: 6px solid $greenLight;
+        border-radius: 100px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
 
-    .last-issue {
-        margin-top: 35px;
-
-        .item {
-            flex-direction: column;
+    .issue {
+      &-cancelled {
+        &:before {
+          background-color: $red2;
+          border: 6px solid $red3;
         }
+      }
+
+      &-backlog {
+        &:before {
+          background-color: $grey6;
+          border: 6px solid $grey7;
+        }
+      }
     }
+  }
+
+  .last-issue {
+    margin-top: 35px;
+
+    .item {
+      flex-direction: column;
+    }
+  }
 }

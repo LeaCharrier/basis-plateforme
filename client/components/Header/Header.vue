@@ -8,9 +8,9 @@
     <div v-else class="entreprise">
       <img src="~assets/img/maze-logo.png" alt="logo entreprise" class="entreprise-img">
       <div>
-        <p class="entreprise-name txt_caption">
-          Maze
-        </p>
+        <div class="entreprise-name txt_caption" :class="{'txt-load-white empty-txt-small': !name}">
+          {{ name ? name : 'name' }}
+        </div>
         <p class="entreprise-plan txt_caption">
           Entreprise plan
         </p>
@@ -59,7 +59,16 @@ export default {
   },
   data () {
     return {
-      isOpen: false
+      isOpen: false,
+      name: ''
+    }
+  },
+  async fetch () {
+    const teamId = this.user.team
+    const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+
+    if (res.data && res.data.name) {
+      this.name = res.data.name
     }
   },
   computed: {
@@ -72,6 +81,7 @@ export default {
   },
   // TODO: ROMOVE FOR PROD
   mounted () {
+    // eslint-disable-next-line no-console
     console.log(this.user)
   },
   methods: {

@@ -1,10 +1,10 @@
 <template>
   <aside>
-    <h2 class="design-title txt_body">
-      Ariane Design System
+    <h2 class="design-title txt_body" :class="{'txt-load-dark empty-txt-small': !name}">
+      {{ name ? name : 'name' }} Design System
     </h2>
-    <p class="design-subtitle txt_note">
-      maze/design-system
+    <p class="design-subtitle txt_note" :class="{'txt-load-dark empty-txt-small': !name}">
+      {{ getName(name) }}/design-system
     </p>
 
     <div class="groupes">
@@ -81,6 +81,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import slugify from 'slugify'
+
 export default {
   name: 'Aside',
   props: {
@@ -88,6 +91,32 @@ export default {
       type: String,
       required: false,
       default: ''
+    }
+  },
+  data () {
+    return {
+      name: ''
+    }
+  },
+  async fetch () {
+    const teamId = this.user.team
+    const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+
+    if (res.data && res.data.name) {
+      this.name = res.data.name
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getUser: 'localStorage/getUser'
+    }),
+    user () {
+      return this.getUser
+    }
+  },
+  methods: {
+    getName () {
+      return slugify(this.name.toLowerCase())
     }
   }
 }

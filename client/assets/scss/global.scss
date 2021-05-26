@@ -147,7 +147,9 @@ p span {
   border-top: 1px solid $greyLight;
 }
 
-.txt-load-white {
+.txt-load-white,
+.txt-load-dark{
+  display: inline-flex;
   position: relative;
 
   &:after {
