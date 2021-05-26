@@ -5,7 +5,12 @@ const issueSchema = new mongoose.Schema({
         type: String,
         required: [true, 'content is missing']
     },
-    user: {
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'user is missing']
+    },
+    assignee: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, 'user is missing']

@@ -2,7 +2,6 @@
   <div class="main">
     <Header page="settings" />
     <div class="container">
-      <div class="aside" />
       <div class="contentProject">
         <BlockTitleDesc
           v-if="user && user.firstname"

@@ -39,7 +39,7 @@ export function fileFormat(file) {
                                     b,
                                     a
                                 } = o.fills[0].color
-                                
+
                                 const color = {
                                     name: o.name,
                                     type: o.type,
@@ -54,7 +54,7 @@ export function fileFormat(file) {
 
                                 items[`${slug}-${id}`].colors.push(color)
                                 items.push(color)
-                                
+
                             }
                         });
                     }
@@ -63,7 +63,7 @@ export function fileFormat(file) {
 
                 })
         })
-    
+
     return items
 }
 
@@ -78,27 +78,24 @@ export function jsonFileFormat(json) {
             const data = json[k][s]
 
             if (data.type) {
-                console.log(data.type);
                 switch (data.type) {
                     case 'color':
                         if (!res.colors)
                             res.colors = []
 
                         const rgba = {
-                            r: data.value.match(/\d+/g)[0],
-                            g: data.value.match(/\d+/g)[1],
-                            b: data.value.match(/\d+/g)[2],
-                            a: data.value.match(/\d+/g)[3]
+                            r: parseFloat(data.value.match(/\d+/g)[0]),
+                            g: parseFloat(data.value.match(/\d+/g)[1]),
+                            b: parseFloat(data.value.match(/\d+/g)[2]),
+                            a: parseFloat(data.value.match(/\d+/g)[3])
                         }
 
                         res.colors.push({
                             prefix: k,
                             name: s,
                             hex: rgbToHex(rgba.r, rgba.g, rgba.b),
-                            rgba: {
-                                ...rgba,
-                                display: data.value
-                            },
+                            ...rgba,
+                            display: data.value
                         })
 
                         break;

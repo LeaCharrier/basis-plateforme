@@ -7,15 +7,9 @@
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/assets/scss/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/scss/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Date/Date.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Date/Date.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/GraphTime/GraphTime.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/GraphTime/GraphTime.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Aside/Aside.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Aside/Aside.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Atoms/Preview/Preview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Atoms/Preview/Preview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/DashboardHome/DashboardHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DashboardHome/DashboardHome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Header/Header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TableColorRow/TableColorRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableColorRow/TableColorRow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/color/_index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/colors/_color/_index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/color/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/colors/_color/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/settings/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/settings/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Issue.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Issue.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/utils/FileFormat.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/FileFormat.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/poc-figma-api-color-usage-rate" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -113,7 +107,7 @@
       <workItem from="1621613941106" duration="1215000" />
       <workItem from="1621634627920" duration="8312000" />
       <workItem from="1621797976889" duration="6000" />
-      <workItem from="1622012938092" duration="1905000" />
+      <workItem from="1622012938092" duration="3522000" />
     </task>
     <servers />
   </component>
