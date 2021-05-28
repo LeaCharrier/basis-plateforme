@@ -14,13 +14,19 @@
       <div v-if="projects.length" class="items-list">
         <a v-for="(project) in projects" :key="project.id" class="item">
           <p class="item-title">{{ project.name }}</p>
-          <p class="item-subtitle">Updated 2 days ago</p>
+          <div v-for="(file) in project.files" :key="file.key" class="item-file">
+            <p class="item-fileName">{{ file.name }}</p>
+            <p class="item-subtitle">Updated {{ getDate(file.last_modified) }}</p>
+          </div>
         </a>
       </div>
       <div v-else class="items-list">
         <a class="item">
           <p class="item-title txt-load-white empty-txt-small">maze.design</p>
-          <p class="item-subtitle txt-load-white empty-txt-small">Updated 2 days ago</p>
+          <div class="item-file">
+            <p class="item-fileName txt-load-white empty-txt-small">maze.design.file</p>
+            <p class="item-subtitle txt-load-white empty-txt-small">Updated 2 days ago</p>
+          </div>
         </a>
       </div>
     </div>
@@ -29,6 +35,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import moment from 'moment'
 
 export default {
   name: 'Projects',
@@ -45,7 +52,7 @@ export default {
   },
   async fetch () {
     const teamId = this.user.team
-    const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+    const res = await this.$api.get(`figma/team/${teamId}/projects/files/`)
 
     if (res.data && res.data.projects && res.data.projects.length) {
       this.projects = res.data.projects
@@ -57,6 +64,11 @@ export default {
     }),
     user () {
       return this.getUser
+    }
+  },
+  methods: {
+    getDate (date) {
+      return moment(date).fromNow()
     }
   }
 }

@@ -55,6 +55,34 @@ export async function getTeamProjects(req, res) {
 }
 
 /**
+ * @Route /api/figma/team/:teamId/projects/files
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
+export async function getTeamProjectsFiles(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    try {
+        const team = await apiGetFigmaTeamProjects(teamId)
+
+        for (const p of team.projects) {
+            const { files } = await apiGetFigmaProjectFiles(p.id)
+
+            p.files = files || []
+        }
+
+        res.status(200).send(team);
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+
+/**
  * @Route /api/figma/team/:teamId/projects/:projectId/files
  * @Route /api/figma/projects/:projectId/files
  * @Method GET

@@ -2,13 +2,14 @@ import express from 'express';
 import {
     get,
     getTeamProjects,
+    getTeamProjectsFiles,
     getProjectFiles,
     getTeamProjectFilesByIndex,
     getFile,
     getFileByIndex,
     getTeamProjectFileByIndexes,
     push,
-    test
+    test,
 } from '../controllers/figma.controller.js';
 
 const router = express.Router();
@@ -19,6 +20,9 @@ router.post('/push', push);
 
 // Get Team Projects By TeamID
 router.get('/team/:teamId/projects', getTeamProjects);
+
+// Get Team Projects and Files By TeamID
+router.get('/team/:teamId/projects/files', getTeamProjectsFiles);
 
 // Get Project Files By ProjectID
 router.get('/team/:teamId/projects/:projectId/files', getProjectFiles);
