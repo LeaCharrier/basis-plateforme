@@ -19,6 +19,10 @@ const issueSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'IssueStatus',
         required: [true, 'status is missing']
+    },
+    team: {
+        type: String,
+        required: [true, 'team is missing']
     }
 })
 

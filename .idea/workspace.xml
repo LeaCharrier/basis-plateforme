@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/controllers/issues.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/issues.routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/assets/scss/var.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/scss/var.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Pourcentage/Pourcentage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Pourcentage/Pourcentage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/DashboardColor/DashboardColor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DashboardColor/DashboardColor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Issue.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Issue.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/IssueStatus.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/IssueStatus.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/poc-figma-api-color-usage-rate" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/controllers" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -72,11 +70,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\basis-plateforme\server\controllers" />
+      <recent name="C:\wamp64\www\basis-plateforme\server\routes" />
       <recent name="C:\wamp64\www\basis-plateforme" />
       <recent name="C:\wamp64\www\basis-plateforme\client\static\img" />
       <recent name="C:\wamp64\www\basis-plateforme\plugin\src\ui\modules" />
-      <recent name="C:\wamp64\www\basis-plateforme\server\models" />
-      <recent name="C:\wamp64\www\basis-plateforme\client\store" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\basis-plateforme\client\pages\colors\_color" />
@@ -110,7 +108,7 @@
       <workItem from="1621613941106" duration="1215000" />
       <workItem from="1621634627920" duration="8312000" />
       <workItem from="1621797976889" duration="6000" />
-      <workItem from="1622012938092" duration="8593000" />
+      <workItem from="1622012938092" duration="11824000" />
     </task>
     <servers />
   </component>
