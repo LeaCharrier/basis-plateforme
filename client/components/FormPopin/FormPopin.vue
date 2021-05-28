@@ -38,7 +38,9 @@
                     Log in
                   </p>
                 </button>
-                <p v-if="errorLogin === true" class="error">Not all fields are good</p>
+                <p v-if="errorLogin === true" class="error">
+                  Not all fields are good
+                </p>
               </div>
             </div>
 
@@ -121,12 +123,14 @@
                 </p>
               </button>
               <div class="confirm" :class="{ 'is-hidden': step !== 2 }">
-                <button class="btn is-blue step2"  @click="handleSignUp">
+                <button class="btn is-blue step2" @click="handleSignUp">
                   <p>
                     Sign Up
                   </p>
                 </button>
-                <p v-if="errorSignUp === true" class="error">Not all fields are good</p>
+                <p v-if="errorSignUp === true" class="error">
+                  Not all fields are good
+                </p>
               </div>
             </div>
 

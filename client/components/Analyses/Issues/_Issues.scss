@@ -26,6 +26,13 @@
         }
       }
 
+      &-progress {
+        &:before {
+          background-color: $orange2;
+          border: 6px solid $orange3;
+        }
+      }
+
       &-backlog {
         &:before {
           background-color: $grey6;

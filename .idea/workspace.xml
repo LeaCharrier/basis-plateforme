@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Projects/Projects.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Projects/Projects.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Projects/_Projects.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Projects/_Projects.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/figma.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/figma.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/assets/scss/var.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/scss/var.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Pourcentage/Pourcentage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Pourcentage/Pourcentage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DashboardColor/DashboardColor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DashboardColor/DashboardColor.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,12 +110,22 @@
       <workItem from="1621613941106" duration="1215000" />
       <workItem from="1621634627920" duration="8312000" />
       <workItem from="1621797976889" duration="6000" />
-      <workItem from="1622012938092" duration="8020000" />
+      <workItem from="1622012938092" duration="8593000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

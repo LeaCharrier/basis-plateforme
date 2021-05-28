@@ -27,6 +27,14 @@
           </p>
         </div>
         <div class="item">
+          <p class="item-title issue-progress">
+            In progress
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </div>
+        <div class="item">
           <p class="item-title issue-cancelled">
             Cancelled
           </p>

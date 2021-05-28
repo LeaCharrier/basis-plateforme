@@ -1,52 +1,64 @@
 <template>
   <div class="list block-analyse">
-      <div class="list-title">
-        <p class="txt_body title">
-          {{ title }}
-        </p>
-        <router-link :to="{ name: 'colors' }" class="txt_caption link" v-if="link === 'true'">
-          View all
-        </router-link>
-      </div>
-
-      <p class="number">
-        {{ total }}
+    <div class="list-title">
+      <p class="txt_body title">
+        {{ title }}
       </p>
+      <router-link v-if="link === 'true'" :to="{ name: 'colors' }" class="txt_caption link">
+        View all
+      </router-link>
+    </div>
 
-      <div class="items">
-          <p class="items-title txt_caption">
-            {{ subtitle }}
-          </p>
-          <div class="items-list link" v-if="link === 'true'">
-              <a class="item item-link" >
-                <p class="item-title">danger-500</p>
-                <p class="item-data">84</p>
-              </a>
-              <a class="item item-link">
-                <p class="item-title">danger-500</p>
-                <p class="item-data">84</p>
-              </a>
-              <a class="item item-link">
-                <p class="item-title">danger-500</p>
-                <p class="item-data">84</p>
-              </a>
-          </div>
+    <p class="number">
+      {{ total }}
+    </p>
 
-          <div class="items-list link" v-if="link !== 'true'">
-              <div class="item">
-                <p class="item-title">danger-500</p>
-                <p class="item-data">84</p>
-              </div>
-              <div class="item">
-                <p class="item-title">danger-500</p>
-                <p class="item-data">84</p>
-              </div>
-              <div class="item">
-                <p class="item-title">danger-500</p>
-                <p class="item-data">84</p>
-              </div>
-          </div>
+    <div class="items">
+      <p class="items-title txt_caption">
+        {{ subtitle }}
+      </p>
+      <div v-if="link === 'true'" class="items-list link">
+        <a class="item item-link">
+          <p class="item-title">danger-500</p>
+          <p class="item-data">84</p>
+        </a>
+        <a class="item item-link">
+          <p class="item-title">danger-500</p>
+          <p class="item-data">84</p>
+        </a>
+        <a class="item item-link">
+          <p class="item-title">danger-500</p>
+          <p class="item-data">84</p>
+        </a>
       </div>
+
+      <div v-if="link !== 'true'" class="items-list link">
+        <div class="item">
+          <p class="item-title">
+            danger-500
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </div>
+        <div class="item">
+          <p class="item-title">
+            danger-500
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </div>
+        <div class="item">
+          <p class="item-title">
+            danger-500
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

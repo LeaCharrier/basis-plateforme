@@ -5,20 +5,20 @@
         title="Total usage (256)"
         total="95%"
         subtitle="Usage overtime"
-       />
+      />
       <List
         title="Projects"
         link="false"
         total="8"
         subtitle="Top 5 Projects"
-       />
+      />
     </div>
     <div class="dashboard-colone">
       <GraphTime
         title="Detaching rate"
         total="3%"
         subtitle="Detaching overtime"
-       />
+      />
     </div>
     <div class="dashboard-colone">
       <List
@@ -26,7 +26,7 @@
         link="false"
         total="12"
         subtitle="Top 5 Aliases"
-       />
+      />
     </div>
   </div>
 </template>
