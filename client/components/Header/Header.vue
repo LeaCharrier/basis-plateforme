@@ -6,7 +6,7 @@
       </router-link>
     </div>
     <div v-else class="entreprise">
-      <img src="~assets/img/maze-logo.png" alt="logo entreprise" class="entreprise-img">
+      <div class="entreprise-img" />
       <div>
         <div class="entreprise-name txt_caption" :class="{'txt-load-white empty-txt-small': !name}">
           {{ name ? name : 'name' }}

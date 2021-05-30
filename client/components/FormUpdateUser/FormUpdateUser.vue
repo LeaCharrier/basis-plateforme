@@ -26,14 +26,14 @@
           :validator="(v) => checkString(v, 3)"
           error-msg="Invalid fields"
         />
-        <CustomInput
+        <!-- <CustomInput
           ref="update-team"
           label="Team ID"
           :base-value="user.team"
           type="text"
           :validator="(v) => checkString(v, 0)"
           error-msg="Invalid fields"
-        />
+        /> -->
       </div>
       <div class="form-column">
         <CustomInput
@@ -66,6 +66,13 @@
     <button class="btn is-blue" @click="handleUser">
       Update my info
     </button>
+
+    <p v-if="errorSignUp === true" class="error">
+      Not all fields are good
+    </p>
+    <p v-if="validUpdate === true" class="valid">
+      Your account is update
+    </p>
   </form>
 </template>
 
@@ -99,11 +106,19 @@ export default {
       return this.getUser
     }
   },
+  data () {
+    return {
+      errorUpdate: false,
+      validUpdate: false
+    }
+  },
   methods: {
     ...mapActions({
       setToken: 'localStorage/setToken'
     }),
     async handleUser (e) {
+      this.errorUpdate = false
+      this.validUpdate = false
       if (!this.checkUpdate() && !(await this.needUpdatePass())) {
         return false
       }
@@ -113,7 +128,7 @@ export default {
       const firstname = this.$refs['update-firstname'].value
       const email = this.$refs['update-email'].value
       const password = this.$refs['update-check'].value
-      const team = this.$refs['update-team'].value
+      // const team = this.$refs['update-team'].value
 
       try {
         const body = {
@@ -121,7 +136,7 @@ export default {
           firstname,
           email,
           password,
-          team,
+          // team,
           id: this.user._id
         }
 
@@ -140,18 +155,22 @@ export default {
           this.setToken(token)
           // eslint-disable-next-line no-console
           console.log('Success', 'Registration Was successful')
+          this.validUpdate = true
         } else {
           // eslint-disable-next-line no-console
           console.error('Error', 'Something Went Wrong')
+          this.errorUpdate = true
         }
       } catch (err) {
         this.resetFields()
         const error = err.response
         // eslint-disable-next-line no-console
         console.error('Error', error)
+        this.errorUpdate = true
       }
     },
     checkUpdate () {
+      this.validUpdate = false
       const lastnameField = this.$refs['update-lastname']
       const lastname = lastnameField.value
       lastnameField.handleChange()
@@ -164,18 +183,19 @@ export default {
       const email = emailField.value
       emailField.handleChange()
 
-      const teamField = this.$refs['update-team']
-      const team = teamField.value
-      teamField.handleChange()
+      // const teamField = this.$refs['update-team']
+      // const team = teamField.value
+      // teamField.handleChange()
 
       return (
         this.checkString(firstname, 0) &&
         this.checkString(lastname, 0) &&
-        this.checkEmail(email) &&
-        this.checkString(team, 0)
+        this.checkEmail(email)
+        // this.checkString(team, 0)
       )
     },
     async needUpdatePass () {
+      this.validUpdate = false
       const oldPass = this.$refs['update-passOld'].value
       const pass = this.$refs['update-pass'].value
       const check = this.$refs['update-check'].value
@@ -193,22 +213,27 @@ export default {
       )
     },
     resetFields () {
+      this.validUpdate = false
       this.$refs['update-passOld'].resetValue()
       this.$refs['update-pass'].resetValue()
       this.$refs['update-check'].resetValue()
     },
     checkString (str, len) {
+      this.validUpdate = false
       return str.length > len
     },
     checkEmail (email) {
+      this.validUpdate = false
       const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
       return regex.test(String(email).toLowerCase())
     },
     async checkOldPass (pass) {
+      this.validUpdate = false
       return !!(await bcrypt.compare(pass, this.user.password))
     },
     checkPassDouble (double) {
+      this.validUpdate = false
       return this.$refs['update-pass'].value === double
     }
   }

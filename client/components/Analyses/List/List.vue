@@ -32,6 +32,38 @@
         </a>
       </div>
 
+    <div class="items items2" v-if="double === true" >
+      <p class="items-title txt_caption">
+        {{ subtitle2 }}
+      </p>
+      <div class="items-list link">
+        <a class="item item-link">
+          <p class="item-title">
+            danger-500
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </a>
+        <a class="item item-link">
+          <p class="item-title">
+            danger-500
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </a>
+        <a class="item item-link">
+          <p class="item-title">
+            danger-500
+          </p>
+          <p class="item-data">
+            84
+          </p>
+        </a>
+      </div>
+    </div>
+
       <div v-if="link !== 'true'" class="items-list link">
         <div class="item">
           <p class="item-title">
@@ -70,6 +102,11 @@ export default {
       type: String,
       required: true
     },
+    double: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     link: {
       type: String,
       required: true
@@ -81,6 +118,11 @@ export default {
     subtitle: {
       type: String,
       required: true
+    },
+    subtitle2: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   }
 }

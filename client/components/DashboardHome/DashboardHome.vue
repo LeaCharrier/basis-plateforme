@@ -5,13 +5,9 @@
         title="Total colors on the library"
         link="true"
         total="192"
-        subtitle="Top 3 colors"
-      />
-      <List
-        title="Total components"
-        link="false"
-        total="142"
-        subtitle="By projects"
+        subtitle="Top 3 colors used"
+        :double="true"
+        subtitle2="Top 3 colors DETACHED"
       />
       <Date
         title="Json Updated"

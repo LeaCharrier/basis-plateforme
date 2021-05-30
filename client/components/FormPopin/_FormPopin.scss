@@ -9,6 +9,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $bgPopin;
+  z-index: 123456;
 
   .popin {
     background: $white;
