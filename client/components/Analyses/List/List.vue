@@ -32,37 +32,37 @@
         </a>
       </div>
 
-    <div class="items items2" v-if="double === true" >
-      <p class="items-title txt_caption">
-        {{ subtitle2 }}
-      </p>
-      <div class="items-list link">
-        <a class="item item-link">
-          <p class="item-title">
-            danger-500
-          </p>
-          <p class="item-data">
-            84
-          </p>
-        </a>
-        <a class="item item-link">
-          <p class="item-title">
-            danger-500
-          </p>
-          <p class="item-data">
-            84
-          </p>
-        </a>
-        <a class="item item-link">
-          <p class="item-title">
-            danger-500
-          </p>
-          <p class="item-data">
-            84
-          </p>
-        </a>
+      <div v-if="double === true" class="items items2">
+        <p class="items-title txt_caption">
+          {{ subtitle2 }}
+        </p>
+        <div class="items-list link">
+          <a class="item item-link">
+            <p class="item-title">
+              danger-500
+            </p>
+            <p class="item-data">
+              84
+            </p>
+          </a>
+          <a class="item item-link">
+            <p class="item-title">
+              danger-500
+            </p>
+            <p class="item-data">
+              84
+            </p>
+          </a>
+          <a class="item item-link">
+            <p class="item-title">
+              danger-500
+            </p>
+            <p class="item-data">
+              84
+            </p>
+          </a>
+        </div>
       </div>
-    </div>
 
       <div v-if="link !== 'true'" class="items-list link">
         <div class="item">
@@ -120,9 +120,9 @@ export default {
       required: true
     },
     subtitle2: {
-      type: Boolean,
+      type: String,
       required: false,
-      default: false
+      default: ''
     }
   }
 }

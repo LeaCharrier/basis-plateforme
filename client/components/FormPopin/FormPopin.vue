@@ -110,7 +110,7 @@
                   label="Team ID"
                   placeholder="23456787654323456"
                   type="text"
-                  :validator="(v) => checkString(v, 0)"
+                  :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid fields"
                 />
               </div>
@@ -173,7 +173,8 @@ export default {
       step: 1,
       login: true,
       errorLogin: false,
-      errorSignUp: false
+      errorSignUp: false,
+      errorTeam: false
     }
   },
   computed: {
@@ -235,6 +236,7 @@ export default {
     async handleSignUp () {
       this.errorLogin = false
       this.errorSignUp = false
+
       if (!(this.checkStep1() && this.checkStep2())) {
         return false
       }
@@ -244,6 +246,17 @@ export default {
       const email = this.$refs['signup-email'].value
       const password = this.$refs['signup-pass'].value
       const team = this.$refs['signup-team'].value
+
+      const teamName = await this.getTeam(team)
+
+      if (!teamName) {
+        this.$refs['signup-team'].error = true
+
+        this.errorSignUp = true
+        this.errorTeam = true
+
+        return false
+      }
 
       try {
         const res = await this.$api.post('auth/register', {
@@ -275,6 +288,17 @@ export default {
           // eslint-disable-next-line no-console
           console.error('Error', error.data.err.message)
         }
+      }
+    },
+    async getTeam (teamId) {
+      try {
+        const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+
+        return res.data.name
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(e)
+        return false
       }
     },
     checkLogin () {
@@ -328,6 +352,9 @@ export default {
     },
     checkPassDouble (double) {
       return this.$refs['signup-pass'].value === double
+    },
+    checkTeam (str, len) {
+      return this.checkString(str, len) && !this.errorTeam
     }
   }
 }

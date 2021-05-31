@@ -102,20 +102,23 @@ export default {
   fetch () {
     this.loading = true
 
-    const teamId = this.user.team
-    this.$api.get(`figma/team/${teamId}/projects/`)
-      .then((res) => {
-        this.loading = false
+    const teamId = (this.user) ? this.user.team : null
 
-        if (res.data && res.data.name) {
-          this.name = res.data.name
-        }
-      })
-      .catch((e) => {
-        this.loading = false
-        // eslint-disable-next-line no-console
-        console.log(e)
-      })
+    if (teamId) {
+      this.$api.get(`figma/team/${teamId}/projects/`)
+        .then((res) => {
+          this.loading = false
+
+          if (res.data && res.data.name) {
+            this.name = res.data.name
+          }
+        })
+        .catch((e) => {
+          this.loading = false
+          // eslint-disable-next-line no-console
+          console.log(e)
+        })
+    }
   },
   computed: {
     ...mapGetters({

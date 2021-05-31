@@ -67,7 +67,7 @@
       Update my info
     </button>
 
-    <p v-if="errorSignUp === true" class="error">
+    <p v-if="errorUpdate === true" class="error">
       Not all fields are good
     </p>
     <p v-if="validUpdate === true" class="valid">
@@ -85,6 +85,12 @@ export default {
   name: 'FormUpdateUser',
   components: {
     CustomInput
+  },
+  data () {
+    return {
+      errorUpdate: false,
+      validUpdate: false
+    }
   },
   computed: {
     ...mapGetters({
@@ -104,12 +110,6 @@ export default {
     },
     user () {
       return this.getUser
-    }
-  },
-  data () {
-    return {
-      errorUpdate: false,
-      validUpdate: false
     }
   },
   methods: {
