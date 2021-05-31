@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/controllers/issues.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/issues.routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Issue.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Issue.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/IssueStatus.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/IssueStatus.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/assets/scss/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/assets/scss/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Projects/Projects.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Projects/Projects.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Aside/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Aside/Aside.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <workItem from="1621613941106" duration="1215000" />
       <workItem from="1621634627920" duration="8312000" />
       <workItem from="1621797976889" duration="6000" />
-      <workItem from="1622012938092" duration="11824000" />
+      <workItem from="1622012938092" duration="13192000" />
     </task>
     <servers />
   </component>

@@ -169,6 +169,11 @@ p span {
     animation-name: placeholderAnimate;
   }
 }
+
+.hidden-label {
+  opacity: 0;
+}
+
 .txt-load {
   position: relative;
 

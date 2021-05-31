@@ -8,8 +8,8 @@
     <div v-else class="entreprise">
       <div class="entreprise-img" />
       <div>
-        <div class="entreprise-name txt_caption" :class="{'txt-load-white empty-txt-small': !name}">
-          {{ name ? name : 'name' }}
+        <div class="entreprise-name txt_caption" :class="{'txt-load-white empty-txt-small': !name, 'hidden-label': (!loading && !name)}">
+          {{ name ? name : 'Project' }}
         </div>
         <p class="entreprise-plan txt_caption">
           Entreprise plan
@@ -60,16 +60,27 @@ export default {
   data () {
     return {
       isOpen: false,
-      name: ''
+      name: '',
+      loading: false
     }
   },
-  async fetch () {
-    const teamId = this.user.team
-    const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+  fetch () {
+    this.loading = true
 
-    if (res.data && res.data.name) {
-      this.name = res.data.name
-    }
+    const teamId = this.user.team
+    this.$api.get(`figma/team/${teamId}/projects/`)
+      .then((res) => {
+        this.loading = false
+
+        if (res.data && res.data.name) {
+          this.name = res.data.name
+        }
+      })
+      .catch((e) => {
+        this.loading = false
+        // eslint-disable-next-line no-console
+        console.log(e)
+      })
   },
   computed: {
     ...mapGetters({

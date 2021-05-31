@@ -6,12 +6,12 @@
       </p>
     </div>
 
-    <p class="number" :class="{'txt-load-white empty-txt-small': !projects.length}">
+    <p class="number" :class="{'txt-load-white empty-txt-small': loading}">
       {{ projects.length }}
     </p>
 
     <div class="items">
-      <div v-if="projects.length" class="items-list">
+      <div v-if="projects.length > 0 && !loading" class="items-list">
         <a v-for="(project) in projects" :key="project.id" class="item">
           <p class="item-title">{{ project.name }}</p>
           <div v-for="(file) in project.files" :key="file.key" class="item-file">
@@ -20,7 +20,7 @@
           </div>
         </a>
       </div>
-      <div v-else class="items-list">
+      <div v-else-if="loading === true" class="items-list">
         <a class="item">
           <p class="item-title txt-load-white empty-txt-small">maze.design</p>
           <div class="item-file">
@@ -47,16 +47,27 @@ export default {
   },
   data () {
     return {
-      projects: []
+      projects: [],
+      loading: false
     }
   },
-  async fetch () {
-    const teamId = this.user.team
-    const res = await this.$api.get(`figma/team/${teamId}/projects/files/`)
+  fetch () {
+    this.loading = true
 
-    if (res.data && res.data.projects && res.data.projects.length) {
-      this.projects = res.data.projects
-    }
+    const teamId = this.user.team
+    this.$api.get(`figma/team/${teamId}/projects/files/`)
+      .then((res) => {
+        this.loading = false
+
+        if (res.data && res.data.projects && res.data.projects.length) {
+          this.projects = res.data.projects
+        }
+      })
+      .catch((e) => {
+        this.loading = false
+        // eslint-disable-next-line no-console
+        console.log(e)
+      })
   },
   computed: {
     ...mapGetters({

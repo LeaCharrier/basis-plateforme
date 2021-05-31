@@ -1,9 +1,9 @@
 <template>
   <aside>
-    <h2 class="design-title txt_body" :class="{'txt-load-dark empty-txt-small': !name}">
+    <h2 class="design-title txt_body" :class="{'txt-load-dark empty-txt-small': !name, 'hidden-label': (!loading && !name)}">
       {{ name ? name : 'name' }} Design System
     </h2>
-    <p class="design-subtitle txt_note" :class="{'txt-load-dark empty-txt-small': !name}">
+    <p class="design-subtitle txt_note" :class="{'txt-load-dark empty-txt-small': !name, 'hidden-label': (!loading && !name)}">
       {{ getName(name) }}/design-system
     </p>
 
@@ -95,16 +95,27 @@ export default {
   },
   data () {
     return {
-      name: ''
+      name: '',
+      loading: false
     }
   },
-  async fetch () {
-    const teamId = this.user.team
-    const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+  fetch () {
+    this.loading = true
 
-    if (res.data && res.data.name) {
-      this.name = res.data.name
-    }
+    const teamId = this.user.team
+    this.$api.get(`figma/team/${teamId}/projects/`)
+      .then((res) => {
+        this.loading = false
+
+        if (res.data && res.data.name) {
+          this.name = res.data.name
+        }
+      })
+      .catch((e) => {
+        this.loading = false
+        // eslint-disable-next-line no-console
+        console.log(e)
+      })
   },
   computed: {
     ...mapGetters({
