@@ -3,9 +3,8 @@ import {
 } from "./ColorConvertor.js";
 import slugify from 'slugify'
 
-export function fileFormat(file) {
+export function fileFormat(file, opts) {
     const items = [];
-    let i = 0;
 
     file.document.children
         .filter(child => child.type === 'CANVAS')
@@ -51,6 +50,14 @@ export function fileFormat(file) {
                                     a,
                                     hex: rgbToHex(r * 255, g * 255, b * 255),
                                     fillType: o.fills[0].type
+                                }
+
+                                if(opts && opts.project) {
+                                    color.project = {
+                                        key: opts.project.key,
+                                        name: opts.project.name,
+                                        last_modified: opts.project.last_modified
+                                    }
                                 }
 
                                 items[`${slug}-${id}`].colors.push(color)
@@ -120,7 +127,10 @@ export function stylesFormat(styles) {
                 if(o.style_type === 'FILL') {
                     const color = {
                         name: o.name,
-                        style: o.node_id
+                        style: o.node_id,
+                        created_at: o.created_at,
+                        updated_at: o.updated_at,
+                        user: o.user.handle
                     }
                     colors.push(color);
                 }
@@ -140,6 +150,9 @@ export function referenceColors(colors, props) {
             [...colors].forEach((color, i) => {
                 if(prop.style === color.style) {
                     colors[i] = prop;
+                    colors[i].created_at = color.created_at;
+                    colors[i].updated_at = color.updated_at;
+                    colors[i].user = color.user;
                     delete colors[i].type;
                     delete colors[i].fillType;
                 }

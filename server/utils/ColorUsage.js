@@ -1,9 +1,13 @@
 class Color {
     constructor(color, isReferenced) {
         if(isReferenced) {
+            console.log(color);
             this.name = color.name;
             this.palette = this.name.split('/')[0];
             this.style = color.style;
+            this.created_at = color.created_at;
+            this.updated_at = color.updated_at;
+            this.user = color.user;
         }
         this.hex = color.hex.toLowerCase();
         this.rgb = `${color.r}, ${color.g}, ${color.b}`;
@@ -16,7 +20,8 @@ class Color {
             totalDetached: 0,                                   // – Total number of times the color is used without it style (Integer)
             percentDetached: 0,                                 // – Percentage of times the color is used without it style (%)
             types: new Object(),                                // - Types of elements on which the color is applied and the number of times it is applied (Object)
-            mainTypes: []                                       // - Main type(s) of element(s) on which the color is applied (Array)
+            projects: new Object(),                             // - Decreasing order of projects in which color appears the most (Object)
+            mainTypes: [],                                      // - Main type(s) of element(s) on which the color is applied (Array)
         };
     }
 }
@@ -38,6 +43,7 @@ export class ColorUsage {
                 percentUnreferenced: 0,                         // – Percentage of colors unreferenced (%)
                 percentUnreferencedUsed: 0,                     // – Percentage of unreferenced colors used (%)
                 mostDetached: [],                               // - Most used colors without their style (Array)
+                projects: new Object(),                         // - Projects in which colors are used
                 score: 0                                        // – Score out of 100 evaluating the ratio between referenced and non-referenced colors (X/100)
                 
             }                             
@@ -73,6 +79,32 @@ export class ColorUsage {
 
         // Increment the number of times the color is applied to this type of element
         c.data.types[color.type] ? c.data.types[color.type] += 1 : c.data.types[color.type] = 1;
+
+        // Increment the number of times the color is used in this project
+        if(c.data.projects[color.project.key]) {
+            c.data.projects[color.project.key].used += 1;
+        } else {
+            c.data.projects[color.project.key] = {
+                name: color.project.name,
+                used: 1
+            }
+        }
+
+        // Save projects in which colors are used
+        if(this.colors.data.projects[color.project.key]) {
+            this.colors.data.projects[color.project.key].used += 1;
+        } else {
+            this.colors.data.projects[color.project.key] = {
+                name: color.project.name,
+                used: 1
+            }
+        }
+    }
+
+    order(list) {
+        list.sort((a, b) => { 
+            return b.used - a.used; 
+        });
     }
 
     calc(colors) {
@@ -166,17 +198,41 @@ export class ColorUsage {
                 });
 
                 // Order in descending order the types of elements on which the color is applied
-                color.data.types.sort((a, b) => { 
-                    return b.used - a.used; 
+                this.order(color.data.types);
+
+                // Rearranges the projects in which color appears the most
+                let tempProjects = color.data.projects;
+                color.data.projects = [];
+                Object.entries(tempProjects).forEach(([key, data], i) => {
+                    color.data.projects.push({
+                        key: key,
+                        name: data.name,
+                        used: data.used
+                    }); 
                 });
+
+                // Order in descending order the projects in which color appears the most
+                this.order(color.data.projects);
 
             });
         });
 
-        // Order in descending order the most detached colors
-        colors.data.mostDetached.sort((a, b) => { 
-            return b.detached - a.detached; 
+        // Rearranges the projects in which color appears the most
+        let tempProjects = colors.data.projects;
+        colors.data.projects = [];
+        Object.entries(tempProjects).forEach(([key, data], i) => {
+            colors.data.projects.push({
+                key: key,
+                name: data.name,
+                used: data.used
+            }); 
         });
+
+        // Order in descending order the projects in which color appears the most
+        this.order(colors.data.projects);
+
+        // Order in descending order the most detached colors
+        this.order(colors.data.mostDetached);
 
     }
 }

@@ -320,17 +320,25 @@ export async function getTeamStyles(req, res) {
         const props = await apiGetFigmaFile('abMTwXgnaWaHGU2SLas1ZR');
         const formatedProps = fileFormat(props);
         const refencedColors = referenceColors(colors, formatedProps);
-        const projects = await apiGetFigmaTeamProjects(teamId);
-        const projectFiles = await apiGetFigmaProjectFiles('30695899');
+        const teamProjects = await apiGetFigmaTeamProjects(teamId);
 
-        for(const file of projectFiles.files) {
-            let json = await apiGetFigmaFile(file.key),
-                formatedJson = fileFormat(json);
-            jsons.push(formatedJson);
+        for(const project of teamProjects.projects) {
+            let projectFiles = await apiGetFigmaProjectFiles(project.id);
+            
+            for(const file of projectFiles.files) {
+                let json = await apiGetFigmaFile(file.key),
+                    formatedJson = fileFormat(json, {
+                        project: {
+                            key: file.key,
+                            name: file.name,
+                            last_modified: file.last_modified
+                        }
+                    });
+                jsons.push(formatedJson);
+            }
         }
 
         const colorUsage = jsonParser(jsons, refencedColors);
-        // console.log(jsons);
         res.status(200).send(colorUsage)
     }
     catch(err) {
