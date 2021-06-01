@@ -1,10 +1,17 @@
 import {jsonModel} from '../models/jsonFigma.model.js';
+import {jsonParser} from '../utils/jsonParser.js';
 import {
     apiGetFigmaTeamProjects,
     apiGetFigmaProjectFiles,
-    apiGetFigmaFile
+    apiGetFigmaFile,
+    apiGetFigmaTeamStyles
 } from "../actions/index.js";
-import { jsonFileFormat, fileFormat } from "../utils/FileFormat.js";
+import { 
+    jsonFileFormat, 
+    fileFormat, 
+    stylesFormat,
+    referenceColors
+} from "../utils/FileFormat.js";
 
 /**
  * @Route /api/figma/
@@ -267,6 +274,64 @@ export async function test(req, res) {
         console.log(req.body)
         console.log(jsonFileFormat(req.body.content))
         res.status(201).json(req.body);
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+
+/**
+ * @Route /api/figma/team/:teamId/styles
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
+export async function getTeamStyles(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    try {
+        const styles = await apiGetFigmaTeamStyles(teamId)
+        res.status(200).send(styles)
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+
+/**
+ * @Route /api/figma/team/:teamId/colors
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
+ export async function getColorAnalysis(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    try {
+        let jsons = [];
+        const styles = await apiGetFigmaTeamStyles(teamId);
+        const colors = stylesFormat(styles);
+        const props = await apiGetFigmaFile('abMTwXgnaWaHGU2SLas1ZR');
+        const formatedProps = fileFormat(props);
+        const refencedColors = referenceColors(colors, formatedProps);
+        const projects = await apiGetFigmaTeamProjects(teamId);
+        const projectFiles = await apiGetFigmaProjectFiles('30695899');
+
+        for(const file of projectFiles.files) {
+            let json = await apiGetFigmaFile(file.key),
+                formatedJson = fileFormat(json);
+            jsons.push(formatedJson);
+        }
+
+        const colorUsage = jsonParser(jsons, refencedColors);
+        // console.log(jsons);
+        res.status(200).send(colorUsage)
     }
     catch(err) {
         res.status(400).send({err});

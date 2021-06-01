@@ -8,6 +8,8 @@ import {
     getFile,
     getFileByIndex,
     getTeamProjectFileByIndexes,
+    getTeamStyles,
+    getColorAnalysis,
     push,
     test,
 } from '../controllers/figma.controller.js';
@@ -43,6 +45,11 @@ router.get('/projects/:projectId/files/i/:fileIndex', getFileByIndex);
 // Get Team Project File by indexes
 router.get('/team/:teamId/projects/i/:projectIndex/files/i/:fileIndex', getTeamProjectFileByIndexes);
 
+// Get Team Styles
+router.get('/team/:teamId/styles', getTeamStyles);
+
+// Get Color Analysis
+router.get('/team/:teamId/colors', getColorAnalysis);
 
 // TEST ROUTE ANLY FOR DEV PURPOSES
 router.post('/test', test);

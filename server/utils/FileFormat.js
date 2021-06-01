@@ -10,6 +10,7 @@ export function fileFormat(file) {
     file.document.children
         .filter(child => child.type === 'CANVAS')
         .map(child => {
+            
             return child.children
                 .filter(child => child.type === 'FRAME')
                 .map(child => {
@@ -107,4 +108,44 @@ export function jsonFileFormat(json) {
     })
 
     return res
+}
+
+export function stylesFormat(styles) {
+    let colors = [],
+        rec = obj => {
+        [...obj].forEach(o => {
+            if(o.children) {
+                rec(o.children);
+            } else {
+                if(o.style_type === 'FILL') {
+                    const color = {
+                        name: o.name,
+                        style: o.node_id
+                    }
+                    colors.push(color);
+                }
+            }
+        });
+    }
+
+    rec(styles.meta.styles);
+
+    return colors
+}
+
+export function referenceColors(colors, props) {
+
+    [...props].forEach(prop => {
+        if(prop.style) {
+            [...colors].forEach((color, i) => {
+                if(prop.style === color.style) {
+                    colors[i] = prop;
+                    delete colors[i].type;
+                    delete colors[i].fillType;
+                }
+            });
+        }
+    });
+
+    return colors
 }

@@ -42,3 +42,16 @@ export async function apiGetFigmaFile(fileId) {
 
     return await data.json()
 }
+
+/**
+ * @param teamId
+ * @returns {Promise<*>}
+ */
+ export async function apiGetFigmaTeamStyles(teamId) {
+    const data = await fetch(figmaApi.teamStyles(teamId), {
+        method: 'GET',
+        headers: getFigmaApiHeaders(constants.figmaAPIKey)
+    }).catch(e => console.log(e))
+
+    return await data.json()
+}
