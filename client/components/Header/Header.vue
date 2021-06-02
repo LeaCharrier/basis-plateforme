@@ -124,7 +124,18 @@ export default {
       this.logout()
     },
     handleClick () {
-      console.log('update data')
+      this.getColorUsage(this.user.team)
+      this.isLoad = true
+    },
+    async getColorUsage (teamId) {
+      try {
+        const res = await this.$api.get(`figma/team/${teamId}/colors`)
+        this.$store.commit('usage/save', res.data.colors)
+        this.isLoad = false
+      } catch (e) {
+        console.log(e)
+        return false
+      }
     }
   }
 }
