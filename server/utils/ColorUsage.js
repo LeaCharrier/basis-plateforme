@@ -3,7 +3,7 @@ class Color {
         if(isReferenced) {
             console.log(color);
             this.name = color.name;
-            this.palette = this.name.split('/')[0];
+            // this.palette = this.name.split('/')[0];
             this.style = color.style;
             this.created_at = color.created_at;
             this.updated_at = color.updated_at;
@@ -152,7 +152,7 @@ export class ColorUsage {
                         // Percentage of times the color is used with it style (%)
                         color.data.percentAttached = 100 - color.data.percentDetached;
 
-                        // Push detached color to the most detached colors array
+                        // Push detached color to the most detached colors (Array)
                         color.data.totalDetached > 0 && (colors.data.mostDetached.push(
                             {
                                 hex: color.hex,

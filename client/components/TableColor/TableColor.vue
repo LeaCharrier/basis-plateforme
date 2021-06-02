@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <div>
+    <div v-if="colorUsage != null > 0 && !loading">
       <TableColorRow v-for="item in items" :key="item.id" :item="item" />
     </div>
 
@@ -70,6 +70,8 @@ export default {
   },
   data () {
     return {
+      colorUsage: null,
+      loading: false,
       checked: false,
       items: [
         {
@@ -84,13 +86,34 @@ export default {
       ]
     }
   },
+  fetch () {
+    this.loading = true
+    const teamId = (this.user) ? this.user.team : null
+
+    if (teamId) {
+      this.$api.get(`figma/team/${teamId}/colors`)
+        .then((res) => {
+          this.loading = false
+          this.colorUsage = res.data
+          console.log(this.colorUsage)
+        })
+        .catch((e) => {
+          this.loading = false
+          console.log(e)
+        })
+    }
+  },
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts',
+      getUser: 'localStorage/getUser',
       getSelectedLength: 'colors/getSelectedLength'
     }),
     texts () {
       return this.getTexts
+    },
+    user () {
+      return this.getUser
     },
     selectedColorsLength () {
       return this.getSelectedLength
