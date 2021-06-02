@@ -36,15 +36,15 @@ export default {
       required: true
     },
     totalUsed: {
-      type: String,
+      type: Number,
       required: true
     },
     totalUnused: {
-      type: String,
+      type: Number,
       required: true
     },
     pourcentageUsed: {
-      type: String,
+      type: Number,
       required: true
     }
   }

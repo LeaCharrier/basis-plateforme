@@ -4,8 +4,10 @@
       <List
         title="Total colors on the library"
         link="true"
-        total="192"
+        :total="colorUsage.data.totalUsed"
         subtitle="Top 3 colors used"
+        :object1="colorUsage.data.mostDetached"
+        :object2="colorUsage.data.mostDetached"
         :double="true"
         subtitle2="Top 3 colors DETACHED"
       />
@@ -42,7 +44,6 @@
 
       <Projects
         title="Total projects"
-        total="3"
       />
     </div>
   </div>
