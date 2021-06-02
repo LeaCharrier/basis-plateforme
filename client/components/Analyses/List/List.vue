@@ -19,7 +19,7 @@
       </p>
       <div v-if="link === 'true'" class="items-list link">
         <a class="item item-link" v-for="color in object1" :key="color.hex">
-          <p class="item-title">{{ color.hex }}</p>
+          <p class="item-title">{{ color.name }}</p>
           <p class="item-data">{{ color.totalAttached }}</p>
         </a>
       </div>
@@ -30,7 +30,7 @@
         </p>
         <div class="items-list link">
           <a class="item item-link" v-for="color in object2" :key="color.hex">
-            <p class="item-title">{{ color.hex }}</p>
+            <p class="item-title">{{ color.name }}</p>
             <p class="item-data">{{ color.totalDetached }}</p>
           </a>
         </div>
