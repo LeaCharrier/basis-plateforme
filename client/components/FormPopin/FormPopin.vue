@@ -180,13 +180,19 @@ export default {
   computed: {
     ...mapGetters({
       getToken: 'localStorage/getToken',
-      getOnBoarding: 'localStorage/getOnBoarding'
+      getOnBoarding: 'localStorage/getOnBoarding',
+      getUser: 'localStorage/getUser'
     }),
     token () {
       return this.getToken
     },
     onBoarding () {
       return this.getOnBoarding
+    }
+  },
+  mounted () {
+    if (this.token) {
+      this.getColorUsage(this.getUser.team)
     }
   },
   methods: {
