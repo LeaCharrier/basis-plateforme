@@ -5,20 +5,20 @@
     </div> -->
     <div class="grow2">
       <p class="txt_body">
-        Blue / Blue-500
+        {{ color.name }}
       </p>
     </div>
     <div class="grow1">
-      <Preview color="#234567" />
+      <Preview :color="color.hex" />
     </div>
     <div class="grow1">
       <p class="txt_body">
-        #234567
+        {{ color.hex }}
       </p>
     </div>
     <div class="grow2">
       <p class="txt_body">
-        14/06/2021 by sabnjdh
+        {{ color.updated_at }} by {{ color.user }}
       </p>
     </div>
     <div class="grow1">
@@ -44,7 +44,7 @@ export default {
     Preview
   },
   props: {
-    item: {
+    color: {
       type: Object,
       required: true
     }

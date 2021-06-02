@@ -221,9 +221,11 @@ export default {
         })
 
         const { token } = res.data
+        const team = res.data.user.team
 
         if (token) {
           this.setToken(token)
+          this.getColorUsage(team)
           // eslint-disable-next-line no-console
           console.log('Success', 'Registration Was successful')
         }
@@ -271,6 +273,7 @@ export default {
 
         if (token) {
           this.setToken(token)
+          this.getColorUsage(team)
           // eslint-disable-next-line no-console
           console.log('Success', 'Registration Was successful')
         } else {
@@ -290,10 +293,18 @@ export default {
         }
       }
     },
+    async getColorUsage (teamId) {
+      try {
+        const res = await this.$api.get(`figma/team/${teamId}/colors`)
+        this.$store.commit('usage/save', res.data.colors)
+      } catch (e) {
+        console.log(e)
+        return false
+      }
+    },
     async getTeam (teamId) {
       try {
         const res = await this.$api.get(`figma/team/${teamId}/projects/`)
-
         return res.data.name
       } catch (e) {
         // eslint-disable-next-line no-console
