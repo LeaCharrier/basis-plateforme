@@ -13,53 +13,25 @@
       {{ total }}
     </p>
 
-    <div class="items">
+    <div class="items" v-if="object1">
       <p class="items-title txt_caption">
         {{ subtitle }}
       </p>
       <div v-if="link === 'true'" class="items-list link">
-        <a class="item item-link">
-          <p class="item-title">danger-500</p>
-          <p class="item-data">84</p>
-        </a>
-        <a class="item item-link">
-          <p class="item-title">danger-500</p>
-          <p class="item-data">84</p>
-        </a>
-        <a class="item item-link">
-          <p class="item-title">danger-500</p>
-          <p class="item-data">84</p>
+        <a class="item item-link" v-for="color in object1" :key="color.hex">
+          <p class="item-title">{{ color.hex }}</p>
+          <p class="item-data">{{ color.detached }}</p>
         </a>
       </div>
 
-      <div v-if="double === true" class="items items2">
+      <div v-if="double === true && object2" class="items items2">
         <p class="items-title txt_caption">
           {{ subtitle2 }}
         </p>
         <div class="items-list link">
-          <a class="item item-link">
-            <p class="item-title">
-              danger-500
-            </p>
-            <p class="item-data">
-              84
-            </p>
-          </a>
-          <a class="item item-link">
-            <p class="item-title">
-              danger-500
-            </p>
-            <p class="item-data">
-              84
-            </p>
-          </a>
-          <a class="item item-link">
-            <p class="item-title">
-              danger-500
-            </p>
-            <p class="item-data">
-              84
-            </p>
+          <a class="item item-link" v-for="color in object2" :key="color.hex">
+            <p class="item-title">{{ color.hex }}</p>
+            <p class="item-data">{{ color.detached }}</p>
           </a>
         </div>
       </div>
@@ -112,7 +84,7 @@ export default {
       required: true
     },
     total: {
-      type: String,
+      type: Number,
       required: true
     },
     subtitle: {
@@ -123,6 +95,16 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    object1: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
+    object2: {
+      type: Array,
+      required: false,
+      default: () => []
     }
   }
 }
