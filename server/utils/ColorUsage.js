@@ -1,12 +1,11 @@
 class Color {
     constructor(color, isReferenced) {
         if(isReferenced) {
-            console.log(color);
             this.name = color.name;
             // this.palette = this.name.split('/')[0];
             this.style = color.style;
             this.created_at = color.created_at;
-            this.updated_at = color.updated_at;
+            this.updated_at = color.updated_at.split('T')[0];
             this.user = color.user;
         }
         this.hex = color.hex.toLowerCase();
@@ -45,7 +44,6 @@ export class ColorUsage {
                 mostDetached: [],                               // - Most used colors without their style (Array)
                 projects: new Object(),                         // - Projects in which colors are used
                 score: 0                                        // – Score out of 100 evaluating the ratio between referenced and non-referenced colors (X/100)
-                
             }                             
         };
 
@@ -101,10 +99,18 @@ export class ColorUsage {
         }
     }
 
-    order(list) {
-        list.sort((a, b) => { 
+    descending_order(arr) {
+        arr.sort((a, b) => { 
             return b.used - a.used; 
         });
+    }
+
+    alphabetical_order(arr) {
+      arr.sort((a, b) => { 
+        if(a.name < b.name) { return -1 }
+        if(a.name > b.name) { return 1 }
+        return 0;
+      });
     }
 
     calc(colors) {
@@ -156,7 +162,10 @@ export class ColorUsage {
                         color.data.totalDetached > 0 && (colors.data.mostDetached.push(
                             {
                                 hex: color.hex,
-                                detached: color.data.percentDetached
+                                totalAttached: color.data.totalAttached,
+                                totalDetached: color.data.totalDetached,
+                                percentDetached: color.data.percentDetached,
+                                percentAttached: color.data.percentAttached
                             }
                         ));
 
@@ -198,7 +207,7 @@ export class ColorUsage {
                 });
 
                 // Order in descending order the types of elements on which the color is applied
-                this.order(color.data.types);
+                this.descending_order(color.data.types);
 
                 // Rearranges the projects in which color appears the most
                 let tempProjects = color.data.projects;
@@ -212,7 +221,7 @@ export class ColorUsage {
                 });
 
                 // Order in descending order the projects in which color appears the most
-                this.order(color.data.projects);
+                this.descending_order(color.data.projects);
 
             });
         });
@@ -229,10 +238,28 @@ export class ColorUsage {
         });
 
         // Order in descending order the projects in which color appears the most
-        this.order(colors.data.projects);
+        this.descending_order(colors.data.projects);
 
         // Order in descending order the most detached colors
-        this.order(colors.data.mostDetached);
+        this.descending_order(colors.data.mostDetached);
+
+        // Alphabetize the referenced colors
+        let tempReferenced = colors.referenced;
+        colors.referenced = [];
+        Object.entries(tempReferenced).forEach(([key, data], i) => {
+            colors.referenced.push(data); 
+        });
+
+        this.alphabetical_order(colors.referenced);
+
+        // Alphabetize the unreferenced colors
+        let tempUnreferenced = colors.unreferenced;
+        colors.unreferenced = [];
+        Object.entries(tempUnreferenced).forEach(([key, data], i) => {
+            colors.unreferenced.push(data); 
+        });
+
+        this.alphabetical_order(colors.unreferenced);
 
     }
 }
