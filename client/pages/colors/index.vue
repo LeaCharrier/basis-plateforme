@@ -5,6 +5,12 @@
       <Aside page="colors" />
       <div class="contentProject">
         <BlockTitleDesc
+          v-if="colorUsage.data && !loading"
+          :title="'Color (' + colorUsage.data.totalReferenced + ' tokens)'"
+          :description="texts.COLORS_DESCRIPTION"
+        />
+        <BlockTitleDesc
+          v-else
           :title="texts.COLORS_TITLE"
           :description="texts.COLORS_DESCRIPTION"
         />
@@ -29,12 +35,20 @@ export default {
     BlockTitleDesc,
     TableColor
   },
+  data () {
+    return {
+      loading: false
+    }
+  },
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts'
     }),
     texts () {
       return this.getTexts
+    },
+    colorUsage () {
+      return this.$store.state.usage.colors
     }
   }
 }

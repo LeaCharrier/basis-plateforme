@@ -17,29 +17,40 @@
       </div>
     </div>
 
-    <div class="dropdown" :class="{'open': isOpen}">
-      <div class="dropbtn" @click="handleDropDown">
-        <div class="user-infos-img">
-          <div v-if="user">
-            {{ getInitial(user.firstname, user.lastname) }}
-          </div>
-        </div>
-        <div class="user-infos-name txt_body" :class="{'txt-load-white empty-txt-small': !user}">
-          <p v-if="user">
-            {{ user.firstname }} {{ user.lastname }}
-          </p>
-          <p v-else>
-            firstname lastname
-          </p>
+    <div class="header-infos">
+      <div class="header-infos-btn">
+        <button class="txt_body btn" v-if="!isLoad" @click="handleClick">
+          Update data
+        </button>
+        <div class="txt_body is-btn loading" v-else >
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+          Update data
         </div>
       </div>
-      <div class="dropdown-content">
-        <router-link :to="{ name: 'settings' }">
-          Settings
-        </router-link>
-        <a @click="handleLogout">
-          Log out
-        </a>
+      <div class="dropdown" :class="{'open': isOpen}">
+        <div class="dropbtn" @click="handleDropDown">
+          <div class="user-infos-img">
+            <div v-if="user">
+              {{ getInitial(user.firstname, user.lastname) }}
+            </div>
+          </div>
+          <div class="user-infos-name txt_body" :class="{'txt-load-white empty-txt-small': !user}">
+            <p v-if="user">
+              {{ user.firstname }} {{ user.lastname }}
+            </p>
+            <p v-else>
+              firstname lastname
+            </p>
+          </div>
+        </div>
+        <div class="dropdown-content">
+          <router-link :to="{ name: 'settings' }">
+            Settings
+          </router-link>
+          <a @click="handleLogout">
+            Log out
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -61,7 +72,8 @@ export default {
     return {
       isOpen: false,
       name: '',
-      loading: false
+      loading: false,
+      isLoad: false
     }
   },
   fetch () {
@@ -110,6 +122,9 @@ export default {
     handleLogout () {
       this.handleDropDown()
       this.logout()
+    },
+    handleClick () {
+      console.log('update data')
     }
   }
 }
