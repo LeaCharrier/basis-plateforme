@@ -101,7 +101,7 @@ export class ColorUsage {
 
     descending_order(arr) {
         arr.sort((a, b) => { 
-            return b.used - a.used; 
+            return b.used + a.used; 
         });
     }
 
@@ -162,6 +162,7 @@ export class ColorUsage {
                         color.data.totalDetached > 0 && (colors.data.mostDetached.push(
                             {
                                 hex: color.hex,
+                                name: color.name,
                                 totalAttached: color.data.totalAttached,
                                 totalDetached: color.data.totalDetached,
                                 percentDetached: color.data.percentDetached,
