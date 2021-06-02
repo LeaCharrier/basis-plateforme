@@ -3,7 +3,7 @@
     <div class="content">
       <img src="~assets/img/figma-logo.svg" alt="logo">
       <p class="txt_caption">
-        Ariane Design System
+        Figma
       </p>
     </div>
   </div>
