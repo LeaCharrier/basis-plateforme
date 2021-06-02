@@ -45,8 +45,9 @@
       </div>
     </div>
 
-    <div v-if="colorUsage != null > 0 && !loading">
-      <TableColorRow v-for="item in items" :key="item.id" :item="item" />
+    <div v-if="colorUsage.data && !loading">
+      <!-- <TableColorRow v-for="item in items" :key="item.id" :item="item" /> -->
+      <TableColorRow v-for="color in colorUsage.referenced" :key="color.hex" :color="color" />
     </div>
 
     <BarCheckboxSelect />
@@ -70,7 +71,7 @@ export default {
   },
   data () {
     return {
-      colorUsage: null,
+      // colorUsage: null,
       loading: false,
       checked: false,
       items: [
@@ -86,34 +87,37 @@ export default {
       ]
     }
   },
-  fetch () {
-    this.loading = true
-    const teamId = (this.user) ? this.user.team : null
+  // fetch () {
+  //   this.loading = true
+  //   const teamId = (this.user) ? this.user.team : null
 
-    if (teamId) {
-      this.$api.get(`figma/team/${teamId}/colors`)
-        .then((res) => {
-          this.loading = false
-          this.colorUsage = res.data
-          console.log(this.colorUsage)
-        })
-        .catch((e) => {
-          this.loading = false
-          console.log(e)
-        })
-    }
-  },
+  //   if (teamId) {
+  //     this.$api.get(`figma/team/${teamId}/colors`)
+  //       .then((res) => {
+  //         this.loading = false
+  //         this.colorUsage = res.data
+  //         console.log(this.colorUsage)
+  //       })
+  //       .catch((e) => {
+  //         this.loading = false
+  //         console.log(e)
+  //       })
+  //   }
+  // },
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts',
-      getUser: 'localStorage/getUser',
+      // getUser: 'localStorage/getUser',
       getSelectedLength: 'colors/getSelectedLength'
     }),
     texts () {
       return this.getTexts
     },
-    user () {
-      return this.getUser
+    // user () {
+    //   return this.getUser
+    // },
+    colorUsage () {
+      return this.$store.state.usage.colors
     },
     selectedColorsLength () {
       return this.getSelectedLength

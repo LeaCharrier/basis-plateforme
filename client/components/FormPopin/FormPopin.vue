@@ -180,13 +180,19 @@ export default {
   computed: {
     ...mapGetters({
       getToken: 'localStorage/getToken',
-      getOnBoarding: 'localStorage/getOnBoarding'
+      getOnBoarding: 'localStorage/getOnBoarding',
+      getUser: 'localStorage/getUser'
     }),
     token () {
       return this.getToken
     },
     onBoarding () {
       return this.getOnBoarding
+    }
+  },
+  mounted () {
+    if (this.token) {
+      this.getColorUsage(this.getUser.team)
     }
   },
   methods: {
@@ -221,9 +227,11 @@ export default {
         })
 
         const { token } = res.data
+        const team = res.data.user.team
 
         if (token) {
           this.setToken(token)
+          this.getColorUsage(team)
           // eslint-disable-next-line no-console
           console.log('Success', 'Registration Was successful')
         }
@@ -271,6 +279,7 @@ export default {
 
         if (token) {
           this.setToken(token)
+          this.getColorUsage(team)
           // eslint-disable-next-line no-console
           console.log('Success', 'Registration Was successful')
         } else {
@@ -290,10 +299,18 @@ export default {
         }
       }
     },
+    async getColorUsage (teamId) {
+      try {
+        const res = await this.$api.get(`figma/team/${teamId}/colors`)
+        this.$store.commit('usage/save', res.data.colors)
+      } catch (e) {
+        console.log(e)
+        return false
+      }
+    },
     async getTeam (teamId) {
       try {
         const res = await this.$api.get(`figma/team/${teamId}/projects/`)
-
         return res.data.name
       } catch (e) {
         // eslint-disable-next-line no-console
