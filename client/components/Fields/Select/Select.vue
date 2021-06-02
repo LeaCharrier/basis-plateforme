@@ -1,14 +1,13 @@
 <template>
   <div class="select">
     <label v-if="hasLabel" class="title" for="for">{{ title }}</label>
-    <select class="form-control" :required="true">
+    <select v-model="value" class="form-control" :required="true">
       <option
         v-for="(option, i) in options"
         :key="`number-${i}`"
-        :value="option.value"
-        :selected="option.title == 'select'"
+        :value="option._id || option.key"
       >
-        {{ option.title }}
+        {{ option.label || option.name || (`${option.firstname} ${option.lastname}`) }}
       </option>
     </select>
   </div>
@@ -30,10 +29,39 @@ export default {
       type: Boolean,
       required: true
     },
+    selected: {
+      type: String,
+      required: false,
+      default: ''
+    },
     options: {
       type: Array,
       required: false,
       default: () => []
+    },
+    onChange: {
+      type: Function,
+      required: true
+    }
+  },
+  data () {
+    return {
+      value: null
+    }
+  },
+  watch: {
+    value () {
+      this.onChange(this.value)
+    },
+    selected () {
+      if (this.selected) {
+        this.value = this.selected
+      }
+    }
+  },
+  mounted () {
+    if (this.selected) {
+      this.value = this.selected
     }
   }
 }

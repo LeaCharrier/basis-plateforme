@@ -12,6 +12,7 @@ import {
     getColorAnalysis,
     push,
     test,
+    getTeamFiles,
 } from '../controllers/figma.controller.js';
 
 const router = express.Router();
@@ -25,6 +26,7 @@ router.get('/team/:teamId/projects', getTeamProjects);
 
 // Get Team Projects and Files By TeamID
 router.get('/team/:teamId/projects/files', getTeamProjectsFiles);
+router.get('/team/:teamId/files', getTeamFiles);
 
 // Get Project Files By ProjectID
 router.get('/team/:teamId/projects/:projectId/files', getProjectFiles);

@@ -122,3 +122,21 @@ export async function getUser(req, res) {
     await res.json(userData)
 }
 
+
+/**
+ * @Route /api/team/:teamId
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
+export async function getTeamUser(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    let team = await userModel.find({ team: teamId })
+
+    await res.json(team)
+}
+

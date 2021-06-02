@@ -1,20 +1,26 @@
 <template>
   <div>
-    <div class="is-green tag">
-      <p class="txt_caption">
-        Published
+    <div class="tag" :style="{ backgroundColor: `${color}30` }">
+      <p class="txt_caption" :style="{ color: color }">
+        {{ label }}
       </p>
     </div>
-
-    <!-- <div class="is-orange tag">
-        <p class='txt_caption'>Updated</p>
-    </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Status'
+  name: 'Status',
+  props: {
+    color: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    }
+  }
 }
 </script>
 

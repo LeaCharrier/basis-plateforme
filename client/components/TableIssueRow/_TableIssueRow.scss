@@ -1,65 +1,75 @@
 .lineTablet {
-    display: flex;
-    align-items: center;
-    padding: 12px 16px;
-    border-top: 1px solid $greyLight;
-    border-bottom: 1px solid $greyLight;
-    margin-bottom: -1px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid $greyLight;
+  border-bottom: 1px solid $greyLight;
+  margin-bottom: -1px;
+  cursor: pointer;
+  @include transition(all $easeOutQuad .3s);
 
-    &.is-select,
-    &:hover {
-      background: $bgBlue;
-      border-top: 1px solid $blue;
-      border-bottom: 1px solid $blue;
-      z-index: 2;
-      position: relative;
+  &.hidden {
+    opacity: 0;
+    @include transform(scaleY(0));
+  }
 
-      .description p {
-        color: $blue3;
-        text-decoration: underline;
+  &.is-select,
+  &:hover {
+    background: $bgBlue;
+    border-top: 1px solid $blue;
+    border-bottom: 1px solid $blue;
+    z-index: 2;
+    position: relative;
 
-        &:before {
-          content: "";
-          position: absolute;
-          background-image: url('~assets/img/keyboard_arrow_right.svg');
-          width: 20px;
-          height: 20px;
-          right: 5px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-    }
+    .description p {
+      color: $blue3;
+      text-decoration: underline;
 
-    div {
-      flex: 1 1;
-
-      p {
-        position: relative;
-        color: $grey;
-      }
-
-      &.description p {
-        display: inline-block;
-        position: relative;
-        padding-right: 30px;
-      }
-
-      &.grow1 {
-        flex-grow: 1;
-      }
-      &.grow2 {
-        flex-grow: 2;
-      }
-      &.grow3 {
-        flex-grow: 3;
-      }
-      &.grow4 {
-        flex-grow: 4;
-      }
-      &.input {
-        max-width: 30px;
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url('~assets/img/keyboard_arrow_right.svg');
+        width: 20px;
+        height: 20px;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
   }
+
+  div {
+    flex: 1 1;
+
+    p {
+      position: relative;
+      color: $grey;
+    }
+
+    &.description p {
+      display: inline-block;
+      position: relative;
+      padding-right: 30px;
+    }
+
+    &.grow1 {
+      flex-grow: 1;
+    }
+
+    &.grow2 {
+      flex-grow: 2;
+    }
+
+    &.grow3 {
+      flex-grow: 3;
+    }
+
+    &.grow4 {
+      flex-grow: 4;
+    }
+
+    &.input {
+      max-width: 30px;
+    }
+  }
+}

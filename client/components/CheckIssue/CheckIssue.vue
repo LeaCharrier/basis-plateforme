@@ -10,9 +10,20 @@
 <script>
 export default {
   name: 'CheckIssue',
+  props: {
+    onChange: {
+      type: Function,
+      required: true
+    }
+  },
   data () {
     return {
       checked: false
+    }
+  },
+  watch: {
+    checked () {
+      this.onChange(this.checked)
     }
   }
 }

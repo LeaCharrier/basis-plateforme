@@ -41,7 +41,7 @@
       }
     }
 
-    form {
+    .form {
       border-top: 1px solid $greyLight;
 
       .popinContent {
@@ -60,11 +60,17 @@
           flex-direction: column;
         }
 
+        &-inputFull {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
         .online {
           display: flex;
           justify-content: space-between;
           margin-top: 20px;
           margin-bottom: 40px;
+          flex-wrap: wrap;
 
           .popinContent-input {
             width: calc(50% - 20px);
