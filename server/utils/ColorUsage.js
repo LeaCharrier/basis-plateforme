@@ -42,6 +42,7 @@ export class ColorUsage {
                 percentUnreferenced: 0,                         // – Percentage of colors unreferenced (%)
                 percentUnreferencedUsed: 0,                     // – Percentage of unreferenced colors used (%)
                 mostDetached: [],                               // - Most used colors without their style (Array)
+                mostAttached: [],                               // - Most used colors with their style (Array)
                 projects: new Object(),                         // - Projects in which colors are used
                 score: 0                                        // – Score out of 100 evaluating the ratio between referenced and non-referenced colors (X/100)
             }                             
@@ -99,9 +100,9 @@ export class ColorUsage {
         }
     }
 
-    descending_order(arr) {
+    descending_order(arr, prop) {
         arr.sort((a, b) => { 
-            return b.used + a.used; 
+            return b[prop] - a[prop]; 
         });
     }
 
@@ -170,6 +171,15 @@ export class ColorUsage {
                             }
                         ));
 
+                        // Save most used colors with their style
+                        if(!colors.data.mostAttached[0] || color.data.totalUsed > colors.data.mostAttached[0].data.totalUsed) {
+                          colors.data.mostAttached[0] = color;
+                        } else if(!colors.data.mostAttached[1] || color.data.totalUsed > colors.data.mostAttached[1].data.totalUsed) {
+                          colors.data.mostAttached[1] = color;
+                        } else if(!colors.data.mostAttached[2] || color.data.totalUsed > colors.data.mostAttached[2].data.totalUsed) {
+                          colors.data.mostAttached[2] = color;
+                        }
+
                         break;
                     case 'unreferenced':
                         // Percentage of times the color is used compared to unreferenced colors (%)
@@ -208,7 +218,7 @@ export class ColorUsage {
                 });
 
                 // Order in descending order the types of elements on which the color is applied
-                this.descending_order(color.data.types);
+                this.descending_order(color.data.types, 'used');
 
                 // Rearranges the projects in which color appears the most
                 let tempProjects = color.data.projects;
@@ -222,7 +232,7 @@ export class ColorUsage {
                 });
 
                 // Order in descending order the projects in which color appears the most
-                this.descending_order(color.data.projects);
+                this.descending_order(color.data.projects, 'used');
 
             });
         });
@@ -239,10 +249,10 @@ export class ColorUsage {
         });
 
         // Order in descending order the projects in which color appears the most
-        this.descending_order(colors.data.projects);
+        this.descending_order(colors.data.projects, 'used');
 
         // Order in descending order the most detached colors
-        this.descending_order(colors.data.mostDetached);
+        this.descending_order(colors.data.mostDetached, 'totalDetached');
 
         // Alphabetize the referenced colors
         let tempReferenced = colors.referenced;
@@ -250,7 +260,6 @@ export class ColorUsage {
         Object.entries(tempReferenced).forEach(([key, data], i) => {
             colors.referenced.push(data); 
         });
-
         this.alphabetical_order(colors.referenced);
 
         // Alphabetize the unreferenced colors
@@ -259,7 +268,6 @@ export class ColorUsage {
         Object.entries(tempUnreferenced).forEach(([key, data], i) => {
             colors.unreferenced.push(data); 
         });
-
         this.alphabetical_order(colors.unreferenced);
 
     }
