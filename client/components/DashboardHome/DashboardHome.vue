@@ -6,7 +6,7 @@
         link="true"
         :total="colorUsage.data.totalUsed"
         subtitle="Top 3 colors used"
-        :object1="colorUsage.data.mostDetached"
+        :object1="colorUsage.data.mostAttached"
         :object2="colorUsage.data.mostDetached"
         :double="true"
         subtitle2="Top 3 colors DETACHED"
