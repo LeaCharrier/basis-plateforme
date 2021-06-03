@@ -6,9 +6,9 @@ import {
     apiGetFigmaFile,
     apiGetFigmaTeamStyles
 } from "../actions/index.js";
-import { 
-    jsonFileFormat, 
-    fileFormat, 
+import {
+    jsonFileFormat,
+    fileFormat,
     stylesFormat,
     referenceColors
 } from "../utils/FileFormat.js";
@@ -83,6 +83,36 @@ export async function getTeamProjectsFiles(req, res) {
         }
 
         res.status(200).send(team);
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+
+/**
+ * @Route /api/figma/team/:teamId/files
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
+export async function getTeamFiles(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    try {
+        const team = await apiGetFigmaTeamProjects(teamId)
+
+        let fileList = []
+
+        for (const p of team.projects) {
+            const { files } = await apiGetFigmaProjectFiles(p.id)
+
+            fileList = [...fileList, ...(files || [])]
+        }
+
+        res.status(200).send(fileList);
     }
     catch(err) {
         res.status(400).send({err});
@@ -324,7 +354,7 @@ export async function getTeamStyles(req, res) {
 
         for(const project of teamProjects.projects) {
             let projectFiles = await apiGetFigmaProjectFiles(project.id);
-            
+
             for(const file of projectFiles.files) {
                 let json = await apiGetFigmaFile(file.key),
                     formatedJson = fileFormat(json, {

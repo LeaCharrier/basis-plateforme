@@ -21,17 +21,13 @@
     <div class="dashboard-colone">
       <Issues
         title="Current issues"
-        total="27"
         subtitle="Issues overtime"
-        last-issues="true"
       />
     </div>
     <div class="dashboard-colone">
       <!-- total designers mettre le nombre de personne connecté sur le team id du figma -->
       <Team
         title="Team members"
-        total-designers="1"
-        total-viewers="0"
       />
 
       <!-- mettre le chiffre entre parenthèse -->

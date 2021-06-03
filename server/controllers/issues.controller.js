@@ -1,5 +1,6 @@
 import {issueStatusModel} from "../models/IssueStatus.model.js"
 import {issueModel} from "../models/Issue.model.js"
+import {issueFormat} from "../utils/IssueFormat.js";
 
 /**
  * @Route /api/issues/list/:teamId
@@ -14,7 +15,12 @@ export async function getList(req, res) {
             teamId
         } = req.params
 
-        const issues = await issueModel.find({ team: teamId })
+        const issues = await issueModel
+            .find({ team: teamId })
+            .populate('creator')
+            .populate('assignee')
+            .populate('status')
+            .exec()
 
         res.status(200).send(issues)
     } catch (err) {
@@ -35,7 +41,12 @@ export async function getById(req, res) {
             id
         } = req.params
 
-        const issue = await issueModel.findById(id)
+        const issue = await issueModel
+            .findById(id)
+            .populate('creator')
+            .populate('assignee')
+            .populate('status')
+            .exec()
 
         res.status(200).send(issue)
     } catch (err) {
@@ -57,7 +68,8 @@ export async function create(req, res) {
             creator,
             assignee,
             status,
-            team
+            team,
+            project
         } = req.body
 
         const issue = new issueModel({
@@ -65,13 +77,15 @@ export async function create(req, res) {
             creator,
             assignee,
             status,
-            team
+            team,
+            project
         })
 
         const data = await issue.save()
 
         res.status(201).send(data)
     } catch (err) {
+        console.log(err)
         res.status(400).send({err})
     }
 }
@@ -88,7 +102,8 @@ export async function update(req, res) {
         const {
             content,
             assignee,
-            status
+            status,
+            project
         } = req.body
 
         const {
@@ -103,6 +118,8 @@ export async function update(req, res) {
             issue.assignee = assignee
         if (status && status !== issue.status)
             issue.status = status
+        if (project && project !== issue.project)
+            issue.project = project
 
         const data = await issue.save()
 
@@ -197,5 +214,3 @@ export async function getStatusBySlug(req, res) {
         res.status(400).send({err})
     }
 }
-
-// 60b09b525558352534834993

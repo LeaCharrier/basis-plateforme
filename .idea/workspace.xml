@@ -5,13 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/utils/IssueFormat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Projects/Projects.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Projects/Projects.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Aside/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Aside/Aside.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/FormUpdateUser/FormUpdateUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormUpdateUser/FormUpdateUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Atoms/BtnAdd/BtnAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Atoms/BtnAdd/BtnAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Atoms/Status/Status.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Atoms/Status/Status.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/CheckIssue/CheckIssue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/CheckIssue/CheckIssue.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/DashboardHome/DashboardHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DashboardHome/DashboardHome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Fields/Select/Select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Fields/Select/Select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/IssuePopin/IssuePopin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/IssuePopin/IssuePopin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/IssuePopin/_IssuePopin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/IssuePopin/_IssuePopin.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/TableIssue/TableIssue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableIssue/TableIssue.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/TableIssueRow/TableIssueRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableIssueRow/TableIssueRow.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/TableIssueRow/_TableIssueRow.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableIssueRow/_TableIssueRow.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/store/issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/store/issues.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/issues.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/issues.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Issue.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Issue.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/IssueStatus.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/IssueStatus.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/auth.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/figma.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/figma.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +103,16 @@
       <recent name="C:\wamp64\www\basis-plateforme\client\src" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="jsonParser.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server/utils/jsonParser.js" working-dir="$PROJECT_DIR$/server/utils">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.jsonParser.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -110,6 +139,7 @@
       <workItem from="1621634627920" duration="8312000" />
       <workItem from="1621797976889" duration="6000" />
       <workItem from="1622012938092" duration="14416000" />
+      <workItem from="1622624499591" duration="16181000" />
     </task>
     <servers />
   </component>
@@ -131,14 +161,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/controllers/figma.controller.js</url>
-          <line>17</line>
+          <line>24</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/utils/FileFormat.js</url>
           <line>27</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/controllers/issues.controller.js</url>
+          <line>19</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

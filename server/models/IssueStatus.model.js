@@ -13,14 +13,7 @@ const issueStatusSchema = new mongoose.Schema({
     color: {
         type: String,
         required: [true, 'color is missing']
-    },
-    issues: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Issue',
-            required: true
-        }
-    ]
+    }
 })
 
 issueStatusSchema.pre('save', async function(next) {

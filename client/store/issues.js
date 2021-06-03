@@ -1,27 +1,12 @@
 export const state = () => ({
-  popin: {
-    isOpen: false,
-    isNew: false,
-    userId: null,
-    statusId: null,
-    content: ''
-  }
+  popin: false,
+  id: null
 })
 
 export const mutations = {
-  setPopin (state, { isOpen = false, isNew = false, userId = null, statusId = null, content = '' }) {
-    state.popin.isOpen = isOpen
-    state.popin.isNew = isNew
-
-    if (isNew) {
-      state.popin.userId = null
-      state.popin.statusId = null
-      state.popin.content = ''
-    } else {
-      state.popin.userId = userId
-      state.popin.statusId = statusId
-      state.popin.content = content
-    }
+  setPopin (state, { open = false, id = null }) {
+    state.popin = open
+    state.id = id
   }
 }
 
@@ -29,8 +14,11 @@ export const getters = {
   getPopin (state) {
     return state.popin
   },
+  getPopinId (state) {
+    return state.id
+  },
   getPopinStatus (state) {
-    return state.popin.isNew
+    return !state.id
   }
 }
 

@@ -16,7 +16,7 @@ export default {
       triggerPopin: 'issues/setPopin'
     }),
     handleClick () {
-      this.triggerPopin({ isOpen: true, isNew: true })
+      this.triggerPopin({ open: true, id: null })
     }
   }
 }
