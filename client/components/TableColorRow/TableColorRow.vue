@@ -1,35 +1,33 @@
 <template>
-  <!-- <div class="lineTable"> -->
-    <router-link :to="{ name: `color.hex` }" class="lineTable">
-      <!-- <div class="grow1 input">
-        <input ref="input" v-model="checked" type="checkbox" @change="check">
-      </div> -->
-      <div class="grow2">
-        <p class="txt_body">
-          {{ color.name }}
-        </p>
-      </div>
-      <div class="grow1">
-        <Preview :color="color.hex" />
-      </div>
-      <div class="grow1">
-        <p class="txt_body">
-          {{ color.hex }}
-        </p>
-      </div>
-      <div class="grow2">
-        <p class="txt_body">
-          {{ color.updated_at }} by {{ color.user }}
-        </p>
-      </div>
-      <div class="grow1">
-        <Status />
-      </div>
-      <div class="grow2">
-        <Source />
-      </div>
-    </router-link>
-  <!-- </div> -->
+  <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="lineTable">
+    <div class="grow2">
+      <p class="txt_body">
+        {{ color.name }}
+      </p>
+    </div>
+    <div class="grow1">
+      <Preview :color="color.hex" />
+    </div>
+    <div class="grow1">
+      <p class="txt_body">
+        {{ color.hex }}
+      </p>
+    </div>
+    <div class="grow2">
+      <p class="txt_body">
+        {{ color.updated_at }} by {{ color.user }}
+      </p>
+    </div>
+    <div class="grow1">
+      <Status
+        label="Published"
+        color="#10B982"
+      />
+    </div>
+    <div class="grow2">
+      <Source />
+    </div>
+  </router-link>
 </template>
 
 <script>
