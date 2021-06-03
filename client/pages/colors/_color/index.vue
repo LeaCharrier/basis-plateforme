@@ -3,7 +3,7 @@
     <Header />
     <div class="container">
       <Aside page="colors" />
-      <div class="contentProject">
+      <div class="contentProject" v-if="colorUsage.data && !loading">
         <div class="nav">
           <router-link :to="{ name: 'colors' }" class="backColor" />
           <div class="color">
@@ -33,12 +33,20 @@ export default {
     // BlockTitleDesc,
     DashboardColor
   },
+  data () {
+    return {
+      loading: false
+    }
+  },
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts'
     }),
     texts () {
       return this.getTexts
+    },
+    colorUsage () {
+      return this.$store.state.usage.colors
     }
   }
 }

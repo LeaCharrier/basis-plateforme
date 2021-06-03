@@ -1,8 +1,5 @@
 <template>
-  <div class="lineTable">
-    <!-- <div class="grow1 input">
-      <input ref="input" v-model="checked" type="checkbox" @change="check">
-    </div> -->
+  <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="lineTable">
     <div class="grow2">
       <p class="txt_body">
         {{ color.name }}
@@ -22,12 +19,15 @@
       </p>
     </div>
     <div class="grow1">
-      <Status />
+      <Status
+        label="Published"
+        color="#10B982"
+      />
     </div>
     <div class="grow2">
       <Source />
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
