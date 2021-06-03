@@ -33,6 +33,9 @@ export default {
     // BlockTitleDesc,
     DashboardColor
   },
+  mounted () {
+    console.log(this.getColorData('#a4232a'))
+  },
   data () {
     return {
       loading: false
@@ -47,6 +50,12 @@ export default {
     },
     colorUsage () {
       return this.$store.state.usage.colors
+    }
+  },
+  methods: {
+    getColorData (hexa) {
+      const colors = this.$store.state.usage.colors.referenced
+      return colors.find(({ hex }) => hex === hexa)
     }
   }
 }
