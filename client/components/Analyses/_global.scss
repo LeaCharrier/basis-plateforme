@@ -32,6 +32,13 @@
         }
 
         &-list {
+            .color {
+                border-bottom: 1px solid $greyLight;
+                
+                &:last-child {
+                    border: none;
+                }
+            }
             .item {
                 display: flex;
                 justify-content: space-between;

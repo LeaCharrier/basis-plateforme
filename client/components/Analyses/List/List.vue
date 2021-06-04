@@ -18,10 +18,12 @@
         {{ subtitle }}
       </p>
       <div v-if="link === 'true'" class="items-list link">
-        <a class="item item-link" v-for="color in object1" :key="color.hex">
-          <p class="item-title">{{ color.name }}</p>
-          <p class="item-data">{{ color.data.totalAttached }}</p>
-        </a>
+        <div class="color" v-for="color in object1" :key="color.hex">
+          <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="item item-link">
+            <p class="item-title">{{ color.name }}</p>
+            <p class="item-data">{{ color.data.totalAttached }}</p>
+          </router-link>
+        </div>
       </div>
 
       <div v-if="double === true && object2" class="items items2">
@@ -29,36 +31,35 @@
           {{ subtitle2 }}
         </p>
         <div class="items-list link">
-          <a class="item item-link" v-for="color in object2" :key="color.hex">
-            <p class="item-title">{{ color.name }}</p>
-            <p class="item-data">{{ color.totalDetached }}</p>
-          </a>
+          <div class="color"  v-for="color in object2" :key="color.hex">
+            <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="item item-link">
+              <p class="item-title">{{ color.name }}</p>
+              <p class="item-data">{{ color.totalDetached }}</p>
+            </router-link>
+          </div>
         </div>
       </div>
 
-      <div v-if="link !== 'true'" class="items-list link">
-        <div class="item">
+      <!-- PROJECTS -->
+      <div v-if="link !== 'true' && objectProject" class="items-list link">
+        <div class="item" v-for="project in objectProject.projects" :key="project.key">
           <p class="item-title">
-            danger-500
+            {{ project.name }}
           </p>
           <p class="item-data">
-            84
+            {{ project.used }}
           </p>
         </div>
-        <div class="item">
+      </div>
+
+      <!-- ALIASES -->
+      <div v-if="link !== 'true' && objectAliases" class="items-list link">
+        <div class="item" v-for="aliases in objectAliases.types" :key="aliases.key">
           <p class="item-title">
-            danger-500
+            {{ aliases.type }}
           </p>
           <p class="item-data">
-            84
-          </p>
-        </div>
-        <div class="item">
-          <p class="item-title">
-            danger-500
-          </p>
-          <p class="item-data">
-            84
+            {{ aliases.used }}
           </p>
         </div>
       </div>
@@ -102,6 +103,16 @@ export default {
       default: () => []
     },
     object2: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
+    objectProject: {
+      type: Array,
+      required: false,
+      default: () => []
+    },
+    objectAliases: {
       type: Array,
       required: false,
       default: () => []

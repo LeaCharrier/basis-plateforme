@@ -3,17 +3,17 @@
     <Header />
     <div class="container">
       <Aside page="colors" />
-      <div class="contentProject" v-if="colorUsage.data && !loading">
+      <div class="contentProject" v-if="objectColor && !loading">
         <div class="nav">
           <router-link :to="{ name: 'colors' }" class="backColor" />
           <div class="color">
             <p class="color-title">
-              Blue - 500
+              {{ objectColor.name }}
             </p>
-            <span class="color-item" style="background-color: #0568FD" />
+            <span class="color-item" :style="'background-color:'+ colorHex" />
           </div>
         </div>
-        <DashboardColor />
+        <DashboardColor :objectColor='objectColor' />
       </div>
     </div>
   </div>
@@ -30,15 +30,20 @@ export default {
   components: {
     Header,
     Aside,
-    // BlockTitleDesc,
     DashboardColor
   },
   mounted () {
-    console.log(this.getColorData('#a4232a'))
+    // console.log(this.getColorData('#a4232a'))
+    this.colorHex = this.$route.params.color
+    // console.log(this.colorHex)
+    this.objectColor = this.getColorData(this.colorHex)
+    // console.log(this.objectColor)
   },
   data () {
     return {
-      loading: false
+      loading: false,
+      colorHex: null,
+      objectColor: null
     }
   },
   computed: {

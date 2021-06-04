@@ -2,30 +2,40 @@
   <div v-if="user" class="dashboard">
     <div class="dashboard-colone">
       <GraphTime
-        title="Total usage (256)"
-        total="95%"
+        :title="'Total usage (' + objectColor.data.totalUsed +')'"
+        :total="Number((objectColor.data.percentUsed).toFixed(1)) + '%'"
         subtitle="Usage overtime"
+        :percent="objectColor.data.percentUsed"
       />
       <List
         title="Projects"
         link="false"
-        total="8"
-        subtitle="Top 5 Projects"
+        :total="Number((objectColor.data.projects.length).toFixed(1))"
+        :subtitle="'Top ' + objectColor.data.projects.length + ' projects'"
+        :objectProject="objectColor.data"
       />
     </div>
     <div class="dashboard-colone">
       <GraphTime
-        title="Detaching rate"
-        total="3%"
+        :title="'Detaching rate (' + objectColor.data.totalDetached +')'"
+        :total="Number((objectColor.data.percentDetached).toFixed(1)) + '%'"
         subtitle="Detaching overtime"
+        :percent="objectColor.data.percentDetached"
       />
-    </div>
-    <div class="dashboard-colone">
       <List
         title="Aliases"
         link="false"
-        total="12"
-        subtitle="Top 5 Aliases"
+        :total="objectColor.data.types.length"
+        :subtitle="'Top ' + objectColor.data.types.length +' Aliases'"
+        :objectAliases="objectColor.data"
+      />
+    </div>
+    <div class="dashboard-colone">
+      <GraphTime
+        :title="'Total usage (' + objectColor.data.totalAttached +')'"
+        :total="Number((objectColor.data.percentAttached).toFixed(1)) + '%'"
+        subtitle="Usage overtime"
+        :percent="objectColor.data.percentAttached"
       />
     </div>
   </div>
@@ -41,6 +51,13 @@ export default {
   components: {
     List,
     GraphTime
+  },
+  props: {
+    objectColor: {
+      type: Array,
+      required: false,
+      default: () => []
+    }
   },
   computed: {
     ...mapGetters({

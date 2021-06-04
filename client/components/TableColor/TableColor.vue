@@ -46,7 +46,6 @@
     </div>
 
     <div v-if="colorUsage.data && !loading">
-      <!-- <TableColorRow v-for="item in items" :key="item.id" :item="item" /> -->
       <TableColorRow v-for="color in colorUsage.referenced" :key="color.hex" :color="color" />
     </div>
 

@@ -33,7 +33,7 @@
               <span />
               <span />
             </div>
-            <div class="graph-month june" :style="myStyle" />
+            <div class="graph-month june" :style="'height:' + percent +'%'" />
           </div>
         </div>
         <div class="graphTime-month">
@@ -67,13 +67,11 @@ export default {
       type: String,
       required: false,
       default: ''
-    }
-  },
-  data () {
-    return {
-      myStyle: {
-        height: this.total
-      }
+    },
+    percent: {
+      type: String,
+      required: false,
+      default: ''
     }
   }
 }

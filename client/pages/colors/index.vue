@@ -11,7 +11,7 @@
         />
         <BlockTitleDesc
           v-else
-          :title="texts.COLORS_TITLE"
+          title="Color"
           :description="texts.COLORS_DESCRIPTION"
         />
         <TableColor />
