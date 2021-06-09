@@ -5,32 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/utils/IssueFormat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/Issues.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Issues/_Issues.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Team/Team.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Aside/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Aside/Aside.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Atoms/BtnAdd/BtnAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Atoms/BtnAdd/BtnAdd.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Atoms/Status/Status.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Atoms/Status/Status.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/CheckIssue/CheckIssue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/CheckIssue/CheckIssue.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/List/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Analyses/Pourcentage/Pourcentage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Analyses/Pourcentage/Pourcentage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/DashboardHome/DashboardHome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/DashboardHome/DashboardHome.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Fields/Select/Select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Fields/Select/Select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/IssuePopin/IssuePopin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/IssuePopin/IssuePopin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/IssuePopin/_IssuePopin.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/IssuePopin/_IssuePopin.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TableIssue/TableIssue.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableIssue/TableIssue.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TableIssueRow/TableIssueRow.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableIssueRow/TableIssueRow.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TableIssueRow/_TableIssueRow.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TableIssueRow/_TableIssueRow.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/store/issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/store/issues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/issues.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/issues.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Issue.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Issue.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/IssueStatus.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/IssueStatus.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/auth.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/figma.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/figma.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +117,9 @@
       <workItem from="1621634627920" duration="8312000" />
       <workItem from="1621797976889" duration="6000" />
       <workItem from="1622012938092" duration="14416000" />
-      <workItem from="1622624499591" duration="16181000" />
+      <workItem from="1622624499591" duration="16365000" />
+      <workItem from="1622815927968" duration="1074000" />
+      <workItem from="1623271415312" duration="3122000" />
     </task>
     <servers />
   </component>
@@ -172,8 +152,13 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/controllers/issues.controller.js</url>
           <line>19</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue</url>
+          <line>300</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
