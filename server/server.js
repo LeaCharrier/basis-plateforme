@@ -6,6 +6,8 @@ import FigmaRoutes  from './routes/figma.routes.js'
 import IssueRoutes  from './routes/issues.routes.js'
 import AuthRoutes  from './routes/auth.routes.js'
 
+const port = process.env.PORT || 5000;
+
 const app = express();
 dotenv.config({path: './config/.env'});
 
@@ -22,8 +24,8 @@ app.use('/api/issues', IssueRoutes);
 app.use('/api/auth', AuthRoutes);
 
 // server
-app.listen(5000, () => {
-    console.log(`App listening at http://localhost:${5000}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`App listening at http://localhost:${port}`);
 });
 
 
