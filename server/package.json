@@ -18,13 +18,13 @@
     "isomorphic-fetch": "^2.2.1",
     "mongoose": "^5.12.0",
     "nodemon": "^2.0.7",
-    "validator": "^13.5.2"
-  },
-  "devDependencies": {
+    "validator": "^13.5.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.1",
     "slugify": "^1.5.3"
+  },
+  "devDependencies": {
   }
 }
