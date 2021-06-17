@@ -106,12 +106,20 @@
                   error-msg="Invalid fields"
                 />
                 <CustomInput
+                  ref="signup-api"
+                  label="Clé API"
+                  placeholder="23456787654323456"
+                  type="text"
+                  :validator="(v) => checkTeam(v, 0)"
+                  error-msg="Invalid field"
+                />
+                <CustomInput
                   ref="signup-team"
                   label="Team ID"
                   placeholder="23456787654323456"
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
-                  error-msg="Invalid fields"
+                  error-msg="Invalid field"
                 />
               </div>
             </div>
@@ -186,13 +194,16 @@ export default {
     token () {
       return this.getToken
     },
+    user () {
+      return this.getUser
+    },
     onBoarding () {
       return this.getOnBoarding
     }
   },
   mounted () {
     if (this.token) {
-      this.getColorUsage(this.getUser.team)
+      this.getColorUsage(this.user.team)
     }
   },
   methods: {
@@ -254,6 +265,7 @@ export default {
       const email = this.$refs['signup-email'].value
       const password = this.$refs['signup-pass'].value
       const team = this.$refs['signup-team'].value
+      const api = this.$refs['signup-api'].value
 
       const teamName = await this.getTeam(team)
 
@@ -272,7 +284,8 @@ export default {
           firstname,
           email,
           password,
-          team
+          team,
+          api
         })
 
         const { token } = res.data
@@ -301,16 +314,21 @@ export default {
     },
     async getColorUsage (teamId) {
       try {
-        const res = await this.$api.get(`figma/team/${teamId}/colors`)
+        const res = await this.$api.post(`figma/team/${teamId}/colors`, {
+          api: (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
+        })
         this.$store.commit('usage/save', res.data.colors)
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
         return false
       }
     },
     async getTeam (teamId) {
       try {
-        const res = await this.$api.get(`figma/team/${teamId}/projects/`)
+        const res = await this.$api.post(`figma/team/${teamId}/projects/`, {
+          api: (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
+        })
         return res.data.name
       } catch (e) {
         // eslint-disable-next-line no-console
@@ -357,7 +375,11 @@ export default {
       const team = teamField.value
       teamField.handleChange()
 
-      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0)
+      const apiField = this.$refs['signup-api']
+      const api = apiField.value
+      apiField.handleChange()
+
+      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0) && this.checkString(api, 0)
     },
     checkString (str, len) {
       return str.length > len

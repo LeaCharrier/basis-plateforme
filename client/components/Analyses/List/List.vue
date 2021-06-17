@@ -14,7 +14,7 @@
     </p>
 
     <div v-if="object1 && !loading" class="items">
-      <p class="items-title txt_caption">
+      <p v-if="object1.length" class="items-title txt_caption">
         {{ subtitle }}
       </p>
       <div v-if="link" class="items-list link">
@@ -31,7 +31,7 @@
       </div>
 
       <div v-if="double === true && object2" class="items items2">
-        <p class="items-title txt_caption">
+        <p v-if="object2.length" class="items-title txt_caption">
           {{ subtitle2 }}
         </p>
         <div class="items-list link">

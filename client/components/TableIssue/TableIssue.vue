@@ -115,13 +115,17 @@ export default {
 
       const requests = []
 
-      if (teamId) {
-        requests.push(this.$api.get(`figma/team/${teamId}/projects/`))
-        requests.push(this.$api.get(`figma/team/${teamId}/files`))
-        requests.push(this.$api.get(`issues/list/${teamId}`))
+      const config = {
+        headers: { Authorization: `Bearer ${this.user.token}` }
       }
 
-      requests.push(this.$api.get('issues/status/list'))
+      if (teamId) {
+        requests.push(this.$api.get(`figma/team/${teamId}/projects/`, config))
+        requests.push(this.$api.get(`figma/team/${teamId}/files`, config))
+        requests.push(this.$api.get(`issues/list/${teamId}`, config))
+      }
+
+      requests.push(this.$api.get('issues/status/list', config))
 
       Promise.all(requests)
         .then((res) => {

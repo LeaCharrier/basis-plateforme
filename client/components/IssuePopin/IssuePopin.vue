@@ -142,14 +142,18 @@ export default {
     getData () {
       this.loading = true
 
+      const config = {
+        headers: { Authorization: `Bearer ${this.user.token}` }
+      }
+
       const requests = [
-        this.$api.get('issues/status/list'),
-        this.$api.get(`auth/team/${this.user.team}`),
-        this.$api.get(`figma/team/${this.user.team}/files`)
+        this.$api.get('issues/status/list', config),
+        this.$api.get(`auth/team/${this.user.team}`, config),
+        this.$api.get(`figma/team/${this.user.team}/files`, config)
       ]
 
       if (this.id) {
-        requests.push(this.$api.get(`issues/issue/${this.id}`))
+        requests.push(this.$api.get(`issues/issue/${this.id}`, config))
       } else {
         this.issue = null
         this.description = null

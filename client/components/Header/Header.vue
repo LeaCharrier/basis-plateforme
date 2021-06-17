@@ -19,11 +19,13 @@
 
     <div class="header-infos">
       <div class="header-infos-btn">
-        <button class="txt_body btn" v-if="!isLoad" @click="handleClick">
+        <button v-if="!isLoad" class="txt_body btn" @click="handleClick">
           Update data
         </button>
-        <div class="txt_body is-btn loading" v-else >
-          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        <div v-else class="txt_body is-btn loading">
+          <div class="lds-ring">
+            <div /><div /><div /><div />
+          </div>
           Update data
         </div>
       </div>
@@ -106,7 +108,11 @@ export default {
 
       const teamId = (this.user) ? this.user.team : null
       if (teamId) {
-        this.$api.get(`figma/team/${teamId}/projects/`)
+        const config = {
+          headers: { Authorization: `Bearer ${this.user.token}` }
+        }
+
+        this.$api.get(`figma/team/${teamId}/projects/`, config)
           .then((res) => {
             this.loading = false
 
@@ -137,10 +143,15 @@ export default {
     },
     async getColorUsage (teamId) {
       try {
-        const res = await this.$api.get(`figma/team/${teamId}/colors`)
+        const config = {
+          headers: { Authorization: `Bearer ${this.user.token}` }
+        }
+
+        const res = await this.$api.get(`figma/team/${teamId}/colors`, config)
         this.$store.commit('usage/save', res.data.colors)
         this.isLoad = false
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
         return false
       }

@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'team is missing']
     },
+    api: {
+        type: String,
+        required: [true, 'api is missing']
+    },
     tokens: [
         {
             token: {
@@ -50,7 +54,8 @@ userSchema.methods.generateAuthToken = async function() {
         lastname,
         team,
         email,
-        password
+        password,
+        api
     } = user
 
     const token = jwt.sign({
@@ -59,7 +64,8 @@ userSchema.methods.generateAuthToken = async function() {
         lastname,
         team,
         email,
-        password
+        password,
+        api
     }, 'secret')
 
     user.tokens = user.tokens.concat({ token })

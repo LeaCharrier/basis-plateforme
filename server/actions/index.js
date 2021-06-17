@@ -6,10 +6,10 @@ import constants from "../config/constants.js";
  * @param teamId
  * @returns {Promise<*>}
  */
-export async function apiGetFigmaTeamProjects(teamId) {
+export async function apiGetFigmaTeamProjects(apiKey, teamId) {
     const data = await fetch(figmaApi.teamProjects(teamId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(constants.figmaAPIKey)
+        headers: getFigmaApiHeaders(apiKey)
     })
 
     return await data.json()
@@ -20,10 +20,10 @@ export async function apiGetFigmaTeamProjects(teamId) {
  * @param projectId
  * @returns {Promise<*>}
  */
-export async function apiGetFigmaProjectFiles(projectId) {
+export async function apiGetFigmaProjectFiles(apiKey, projectId) {
     const data = await fetch(figmaApi.projectFiles(projectId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(constants.figmaAPIKey)
+        headers: getFigmaApiHeaders(apiKey)
     })
 
     return await data.json()
@@ -34,10 +34,10 @@ export async function apiGetFigmaProjectFiles(projectId) {
  * @param fileId
  * @returns {Promise<*>}
  */
-export async function apiGetFigmaFile(fileId) {
+export async function apiGetFigmaFile(apiKey, fileId) {
     const data = await fetch(figmaApi.file(fileId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(constants.figmaAPIKey)
+        headers: getFigmaApiHeaders(apiKey)
     }).catch(e => console.log(e))
 
     return await data.json()
@@ -47,10 +47,10 @@ export async function apiGetFigmaFile(fileId) {
  * @param teamId
  * @returns {Promise<*>}
  */
- export async function apiGetFigmaTeamStyles(teamId) {
+ export async function apiGetFigmaTeamStyles(apiKey, teamId) {
     const data = await fetch(figmaApi.teamStyles(teamId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(constants.figmaAPIKey)
+        headers: getFigmaApiHeaders(apiKey)
     }).catch(e => console.log(e))
 
     return await data.json()

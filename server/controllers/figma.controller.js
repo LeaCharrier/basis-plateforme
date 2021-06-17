@@ -62,6 +62,32 @@ export async function getTeamProjects(req, res) {
 }
 
 /**
+ * @Route /api/figma/team/:teamId/projects
+ * @Method POST
+ *
+ * @param req
+ * @param res
+ */
+export async function getTeamProjectsPub(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    const {
+        api
+    } = req.body
+
+    try {
+        const json = await apiGetFigmaTeamProjects(api, teamId)
+
+        res.status(200).send(json);
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+
+/**
  * @Route /api/figma/team/:teamId/projects/files
  * @Method GET
  *
@@ -73,11 +99,16 @@ export async function getTeamProjectsFiles(req, res) {
         teamId
     } = req.params
 
+
+    const {
+        userData
+    } = req
+
     try {
-        const team = await apiGetFigmaTeamProjects(teamId)
+        const team = await apiGetFigmaTeamProjects(userData.api, teamId)
 
         for (const p of team.projects) {
-            const { files } = await apiGetFigmaProjectFiles(p.id)
+            const { files } = await apiGetFigmaProjectFiles(userData.api, p.id)
 
             p.files = files || []
         }
@@ -101,13 +132,17 @@ export async function getTeamFiles(req, res) {
         teamId
     } = req.params
 
+    const {
+        userData
+    } = req
+
     try {
-        const team = await apiGetFigmaTeamProjects(teamId)
+        const team = await apiGetFigmaTeamProjects(userData.api, teamId)
 
         let fileList = []
 
         for (const p of team.projects) {
-            const { files } = await apiGetFigmaProjectFiles(p.id)
+            const { files } = await apiGetFigmaProjectFiles(userData.api, p.id)
 
             fileList = [...fileList, ...(files || [])]
         }
@@ -132,8 +167,12 @@ export async function getProjectFiles(req, res) {
         projectId
     } = req.params
 
+    const {
+        userData
+    } = this.props
+
     try {
-        const json = await apiGetFigmaProjectFiles(projectId)
+        const json = await apiGetFigmaProjectFiles(userData.api, projectId)
 
         res.status(200).send(json);
     }
@@ -155,14 +194,19 @@ export async function getTeamProjectFilesByIndex(req, res) {
         projectIndex
     } = req.params
 
+
+    const {
+        userData
+    } = req
+
     try {
-        const teamProjects = await apiGetFigmaTeamProjects(teamId)
+        const teamProjects = await apiGetFigmaTeamProjects(userData.api, teamId)
 
         const {projects} = teamProjects
 
         let project = projects[projectIndex]
 
-        const projectFiles = await apiGetFigmaProjectFiles(project.id)
+        const projectFiles = await apiGetFigmaProjectFiles(userData.api, project.id)
 
         res.status(200).send(projectFiles);
     }
@@ -185,8 +229,12 @@ export async function getFile(req, res) {
         fileId
     } = req.params
 
+    const {
+        userData
+    } = req
+
     try {
-        const file = await apiGetFigmaFile(fileId)
+        const file = await apiGetFigmaFile(userData.api, fileId)
 
         const formatedFile = fileFormat(file)
 
@@ -211,8 +259,12 @@ export async function getFileByIndex(req, res) {
         fileIndex
     } = req.params
 
+    const {
+        userData
+    } = req
+
     try {
-        const projectFiles = await apiGetFigmaProjectFiles(projectId)
+        const projectFiles = await apiGetFigmaProjectFiles(userData.api, projectId)
 
         const {
             files
@@ -220,7 +272,7 @@ export async function getFileByIndex(req, res) {
 
         let projectFile = files[fileIndex]
 
-        const file = await apiGetFigmaFile(projectFile.key)
+        const file = await apiGetFigmaFile(userData.api, projectFile.key)
 
         const formatedFile = fileFormat(file)
 
@@ -245,14 +297,18 @@ export async function getTeamProjectFileByIndexes(req, res) {
         fileIndex
     } = req.params
 
+    const {
+        userData
+    } = req
+
     try {
-        const teamProjects = await apiGetFigmaTeamProjects(teamId)
+        const teamProjects = await apiGetFigmaTeamProjects(userData.api, teamId)
 
         const {projects} = teamProjects
 
         let project = projects[projectIndex]
 
-        const projectFiles = await apiGetFigmaProjectFiles(project.id)
+        const projectFiles = await apiGetFigmaProjectFiles(userData.api, project.id)
 
         const {
             files
@@ -260,7 +316,7 @@ export async function getTeamProjectFileByIndexes(req, res) {
 
         let projectFile = files[fileIndex]
 
-        const file = await apiGetFigmaFile(projectFile.key)
+        const file = await apiGetFigmaFile(userData.api, projectFile.key)
 
         const formatedFile = fileFormat(file)
 
@@ -322,8 +378,12 @@ export async function getTeamStyles(req, res) {
         teamId
     } = req.params
 
+    const {
+        userData
+    } = req
+
     try {
-        const styles = await apiGetFigmaTeamStyles(teamId)
+        const styles = await apiGetFigmaTeamStyles(userData.api, teamId)
         res.status(200).send(styles)
     }
     catch(err) {
@@ -343,20 +403,73 @@ export async function getTeamStyles(req, res) {
         teamId
     } = req.params
 
+    const {
+        userData
+    } = req
+
     try {
         let jsons = [];
-        const styles = await apiGetFigmaTeamStyles(teamId);
+        const styles = await apiGetFigmaTeamStyles(userData.api, teamId);
         const colors = stylesFormat(styles);
-        const props = await apiGetFigmaFile('abMTwXgnaWaHGU2SLas1ZR');
+        const props = await apiGetFigmaFile(userData.api, 'abMTwXgnaWaHGU2SLas1ZR');
         const formatedProps = fileFormat(props);
         const refencedColors = referenceColors(colors, formatedProps);
-        const teamProjects = await apiGetFigmaTeamProjects(teamId);
+        const teamProjects = await apiGetFigmaTeamProjects(userData.api, teamId);
 
         for(const project of teamProjects.projects) {
-            let projectFiles = await apiGetFigmaProjectFiles(project.id);
+            let projectFiles = await apiGetFigmaProjectFiles(userData.api, project.id);
 
             for(const file of projectFiles.files) {
-                let json = await apiGetFigmaFile(file.key),
+                let json = await apiGetFigmaFile(userData.api, file.key),
+                    formatedJson = fileFormat(json, {
+                        project: {
+                            key: file.key,
+                            name: file.name,
+                            last_modified: file.last_modified
+                        }
+                    });
+                jsons.push(formatedJson);
+            }
+        }
+
+        const colorUsage = jsonParser(jsons, refencedColors);
+        res.status(200).send(colorUsage)
+    }
+    catch(err) {
+        res.status(400).send({err});
+    }
+}
+
+/**
+ * @Route /api/figma/team/:teamId/colors
+ * @Method GET
+ *
+ * @param req
+ * @param res
+ */
+export async function getColorAnalysisPub(req, res) {
+    const {
+        teamId
+    } = req.params
+
+    const {
+        api
+    } = req.body
+
+    try {
+        let jsons = [];
+        const styles = await apiGetFigmaTeamStyles(api, teamId);
+        const colors = stylesFormat(styles);
+        const props = await apiGetFigmaFile(api, 'abMTwXgnaWaHGU2SLas1ZR');
+        const formatedProps = fileFormat(props);
+        const refencedColors = referenceColors(colors, formatedProps);
+        const teamProjects = await apiGetFigmaTeamProjects(api, teamId);
+
+        for(const project of teamProjects.projects) {
+            let projectFiles = await apiGetFigmaProjectFiles(api, project.id);
+
+            for(const file of projectFiles.files) {
+                let json = await apiGetFigmaFile(api, file.key),
                     formatedJson = fileFormat(json, {
                         project: {
                             key: file.key,

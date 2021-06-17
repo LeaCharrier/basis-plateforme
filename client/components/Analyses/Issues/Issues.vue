@@ -138,12 +138,16 @@ export default {
 
       const requests = []
 
-      requests.push(this.$api.get('issues/status/list'))
+      const config = {
+        headers: { Authorization: `Bearer ${this.user.token}` }
+      }
+
+      requests.push(this.$api.get('issues/status/list', config))
 
       const teamId = (this.user) ? this.user.team : null
 
       if (teamId) {
-        requests.push(this.$api.get(`issues/list/${teamId}`))
+        requests.push(this.$api.get(`issues/list/${teamId}`, config))
       }
 
       Promise.all(requests)
