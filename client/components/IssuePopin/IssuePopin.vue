@@ -2,6 +2,11 @@
   <transition v-if="popin" name="fade">
     <div class="bgPopin">
       <div class="popin">
+        <transition v-if="loading" name="fade">
+          <div class="popin__loader">
+            <TableLoader color="dark" />
+          </div>
+        </transition>
         <div class="popinTitle">
           <p v-if="isNew" class="titlePopin" v-text="texts.ISSUES_STATUS_POPIN_NEW_TITLE" />
           <p v-else class="titlePopin" v-text="texts.ISSUES_STATUS_POPIN_UPDATE_TITLE" />
@@ -76,11 +81,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import Select from '~/components/Fields/Select/Select'
+import TableLoader from '~/components/TableLoader/TableLoader'
 
 export default {
   name: 'IssuePopin',
   components: {
-    Select
+    Select,
+    TableLoader
   },
   data () {
     return {
