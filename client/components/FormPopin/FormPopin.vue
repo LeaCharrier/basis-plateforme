@@ -224,6 +224,7 @@ export default {
     async handleLogin () {
       this.errorLogin = false
       this.errorSignUp = false
+
       if (!this.checkLogin()) {
         return false
       }

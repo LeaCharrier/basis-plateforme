@@ -114,7 +114,11 @@ export default {
     }
   },
   fetch () {
-    this.getData()
+    if (this.user) {
+      this.getData()
+    } else {
+      this.loading = true
+    }
   },
   computed: {
     ...mapGetters({
@@ -126,10 +130,18 @@ export default {
   },
   watch: {
     user () {
-      this.getData()
+      if (this.user) {
+        this.getData()
+      } else {
+        this.loading = true
+      }
     },
     $route () {
-      this.getData()
+      if (this.user) {
+        this.getData()
+      } else {
+        this.loading = true
+      }
     }
   },
   methods: {

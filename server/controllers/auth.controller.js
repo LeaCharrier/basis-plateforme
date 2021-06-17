@@ -87,7 +87,8 @@ export async function update(req, res) {
         lastname,
         team,
         email,
-        id
+        id,
+        password
     } = req.body
 
     const user = await userModel.findById(id)
@@ -100,6 +101,8 @@ export async function update(req, res) {
         user.team = team
     if (email && email !== user.email)
         user.email = email
+    if (password.length)
+        user.password = password
 
     const data = await user.save()
 
