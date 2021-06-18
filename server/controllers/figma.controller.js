@@ -306,6 +306,7 @@ export async function getFilePub(req, res) {
 
         res.status(200).send(formatedFile);
     } catch (err) {
+        console.log("efzffezfezfezfze")
         console.log(err)
         res.status(400).send({err});
     }
@@ -528,6 +529,7 @@ export async function getColorAnalysisPub(req, res) {
 
         res.status(200).send(colorUsage)
     } catch (err) {
+        console.log("err colors")
         console.log(err)
         res.status(400).send({err});
     }
