@@ -52,29 +52,7 @@ export default {
     }
   },
   fetch () {
-    this.loading = true
-
-    const teamId = (this.user) ? this.user.team : null
-
-    if (teamId) {
-      const config = {
-        headers: { Authorization: `Bearer ${this.user.token}` }
-      }
-
-      this.$api.get(`figma/team/${teamId}/projects/files/`, config)
-        .then((res) => {
-          this.loading = false
-
-          if (res.data && res.data.projects && res.data.projects.length) {
-            this.projects = res.data.projects
-          }
-        })
-        .catch((e) => {
-          this.loading = false
-          // eslint-disable-next-line no-console
-          console.log(e)
-        })
-    }
+    this.getData()
   },
   computed: {
     ...mapGetters({
@@ -84,9 +62,41 @@ export default {
       return this.getUser
     }
   },
+  watch: {
+    user () {
+      if (this.user) {
+        this.getData()
+      }
+    }
+  },
   methods: {
     getDate (date) {
       return moment(date).fromNow()
+    },
+    getData () {
+      this.loading = true
+
+      const teamId = (this.user) ? this.user.team : null
+
+      if (teamId && this.user.token) {
+        const config = {
+          headers: { Authorization: `Bearer ${this.user.token}` }
+        }
+
+        this.$api.get(`figma/team/${teamId}/projects/files/`, config)
+          .then((res) => {
+            this.loading = false
+
+            if (res.data && res.data.projects && res.data.projects.length) {
+              this.projects = res.data.projects
+            }
+          })
+          .catch((e) => {
+            this.loading = false
+            // eslint-disable-next-line no-console
+            console.log(e)
+          })
+      }
     }
   }
 }
