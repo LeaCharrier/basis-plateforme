@@ -9,7 +9,7 @@ export function fileFormat(file, opts) {
     file.document.children
         .filter(child => child.type === 'CANVAS')
         .map(child => {
-            
+
             return child.children
                 .filter(child => child.type === 'FRAME')
                 .map(child => {
@@ -27,7 +27,7 @@ export function fileFormat(file, opts) {
                         [...obj].forEach(o => {
                             if(o.children) {
                                 rec(o.children);
-                            } else if(o.fills.length && o.fills[0] && o.fills[0].color) {
+                            } else if(o.fills && o.fills.length && o.fills[0] && o.fills[0].color) {
 
                                 // Store used style id
                                 let style;

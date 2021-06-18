@@ -121,6 +121,14 @@
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
                 />
+                <CustomInput
+                  ref="signup-system"
+                  label="Design System ID"
+                  placeholder="23456787654323456"
+                  type="text"
+                  :validator="(v) => checkTeam(v, 0)"
+                  error-msg="Invalid field"
+                />
               </div>
             </div>
 
@@ -267,6 +275,7 @@ export default {
       const password = this.$refs['signup-pass'].value
       const team = this.$refs['signup-team'].value
       const api = this.$refs['signup-api'].value
+      const system = this.$refs['signup-system'].value
 
       const teamName = await this.getTeam(team)
 
@@ -286,7 +295,8 @@ export default {
           email,
           password,
           team,
-          api
+          api,
+          system
         })
 
         const { token } = res.data
@@ -315,10 +325,39 @@ export default {
     },
     async getColorUsage (teamId) {
       try {
-        const res = await this.$api.post(`figma/team/${teamId}/colors`, {
-          api: (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
+        const api = (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
+        const system = (this.token && this.user && this.user.system) ? this.user.system : this.$refs['signup-system'].value
+
+        const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
+          api
         })
-        this.$store.commit('usage/save', res.data.colors)
+
+        const requests = []
+
+        for (const file of data) {
+          requests.push(this.$api.post(`figma/files/${file.key}`, { api }))
+        }
+
+        Promise.all(requests)
+          .then(async (res) => {
+            let jsons = []
+
+            res.forEach((fileRes) => {
+              jsons = [...jsons, ...fileRes.data]
+            })
+
+            const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+              api,
+              system,
+              jsons
+            })
+
+            this.$store.commit('usage/save', colors.data.colors)
+          })
+          .catch((e) => {
+            // eslint-disable-next-line no-console
+            console.log(e)
+          })
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log(e)
@@ -380,7 +419,11 @@ export default {
       const api = apiField.value
       apiField.handleChange()
 
-      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0) && this.checkString(api, 0)
+      const systemField = this.$refs['signup-system']
+      const system = systemField.value
+      systemField.handleChange()
+
+      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0) && this.checkString(api, 0) && this.checkString(system, 0)
     },
     checkString (str, len) {
       return str.length > len

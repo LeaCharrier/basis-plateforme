@@ -64,7 +64,7 @@
     </div>
 
     <div class="items last-issue">
-      <p class="items-title txt_caption">
+      <p v-if="issues.length || loading" class="items-title txt_caption" :class="{'txt-load-white empty-txt-small': loading}">
         Latest Issues
       </p>
       <div v-if="!loading" class="items-list link">

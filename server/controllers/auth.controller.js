@@ -15,7 +15,8 @@ export async function register(req, res) {
             team,
             email,
             password,
-            api
+            api,
+            system
         } = req.body
 
         let isUser = await userModel.find({ email: req.body.email })
@@ -32,7 +33,8 @@ export async function register(req, res) {
             team,
             email,
             password,
-            api
+            api,
+            system
         })
 
         const data = await user.save();

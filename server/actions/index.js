@@ -3,6 +3,7 @@ import {figmaApi, getFigmaApiHeaders} from "../utils/FigmaApi.js";
 import constants from "../config/constants.js";
 
 /**
+ * @param apiKey
  * @param teamId
  * @returns {Promise<*>}
  */
@@ -17,6 +18,7 @@ export async function apiGetFigmaTeamProjects(apiKey, teamId) {
 
 
 /**
+ * @param apiKey
  * @param projectId
  * @returns {Promise<*>}
  */
@@ -31,6 +33,7 @@ export async function apiGetFigmaProjectFiles(apiKey, projectId) {
 
 
 /**
+ * @param apiKey
  * @param fileId
  * @returns {Promise<*>}
  */
@@ -44,6 +47,7 @@ export async function apiGetFigmaFile(apiKey, fileId) {
 }
 
 /**
+ * @param apiKey
  * @param teamId
  * @returns {Promise<*>}
  */

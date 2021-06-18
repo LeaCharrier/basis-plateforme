@@ -14,7 +14,7 @@
       <div v-if="projects.length > 0 && !loading" class="items-list">
         <a v-for="(project) in projects" :key="project.id" class="item">
           <p class="item-title">{{ project.name }}</p>
-          <div v-for="(file) in project.files" :key="file.key" class="item-file">
+          <div v-for="(file) in project.files" :id="file.key" :key="file.key" class="item-file">
             <p class="item-fileName">{{ file.name }}</p>
             <p class="item-subtitle">Updated {{ getDate(file.last_modified) }}</p>
           </div>

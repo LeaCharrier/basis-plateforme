@@ -5,6 +5,7 @@ import './config/database.js';
 import FigmaRoutes  from './routes/figma.routes.js'
 import IssueRoutes  from './routes/issues.routes.js'
 import AuthRoutes  from './routes/auth.routes.js'
+import timeout from 'connect-timeout'
 
 const port = process.env.PORT || 5000;
 
@@ -13,8 +14,18 @@ dotenv.config({path: './config/.env'});
 
 // middleware
 app.use(express.json({
-    limit: '50mb'
+    limit: '20000mb'
 }));
+
+app.use(timeout(900000));
+
+app.use(haltOnTimedout);
+
+function haltOnTimedout(req, res, next){
+    if (!req.timedout) {
+        next()
+    }
+}
 
 app.use(cors());
 

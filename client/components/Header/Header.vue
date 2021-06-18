@@ -138,18 +138,46 @@ export default {
       this.logout()
     },
     handleClick () {
-      this.getColorUsage(this.user.team)
-      this.isLoad = true
+      if (this.user) {
+        this.getColorUsage(this.user.team)
+        this.isLoad = true
+      }
     },
     async getColorUsage (teamId) {
       try {
-        const config = {
-          headers: { Authorization: `Bearer ${this.user.token}` }
+        const api = this.user.api
+        const system = this.user.system
+
+        const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
+          api
+        })
+
+        const requests = []
+
+        for (const file of data) {
+          requests.push(this.$api.post(`figma/files/${file.key}`, { api }))
         }
 
-        const res = await this.$api.get(`figma/team/${teamId}/colors`, config)
-        this.$store.commit('usage/save', res.data.colors)
-        this.isLoad = false
+        Promise.all(requests)
+          .then(async (res) => {
+            let jsons = []
+
+            res.forEach((fileRes) => {
+              jsons = [...jsons, ...fileRes.data]
+            })
+
+            const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+              api,
+              system,
+              jsons
+            })
+
+            this.$store.commit('usage/save', colors.data.colors)
+          })
+          .catch((e) => {
+            // eslint-disable-next-line no-console
+            console.log(e)
+          })
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log(e)

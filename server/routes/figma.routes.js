@@ -4,9 +4,11 @@ import {
     getTeamProjects,
     getTeamProjectsPub,
     getTeamProjectsFiles,
+    getTeamProjectsFilesPub,
     getProjectFiles,
     getTeamProjectFilesByIndex,
     getFile,
+    getFilePub,
     getFileByIndex,
     getTeamProjectFileByIndexes,
     getTeamStyles,
@@ -30,6 +32,7 @@ router.post('/team/:teamId/projects', getTeamProjectsPub);
 
 // Get Team Projects and Files By TeamID
 router.get('/team/:teamId/projects/files', AuthMiddleware, getTeamProjectsFiles);
+router.post('/team/:teamId/projects/files', getTeamProjectsFilesPub);
 router.get('/team/:teamId/files', AuthMiddleware, getTeamFiles);
 
 // Get Project Files By ProjectID
@@ -43,6 +46,7 @@ router.get('/team/:teamId/projects/i/:projectIndex/files', AuthMiddleware, getTe
 router.get('/team/:teamId/projects/:projectId/files/:fileId', AuthMiddleware, getFile);
 router.get('/projects/:projectId/files/:fileId', AuthMiddleware, getFile);
 router.get('/files/:fileId', AuthMiddleware, getFile);
+router.post('/files/:fileId', getFilePub);
 
 // Get Project File by index
 router.get('/team/:teamId/projects/:projectId/files/i/:fileIndex', AuthMiddleware, getFileByIndex);

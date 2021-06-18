@@ -36,7 +36,7 @@
         :title="`Referenced colors (${(!loading && colorUsage && colorUsage.data && colorUsage.data.totalReferenced) ? colorUsage.data.totalReferenced : 0})`"
         :total-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.totalReferencedUsed) ? colorUsage.data.totalReferencedUsed : 0"
         :total-unused="(!loading && colorUsage && colorUsage.data && colorUsage.data.totalUnreferencedUsed) ? colorUsage.data.totalUnreferencedUsed : 0"
-        :pourcentage-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.percentReferenced) ? colorUsage.data.percentReferenced : 0"
+        :pourcentage-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.percentReferenced) ? Math.round(colorUsage.data.percentReferenced) : 0"
         :loading="loading"
       />
 

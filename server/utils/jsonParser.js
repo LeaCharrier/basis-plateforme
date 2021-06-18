@@ -3,7 +3,7 @@ import { ColorUsage } from './ColorUsage.js';
 export function jsonParser(jsons, ref) {
 
     let colorUsage = new ColorUsage(ref);
-    
+
     // Properties of interest
     const properties = {
         hex: color => {
@@ -29,7 +29,7 @@ export function jsonParser(jsons, ref) {
 
     // Interpret the extracted data
     colorUsage.calc(colorUsage.colors);
-    
+
     // Return data
     return colorUsage;
 
