@@ -83,7 +83,7 @@ export default {
           requests.push(this.$api.post(`figma/files/${file.key}`, { api }))
         }
 
-        Promise.all(requests)
+        Promise.allSettled(requests)
           .then(async (res) => {
             let jsons = []
 
