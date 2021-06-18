@@ -9,7 +9,7 @@
       />
       <List
         title="Projects"
-        link="false"
+        :link="false"
         :total="Number((objectColor.data.projects.length).toFixed(1))"
         :subtitle="'Top ' + objectColor.data.projects.length + ' projects'"
         :objectProject="objectColor.data"
@@ -24,7 +24,7 @@
       />
       <List
         title="Aliases"
-        link="false"
+        :link="false"
         :total="objectColor.data.types.length"
         :subtitle="'Top ' + objectColor.data.types.length +' Aliases'"
         :objectAliases="objectColor.data"
