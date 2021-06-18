@@ -107,7 +107,7 @@
                 />
                 <CustomInput
                   ref="signup-api"
-                  label="Clé API"
+                  label="API Key"
                   placeholder="23456787654323456"
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
