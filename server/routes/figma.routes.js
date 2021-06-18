@@ -63,7 +63,7 @@ router.get('/team/:teamId/colors', AuthMiddleware, getColorAnalysis);
 router.post('/team/:teamId/colors', getColorAnalysisPub);
 
 // TEST ROUTE ANLY FOR DEV PURPOSES
-router.post('/test', AuthMiddleware, test);
+router.post('/test', test);
 
 
 export default router;

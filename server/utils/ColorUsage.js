@@ -82,7 +82,7 @@ export class ColorUsage {
         c.data.types[color.type] ? c.data.types[color.type] += 1 : c.data.types[color.type] = 1;
 
         // Increment the number of times the color is used in this project
-        if(c.data.projects[color.project.key]) {
+        if(c.data.projects[color.project.key]) {
             c.data.projects[color.project.key].used += 1;
         } else {
             c.data.projects[color.project.key] = {
@@ -92,7 +92,7 @@ export class ColorUsage {
         }
 
         // Save projects in which colors are used
-        if(this.colors.data.projects[color.project.key]) {
+        if(this.colors.data.projects[color.project.key]) {
             this.colors.data.projects[color.project.key].used += 1;
         } else {
             this.colors.data.projects[color.project.key] = {
@@ -202,7 +202,7 @@ export class ColorUsage {
                 // Main type(s) of element(s) on which the color is applied.
                 let typeUsed = 0;
                 Object.entries(color.data.types).forEach(([type, used]) => {
-                    if(used >= typeUsed) {
+                    if(used >= typeUsed) {
                         used > typeUsed && (color.data.mainTypes = []);
                         color.data.mainTypes.push(type);
                         typeUsed = used;

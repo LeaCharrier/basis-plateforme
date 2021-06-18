@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/models/Team.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/nuxt.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/plugins/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/figma.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/figma.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/utils/ColorUsage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/ColorUsage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +54,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../messika" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/models" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -67,11 +72,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\basis-plateforme\server\models" />
       <recent name="C:\wamp64\www\basis-plateforme\server\controllers" />
       <recent name="C:\wamp64\www\basis-plateforme\server\routes" />
       <recent name="C:\wamp64\www\basis-plateforme" />
       <recent name="C:\wamp64\www\basis-plateforme\client\static\img" />
-      <recent name="C:\wamp64\www\basis-plateforme\plugin\src\ui\modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\basis-plateforme\client\pages\colors\_color" />
@@ -121,7 +126,7 @@
       <workItem from="1623271415312" duration="3122000" />
       <workItem from="1623964912337" duration="6079000" />
       <workItem from="1624007540086" duration="8739000" />
-      <workItem from="1624041119555" duration="7986000" />
+      <workItem from="1624041119555" duration="17696000" />
     </task>
     <servers />
   </component>
@@ -143,7 +148,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server/controllers/figma.controller.js</url>
-          <line>24</line>
+          <line>25</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">

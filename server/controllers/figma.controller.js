@@ -1,4 +1,5 @@
 import {jsonModel} from '../models/jsonFigma.model.js';
+import {teamModel} from "../models/Team.model.js";
 import {jsonParser} from '../utils/jsonParser.js';
 import {
     apiGetFigmaTeamProjects,
@@ -101,7 +102,6 @@ export async function getTeamProjectsFiles(req, res) {
         teamId
     } = req.params
 
-
     const {
         userData
     } = req
@@ -132,7 +132,6 @@ export async function getTeamProjectsFilesPub(req, res) {
     const {
         teamId
     } = req.params
-
 
     const {
         api
@@ -306,8 +305,6 @@ export async function getFilePub(req, res) {
 
         res.status(200).send(formatedFile);
     } catch (err) {
-        console.log("efzffezfezfezfze")
-        console.log(err)
         res.status(400).send({err});
     }
 }
@@ -420,11 +417,33 @@ export async function push(req, res) {
  * @param res
  */
 export async function test(req, res) {
+    const {
+        team
+    } = req.body
+
     try {
-        console.log(req.body)
-        console.log(jsonFileFormat(req.body.content))
-        res.status(201).json(req.body);
+        const { colors } = jsonFileFormat(req.body.content)
+
+        let existingTeam = await teamModel.findOne({ teamId: team })
+
+        let response
+
+        if (existingTeam) {
+            existingTeam.colors = colors
+
+            response = await existingTeam.save()
+        } else {
+            const newTeam = new teamModel({
+                teamId: team,
+                colors
+            })
+
+            response = await newTeam.save()
+        }
+
+        res.status(201).json(response);
     } catch (err) {
+        console.log(err)
         res.status(400).send({err});
     }
 }

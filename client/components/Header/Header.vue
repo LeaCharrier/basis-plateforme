@@ -19,15 +19,15 @@
 
     <div class="header-infos">
       <div class="header-infos-btn">
-        <button v-if="!isLoad" class="txt_body btn" @click="handleClick">
-          Update data
-        </button>
-        <div v-else class="txt_body is-btn loading">
-          <div class="lds-ring">
-            <div /><div /><div /><div />
-          </div>
-          Update data
-        </div>
+        <!--<button v-if="!isLoad" class="txt_body btn" @click="handleClick">-->
+        <!--  Update data-->
+        <!--</button>-->
+        <!--<div v-else class="txt_body is-btn loading">-->
+        <!--  <div class="lds-ring">-->
+        <!--    <div /><div /><div /><div />-->
+        <!--  </div>-->
+        <!--  Update data-->
+        <!--</div>-->
       </div>
       <div class="dropdown" :class="{'open': isOpen}">
         <div class="dropbtn" @click="handleDropDown">
