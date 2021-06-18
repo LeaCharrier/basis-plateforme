@@ -51,8 +51,13 @@ export async function getTeamProjects(req, res) {
         teamId
     } = req.params
 
+
+    const {
+        userData
+    } = req
+
     try {
-        const json = await apiGetFigmaTeamProjects(teamId)
+        const json = await apiGetFigmaTeamProjects(userData.api, teamId)
 
         res.status(200).send(json);
     }
