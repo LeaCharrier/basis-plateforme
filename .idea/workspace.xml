@@ -7,8 +7,6 @@
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/colors/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/colors/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,7 @@
       <workItem from="1623271415312" duration="3122000" />
       <workItem from="1623964912337" duration="6079000" />
       <workItem from="1624007540086" duration="8739000" />
-      <workItem from="1624041119555" duration="18491000" />
+      <workItem from="1624041119555" duration="19761000" />
     </task>
     <servers />
   </component>

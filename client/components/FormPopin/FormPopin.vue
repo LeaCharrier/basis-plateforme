@@ -332,26 +332,32 @@ export default {
           api
         })
 
-        let jsons = []
+        const requests = []
 
         for (const file of data) {
-          await this.$api.post(`figma/files/${file.key}`, { api })
-            .then((res) => {
-              jsons = [...jsons, ...res.data]
-            })
-            .catch((e) => {
-              // eslint-disable-next-line no-console
-              console.log(e)
-            })
+          this.$api.post(`figma/files/${file.key}`, { api })
         }
 
-        const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
-          api,
-          system,
-          jsons
-        })
+        Promise.allSettled(requests)
+          .then(async (res) => {
+            let jsons = []
 
-        this.$store.commit('usage/save', colors.data.colors)
+            res.forEach((fileRes) => {
+              jsons = [...jsons, ...fileRes.data]
+            })
+
+            const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+              api,
+              system,
+              jsons
+            })
+
+            this.$store.commit('usage/save', colors.data.colors)
+          })
+          .catch((e) => {
+            // eslint-disable-next-line no-console
+            console.log(e)
+          })
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log(e)
