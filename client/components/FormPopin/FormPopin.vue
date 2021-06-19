@@ -335,7 +335,7 @@ export default {
         const requests = []
 
         for (const file of data) {
-          this.$api.post(`figma/files/${file.key}`, { api })
+          requests.push(this.$api.post(`figma/files/${file.key}`, { api }))
         }
 
         Promise.allSettled(requests)
@@ -343,7 +343,13 @@ export default {
             let jsons = []
 
             res.forEach((fileRes) => {
-              jsons = [...jsons, ...fileRes.data]
+              if (fileRes.data && fileRes.data.length) {
+                jsons = [...jsons, ...fileRes.data]
+              }
+
+              if (fileRes.value && fileRes.value.data && fileRes.value.data.length) {
+                jsons = [...jsons, ...fileRes.value.data]
+              }
             })
 
             const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
@@ -352,7 +358,7 @@ export default {
               jsons
             })
 
-            this.$store.commit('usage/save', colors.data.colors)
+            this.$store.commit('usage/save', colors.data)
           })
           .catch((e) => {
             // eslint-disable-next-line no-console

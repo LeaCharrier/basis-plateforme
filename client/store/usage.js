@@ -4,8 +4,16 @@ export const state = () => ({
 
 export const mutations = {
   save (state, usage) {
-    state.colors = usage
-    console.log(state.colors)
+    state.colors = {
+      ...usage.colors,
+      baseColor: usage.baseColor
+    }
+  }
+}
+
+export const getters = {
+  getColors (state) {
+    return state.colors
   }
 }
 

@@ -4,7 +4,7 @@
       <List
         title="Total colors on the library"
         :link="true"
-        :total="(!loading && colorUsage && colorUsage.data && colorUsage.data.totalUsed) ? colorUsage.data.totalUsed : 0"
+        :total="(!loading && colorUsage && colorUsage.baseColor && colorUsage.baseColor.length) ? colorUsage.baseColor.length : 0"
         subtitle="Top 3 colors used"
         :object1="(!loading && colorUsage && colorUsage.data && colorUsage.data.mostAttached) ? colorUsage.data.mostAttached : []"
         :object2="(!loading && colorUsage && colorUsage.data && colorUsage.data.mostDetached) ? colorUsage.data.mostDetached : []"
@@ -74,7 +74,8 @@ export default {
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts',
-      getUser: 'localStorage/getUser'
+      getUser: 'localStorage/getUser',
+      getColors: 'usage/getColors'
     }),
     texts () {
       return this.getTexts
@@ -83,7 +84,7 @@ export default {
       return this.getUser
     },
     colorUsage () {
-      return this.$store.state.usage.colors
+      return this.getColors
     }
   },
   watch: {

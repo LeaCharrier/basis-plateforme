@@ -424,6 +424,8 @@ export async function test(req, res) {
     try {
         const { colors } = jsonFileFormat(req.body.content)
 
+        console.log(colors.length)
+
         let existingTeam = await teamModel.findOne({ teamId: team })
 
         let response
@@ -544,7 +546,7 @@ export async function getColorAnalysisPub(req, res) {
         const props = await apiGetFigmaFile(api, system);
         const formatedProps = fileFormat(props);
         const refencedColors = referenceColors(colors, formatedProps);
-        const colorUsage = jsonParser(jsons, refencedColors);
+        const colorUsage = jsonParser(jsons, refencedColors, colors);
 
         res.status(200).send(colorUsage)
     } catch (err) {

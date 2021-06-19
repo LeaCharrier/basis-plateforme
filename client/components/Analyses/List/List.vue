@@ -18,7 +18,7 @@
         {{ subtitle }}
       </p>
       <div v-if="link" class="items-list link">
-        <div v-for="color in object1" :key="color.hex" class="color">
+        <div v-for="color in [...object1].slice(0, 3)" :key="color.hex" class="color">
           <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="item item-link">
             <p class="item-title">
               {{ color.name }}
@@ -35,7 +35,7 @@
           {{ subtitle2 }}
         </p>
         <div class="items-list link">
-          <div v-for="color in object2" :key="color.hex" class="color">
+          <div v-for="color in [...object2].reverse().slice(0, 3)" :key="color.hex" class="color">
             <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="item item-link">
               <p class="item-title">
                 {{ color.name }}
@@ -153,14 +153,14 @@ export default {
       default: () => []
     },
     objectProject: {
-      type: Array,
+      type: Object,
       required: false,
-      default: () => []
+      default: () => {}
     },
     objectAliases: {
-      type: Array,
+      type: Object,
       required: false,
-      default: () => []
+      default: () => {}
     },
     loading: {
       type: Boolean,

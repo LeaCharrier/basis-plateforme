@@ -150,6 +150,7 @@ export function referenceColors(colors, props) {
             [...colors].forEach((color, i) => {
                 if(prop.style === color.style) {
                     colors[i] = prop;
+                    colors[i].name = color.name;
                     colors[i].created_at = color.created_at;
                     colors[i].updated_at = color.updated_at;
                     colors[i].user = color.user;

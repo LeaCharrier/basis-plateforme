@@ -26,7 +26,7 @@ class Color {
 }
 
 export class ColorUsage {
-    constructor(colors) {
+    constructor(colors, baseColor) {
         this.colors = {
             referenced: new Object(),
             unreferenced: new Object(),
@@ -48,7 +48,9 @@ export class ColorUsage {
             }
         };
 
-        [...colors].forEach(color => {
+        this.baseColor = baseColor;
+
+        ([...colors]).forEach(color => {
             if (color.hex) {
                 this.colors.referenced[color.hex.toLowerCase()] = new Color(color, true);
             }
