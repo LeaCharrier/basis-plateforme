@@ -94,7 +94,7 @@ export default {
         const requests = []
 
         for (const file of data) {
-          requests.push(this.$api.get(`figma/files/${file.key}`, { api }))
+          requests.push(this.$api.get(`figma/files/${file.key}?api=${api}`, { api }))
         }
 
         Promise.allSettled(requests)

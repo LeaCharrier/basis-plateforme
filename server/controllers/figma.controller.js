@@ -289,7 +289,7 @@ export async function getFilePub(req, res) {
 
     const {
         api
-    } = req.body
+    } = req.query
 
     try {
         const file = await apiGetFigmaFile(api, fileId)
