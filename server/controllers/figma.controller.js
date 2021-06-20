@@ -537,13 +537,14 @@ export async function getColorAnalysisPub(req, res) {
     const {
         api,
         system,
+        systemFile,
         jsons
     } = req.body
 
     try {
         const styles = await apiGetFigmaTeamStyles(api, teamId);
         const colors = stylesFormat(styles);
-        const props = await apiGetFigmaFile(api, system);
+        const props = (systemFile) ? systemFile : await apiGetFigmaFile(api, system);
         const formatedProps = fileFormat(props);
         const refencedColors = referenceColors(colors, formatedProps);
         const colorUsage = jsonParser(jsons, refencedColors, colors);
@@ -555,3 +556,69 @@ export async function getColorAnalysisPub(req, res) {
         res.status(400).send({err});
     }
 }
+
+
+/**
+ * @Route /api/figma/team/:teamId/colors
+ * @Method POST
+ *
+ * @param req
+ * @param res
+ */
+// export async function getColorAnalysisPub(req, res) {
+//     const {
+//         teamId
+//     } = req.params
+//
+//     const {
+//         api,
+//         system
+//     } = req.query
+//
+//     try {
+//         console.log(1)
+//         let jsons = [];
+//         console.log(2)
+//         const styles = await apiGetFigmaTeamStyles(api, teamId);
+//         console.log(3)
+//         const colors = stylesFormat(styles);
+//         console.log(4)
+//         const props = await apiGetFigmaFile(api, system);
+//         console.log(5)
+//         const formatedProps = fileFormat(props);
+//         console.log(6)
+//         const refencedColors = referenceColors(colors, formatedProps);
+//         console.log(7)
+//         const teamProjects = await apiGetFigmaTeamProjects(api, teamId);
+//
+//         console.log(8)
+//         for (const project of teamProjects.projects) {
+//             let projectFiles = await apiGetFigmaProjectFiles(api, project.id);
+//
+//             if (projectFiles && projectFiles.files.length) {
+//                 for (const file of projectFiles.files) {
+//                     let json = await apiGetFigmaFile(api, file.key)
+//                     console.log(json)
+//                     if (json) {
+//                         let formatedJson = fileFormat(json, {
+//                             project: {
+//                                 key: file.key,
+//                                 name: file.name,
+//                                 last_modified: file.last_modified
+//                             }
+//                         });
+//                         jsons.push(formatedJson);
+//                     }
+//                 }
+//             }
+//         }
+//
+//         console.log(9)
+//         const colorUsage = jsonParser(jsons, refencedColors, colors);
+//         console.log(10)
+//         res.status(200).send(colorUsage)
+//     } catch (err) {
+//         console.log(err)
+//         res.status(400).send({err});
+//     }
+// }

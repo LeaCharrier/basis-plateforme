@@ -324,51 +324,36 @@ export default {
       }
     },
     async getColorUsage (teamId) {
-      try {
-        const api = (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
-        const system = (this.token && this.user && this.user.system) ? this.user.system : this.$refs['signup-system'].value
+      const api = (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
+      const system = (this.token && this.user && this.user.system) ? this.user.system : this.$refs['signup-system'].value
 
-        const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
-          api
-        })
+      const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
+        api
+      })
 
-        const requests = []
+      let jsons = []
+      let systemFile = null
 
-        for (const file of data) {
-          requests.push(this.$api.get(`figma/files/${file.key}?api=${api}`, { api }))
+      for (const file of data) {
+        const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
+
+        if (response.data) {
+          jsons = [...jsons, ...response.data]
+
+          if (file.key === system) {
+            systemFile = response.data
+          }
         }
-
-        Promise.allSettled(requests)
-          .then(async (res) => {
-            let jsons = []
-
-            res.forEach((fileRes) => {
-              if (fileRes.data && fileRes.data.length) {
-                jsons = [...jsons, ...fileRes.data]
-              }
-
-              if (fileRes.value && fileRes.value.data && fileRes.value.data.length) {
-                jsons = [...jsons, ...fileRes.value.data]
-              }
-            })
-
-            const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
-              api,
-              system,
-              jsons
-            })
-
-            this.$store.commit('usage/save', colors.data)
-          })
-          .catch((e) => {
-            // eslint-disable-next-line no-console
-            console.log(e)
-          })
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log(e)
-        return false
       }
+
+      const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+        api,
+        system,
+        systemFile,
+        jsons
+      })
+
+      this.$store.commit('usage/save', colors.data)
     },
     async getTeam (teamId) {
       try {

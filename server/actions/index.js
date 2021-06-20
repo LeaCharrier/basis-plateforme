@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import {figmaApi, getFigmaApiHeaders} from "../utils/FigmaApi.js";
-import constants from "../config/constants.js";
 
 /**
  * @param apiKey
@@ -28,7 +27,12 @@ export async function apiGetFigmaProjectFiles(apiKey, projectId) {
         headers: getFigmaApiHeaders(apiKey)
     })
 
-    return await data.json()
+    try {
+        return await data.json()
+    } catch (err) {
+        console.log(err)
+        return null
+    }
 }
 
 
@@ -41,9 +45,15 @@ export async function apiGetFigmaFile(apiKey, fileId) {
     const data = await fetch(figmaApi.file(fileId), {
         method: 'GET',
         headers: getFigmaApiHeaders(apiKey)
-    }).catch(e => console.log(e))
+    })
 
-    return await data.json()
+    try {
+        return await data.json()
+    } catch (err) {
+        console.log('file error')
+        console.log(err)
+        return null
+    }
 }
 
 /**

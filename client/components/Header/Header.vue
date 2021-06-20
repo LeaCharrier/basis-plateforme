@@ -147,43 +147,33 @@ export default {
       try {
         const api = this.user.api
         const system = this.user.system
-
         const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
           api
         })
 
-        const requests = []
+        let jsons = []
+        let systemFile = null
 
         for (const file of data) {
-          requests.push(this.$api.get(`figma/files/${file.key}?api=${api}`, { api }))
+          const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
+
+          if (response.data) {
+            jsons = [...jsons, ...response.data]
+
+            if (file.key === system) {
+              systemFile = response.data
+            }
+          }
         }
 
-        Promise.allSettled(requests)
-          .then(async (res) => {
-            let jsons = []
+        const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+          api,
+          system,
+          systemFile,
+          jsons
+        })
 
-            res.forEach((fileRes) => {
-              if (fileRes.data && fileRes.data.length) {
-                jsons = [...jsons, ...fileRes.data]
-              }
-
-              if (fileRes.value && fileRes.value.data && fileRes.value.data.length) {
-                jsons = [...jsons, ...fileRes.value.data]
-              }
-            })
-
-            const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
-              api,
-              system,
-              jsons
-            })
-
-            this.$store.commit('usage/save', colors.data)
-          })
-          .catch((e) => {
-            // eslint-disable-next-line no-console
-            console.log(e)
-          })
+        this.$store.commit('usage/save', colors.data)
       } catch (e) {
         // eslint-disable-next-line no-console
         console.log(e)

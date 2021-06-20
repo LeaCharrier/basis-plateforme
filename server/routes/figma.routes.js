@@ -59,7 +59,7 @@ router.get('/team/:teamId/projects/i/:projectIndex/files/i/:fileIndex', AuthMidd
 router.get('/team/:teamId/styles', AuthMiddleware, getTeamStyles);
 
 // Get Color Analysis
-router.get('/team/:teamId/colors', AuthMiddleware, getColorAnalysis);
+// router.get('/team/:teamId/colors', AuthMiddleware, getColorAnalysis);
 router.post('/team/:teamId/colors', getColorAnalysisPub);
 
 // TEST ROUTE ANLY FOR DEV PURPOSES

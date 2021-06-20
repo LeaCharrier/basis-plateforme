@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/utils/FigmaApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/FigmaApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/FormPopin/FormPopin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Header/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Header/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/colors/_color/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/colors/_color/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/colors/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/colors/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/plugins/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/figma.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/figma.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,12 +86,16 @@
       <recent name="C:\wamp64\www\basis-plateforme\client\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.index.js">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server/actions/index.js" working-dir="$PROJECT_DIR$/server/actions">
+      <method v="2" />
+    </configuration>
     <configuration name="jsonParser.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server/utils/jsonParser.js" working-dir="$PROJECT_DIR$/server/utils">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.index.js" />
         <item itemvalue="Node.js.jsonParser.js" />
       </list>
     </recent_temporary>
@@ -122,7 +133,7 @@
       <workItem from="1624007540086" duration="8739000" />
       <workItem from="1624041119555" duration="27788000" />
       <workItem from="1624220204194" duration="114000" />
-      <workItem from="1624220859281" duration="2574000" />
+      <workItem from="1624220859281" duration="9974000" />
     </task>
     <servers />
   </component>
