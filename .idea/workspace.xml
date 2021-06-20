@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="" />
+    <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/plugins/axios.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +120,8 @@
       <workItem from="1623271415312" duration="3122000" />
       <workItem from="1623964912337" duration="6079000" />
       <workItem from="1624007540086" duration="8739000" />
-      <workItem from="1624041119555" duration="26639000" />
+      <workItem from="1624041119555" duration="27788000" />
+      <workItem from="1624220204194" duration="8000" />
     </task>
     <servers />
   </component>
@@ -150,7 +154,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/plugins/axios.js</url>
           <line>5</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
