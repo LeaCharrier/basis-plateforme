@@ -33,6 +33,7 @@ export default {
     window.removeEventListener('resize', this.onResize)
   },
   mounted () {
+    console.log('mounted App')
     this.setTexts(text)
     this.$nextTick(() => {
       window.addEventListener('resize', this.onResize)
