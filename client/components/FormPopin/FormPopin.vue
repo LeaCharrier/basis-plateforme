@@ -327,15 +327,23 @@ export default {
       try {
         const api = (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
         const system = (this.token && this.user && this.user.system) ? this.user.system : this.$refs['signup-system'].value
+        const headers = {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+          'Accept-Encoding': 'gzip, deflate, br',
+          Accept: '*/*',
+          'Cache-Control': 'no-cache',
+          Connection: 'keep-alive'
+        }
 
         const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
           api
-        })
+        }, headers)
 
         const requests = []
 
         for (const file of data) {
-          requests.push(this.$api.post(`figma/files/${file.key}`, { api }))
+          requests.push(this.$api.post(`figma/files/${file.key}`, { api }, headers))
         }
 
         Promise.allSettled(requests)
@@ -356,7 +364,7 @@ export default {
               api,
               system,
               jsons
-            })
+            }, headers)
 
             this.$store.commit('usage/save', colors.data)
           })

@@ -7,6 +7,12 @@ export const figmaApi = {
 
 export const getFigmaApiHeaders = (apiKey) => {
     return {
-        'X-Figma-Token': apiKey
+        'X-Figma-Token': apiKey,
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Accept-Encoding': 'gzip, deflate, br',
+        Accept: '*/*',
+        'Cache-Control': 'no-cache',
+        Connection: 'keep-alive'
     }
 }
