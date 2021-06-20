@@ -45,7 +45,7 @@ router.get('/team/:teamId/projects/i/:projectIndex/files', AuthMiddleware, getTe
 // Get File By FileID
 router.get('/team/:teamId/projects/:projectId/files/:fileId', AuthMiddleware, getFile);
 router.get('/projects/:projectId/files/:fileId', AuthMiddleware, getFile);
-router.get('/files/:fileId', AuthMiddleware, getFile);
+router.get('/files/:fileId', getFilePub);
 router.post('/files/:fileId', getFilePub);
 
 // Get Project File by index
