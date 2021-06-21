@@ -46,7 +46,7 @@
                   <!-- TODO: Pass popin.statusId -->
                   <Select
                     :has-label="true"
-                    title="Statut"
+                    title="Status"
                     for="progress"
                     :options="status"
                     :selected="statusId"
