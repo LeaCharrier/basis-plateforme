@@ -11,6 +11,16 @@
   background-color: $bgPopin;
   z-index: 123456;
 
+  .inline-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .input {
+      max-width: 48%;
+    }
+  }
+
   .popin {
     background: $white;
     border-radius: 16px;
@@ -39,8 +49,8 @@
     }
 
     &-contentForm {
-      width: 420px;
-      padding: 56px 40px;
+      width: 460px;
+      padding: 30px 40px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;

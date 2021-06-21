@@ -63,22 +63,24 @@
               </p>
 
               <div class="step1" :class="{ 'is-hidden': step !== 1 }">
-                <CustomInput
-                  ref="signup-firstname"
-                  label="Firstname"
-                  placeholder="Sabrina"
-                  type="text"
-                  :validator="(v) => checkString(v, 0)"
-                  error-msg="Invalid fields"
-                />
-                <CustomInput
-                  ref="signup-lastname"
-                  label="Lastname"
-                  placeholder="Nedjah"
-                  type="text"
-                  :validator="(v) => checkString(v, 0)"
-                  error-msg="Invalid fields"
-                />
+                <div class="inline-input">
+                  <CustomInput
+                    ref="signup-firstname"
+                    label="Firstname"
+                    placeholder="Sabrina"
+                    type="text"
+                    :validator="(v) => checkString(v, 0)"
+                    error-msg="Invalid fields"
+                  />
+                  <CustomInput
+                    ref="signup-lastname"
+                    label="Lastname"
+                    placeholder="Nedjah"
+                    type="text"
+                    :validator="(v) => checkString(v, 0)"
+                    error-msg="Invalid fields"
+                  />
+                </div>
                 <CustomInput
                   ref="signup-email"
                   label="Email"
@@ -87,8 +89,6 @@
                   :validator="(v) => checkEmail(v)"
                   error-msg="Invalid fields"
                 />
-              </div>
-              <div class="step2" :class="{ 'is-hidden': step !== 2 }">
                 <CustomInput
                   ref="signup-pass"
                   label="Password"
@@ -105,6 +105,24 @@
                   :validator="(v) => checkPassDouble(v)"
                   error-msg="Invalid fields"
                 />
+              </div>
+              <div class="step2" :class="{ 'is-hidden': step !== 2 }">
+                <!-- <CustomInput
+                  ref="signup-pass"
+                  label="Password"
+                  placeholder="***"
+                  type="password"
+                  :validator="(v) => checkString(v, 3)"
+                  error-msg="Invalid fields"
+                />
+                <CustomInput
+                  ref="signup-check"
+                  label="Confirm Password"
+                  placeholder="***"
+                  type="password"
+                  :validator="(v) => checkPassDouble(v)"
+                  error-msg="Invalid fields"
+                /> -->
                 <CustomInput
                   ref="signup-api"
                   label="API Key"
@@ -391,9 +409,6 @@ export default {
       const email = emailField.value
       emailField.handleChange()
 
-      return this.checkString(lastname, 0) && this.checkString(firstname, 0) && this.checkEmail(email)
-    },
-    checkStep2 () {
       const passField = this.$refs['signup-pass']
       const pass = passField.value
       passField.handleChange()
@@ -402,6 +417,9 @@ export default {
       const check = checkField.value
       checkField.handleChange()
 
+      return (pass === check) && this.checkString(pass, 3) && this.checkString(lastname, 0) && this.checkString(firstname, 0) && this.checkEmail(email)
+    },
+    checkStep2 () {
       const teamField = this.$refs['signup-team']
       const team = teamField.value
       teamField.handleChange()
@@ -414,7 +432,7 @@ export default {
       const system = systemField.value
       systemField.handleChange()
 
-      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0) && this.checkString(api, 0) && this.checkString(system, 0)
+      return this.checkString(team, 0) && this.checkString(api, 0) && this.checkString(system, 0)
     },
     checkString (str, len) {
       return str.length > len
