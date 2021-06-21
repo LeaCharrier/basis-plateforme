@@ -19,29 +19,29 @@ app.use(express.json({
 
 app.use(timeout(900000));
 
-app.use(haltOnTimedout);
-
-function haltOnTimedout(req, res, next){
-    if (!req.timedout) {
-        next()
-    }
-}
+// app.use(haltOnTimedout);
+//
+// function haltOnTimedout(req, res, next){
+//     if (!req.timedout) {
+//         next()
+//     }
+// }
 
 app.use(cors());
 
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
-
-    // intercept OPTIONS method
-    if ('OPTIONS' === req.method) {
-        res.send(200)
-    }
-    else {
-        next()
-    }
-});
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
+//
+//     // intercept OPTIONS method
+//     if ('OPTIONS' === req.method) {
+//         res.send(200)
+//     }
+//     else {
+//         next()
+//     }
+// });
 
 const extendTimeoutMiddleware = (req, res, next) => {
     const space = ' ';
@@ -60,20 +60,24 @@ const extendTimeoutMiddleware = (req, res, next) => {
     });
 
     res.once('finish', () => {
+        console.log('finish')
         isFinished = true;
     });
 
     res.once('end', () => {
+        console.log('end')
         isFinished = true;
     });
 
     res.once('close', () => {
+        console.log('close')
         isFinished = true;
     });
 
     res.on('data', (data) => {
         // Look for something other than our blank space to indicate that real
         // data is now being sent back to the client.
+        console.log('data')
         if (data !== space) {
             isDataSent = true;
         }
@@ -84,9 +88,11 @@ const extendTimeoutMiddleware = (req, res, next) => {
             // If the response hasn't finished and hasn't sent any data back....
             if (!isFinished && !isDataSent) {
                 // Need to write the status code/headers if they haven't been sent yet.
-                if (!res.headersSent && !headerWrote) {
-                    headerWrote = true
-                    res.writeHead(202)
+                if (!res.headersSent) {
+                    console.log('rewrite')
+                    // console.log(headerWrote)
+                    // headerWrote = true
+                    res.writeHead(202, { 'Content-Type': 'application/json' })
                 }
 
                 res.write(space);

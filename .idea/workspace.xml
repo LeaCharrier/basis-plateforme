@@ -7,6 +7,8 @@
     <list default="true" id="b705ab76-3db2-46eb-8f87-77d2186b3c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/plugins/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/figma.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/figma.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +129,7 @@
       <workItem from="1624007540086" duration="8739000" />
       <workItem from="1624041119555" duration="27788000" />
       <workItem from="1624220204194" duration="114000" />
-      <workItem from="1624220859281" duration="15851000" />
+      <workItem from="1624220859281" duration="20930000" />
     </task>
     <servers />
   </component>

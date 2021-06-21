@@ -59,9 +59,9 @@ export async function getTeamProjects(req, res) {
     try {
         const json = await apiGetFigmaTeamProjects(userData.api, teamId)
 
-        res.status(200).send(json);
+        res.end(JSON.stringify(json));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -84,9 +84,9 @@ export async function getTeamProjectsPub(req, res) {
     try {
         const json = await apiGetFigmaTeamProjects(api, teamId)
 
-        res.status(200).send(json);
+        res.end(JSON.stringify(json));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -115,9 +115,9 @@ export async function getTeamProjectsFiles(req, res) {
             p.files = files || []
         }
 
-        res.status(200).send(team);
+        res.end(JSON.stringify(team));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -148,9 +148,9 @@ export async function getTeamProjectsFilesPub(req, res) {
             list = [...files, ...list]
         }
 
-        res.status(200).send(list);
+        res.end(JSON.stringify(list));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -181,9 +181,9 @@ export async function getTeamFiles(req, res) {
             fileList = [...fileList, ...(files || [])]
         }
 
-        res.status(200).send(fileList);
+        res.end(JSON.stringify(fileList));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -207,9 +207,9 @@ export async function getProjectFiles(req, res) {
     try {
         const json = await apiGetFigmaProjectFiles(userData.api, projectId)
 
-        res.status(200).send(json);
+        res.end(JSON.stringify(json));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -240,9 +240,9 @@ export async function getTeamProjectFilesByIndex(req, res) {
 
         const projectFiles = await apiGetFigmaProjectFiles(userData.api, project.id)
 
-        res.status(200).send(projectFiles);
+        res.end(JSON.stringify(projectFiles));
     } catch (err) {
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}));
     }
 }
 
@@ -292,8 +292,9 @@ export async function getFilePub(req, res) {
     } = req.query
 
     try {
+        console.log('1')
         const file = await apiGetFigmaFile(api, fileId)
-
+        console.log('2')
         const formatedFile = fileFormat(file, {
                 project: {
                     key: file.key,
@@ -303,9 +304,10 @@ export async function getFilePub(req, res) {
             }
         )
 
-        res.status(200).send({formated: formatedFile, raw: file});
+        console.log('done')
+        res.end(JSON.stringify({formated: formatedFile, raw: file}));
     } catch (err) {
-        res.status(200).send(null);
+        res.end(null);
     }
 }
 
@@ -549,11 +551,11 @@ export async function getColorAnalysisPub(req, res) {
         const refencedColors = referenceColors(colors, formatedProps);
         const colorUsage = jsonParser(jsons, refencedColors, colors);
 
-        res.status(200).send(colorUsage)
+        res.end(JSON.stringify(colorUsage))
     } catch (err) {
         console.log("err colors")
         console.log(err)
-        res.status(400).send({err});
+        res.end(JSON.stringify({err}))
     }
 }
 

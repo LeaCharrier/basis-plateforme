@@ -47,6 +47,10 @@ export async function apiGetFigmaFile(apiKey, fileId) {
         headers: getFigmaApiHeaders(apiKey)
     })
 
+    console.log('data file')
+    console.log(data)
+    console.log(data.json)
+
     try {
         return await data.json()
     } catch (err) {
