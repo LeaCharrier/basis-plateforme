@@ -71,7 +71,7 @@ export default {
   mounted () {
     this.colorHex = this.$route.params.color
 
-    if (this.colors.length) {
+    if (this.colors.referenced && this.colors.referenced.length) {
       this.objectColor = this.getColorData(this.colorHex)
     } else if (this.user) {
       this.getColorUsage()
@@ -82,6 +82,7 @@ export default {
       return this.colors.referenced.find(({ hex }) => hex === hexa)
     },
     async getColorUsage () {
+      this.loading = true
       const teamId = this.user.team
       const api = this.user.api
       const system = this.user.system
