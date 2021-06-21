@@ -12,12 +12,6 @@
         subtitle2="Top 3 colors DETACHED"
         :loading="loading"
       />
-      <!-- <Date
-        title="Json Updated"
-        total="12"
-        subtitle="Last update"
-        date="20/06/2021"
-      /> -->
     </div>
     <div class="dashboard-colone">
       <Issues
@@ -26,12 +20,6 @@
       />
     </div>
     <div class="dashboard-colone">
-      <!-- total designers mettre le nombre de personne connecté sur le team id du figma -->
-      <Team
-        title="Team members"
-      />
-
-      <!-- mettre le chiffre entre parenthèse -->
       <Pourcentage
         :title="`Referenced colors (${(!loading && colorUsage && colorUsage.data && colorUsage.data.totalReferenced) ? colorUsage.data.totalReferenced : 0})`"
         :total-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.totalReferencedUsed) ? colorUsage.data.totalReferencedUsed : 0"
@@ -39,9 +27,11 @@
         :pourcentage-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.percentReferenced) ? Math.round(colorUsage.data.percentReferenced) : 0"
         :loading="loading"
       />
-
       <Projects
         title="Total projects"
+      />
+      <Team
+        title="Team members"
       />
     </div>
   </div>
