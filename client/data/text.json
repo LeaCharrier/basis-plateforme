@@ -18,7 +18,7 @@
   "ISSUES_TITLE": "Issues",
   "ISSUES_DESCRIPTION": "An issue should describe a task with a clear, defined outcome. <br>This could be a piece of code, design, document, or action to be taken.",
   "ISSUES_STATUS_POPIN_NEW_TITLE": "Add an issue",
-  "ISSUES_STATUS_POPIN_UPDATE_TITLE": "Edit Issue",
+  "ISSUES_STATUS_POPIN_UPDATE_TITLE": "Edit issue",
   "SETTINGS_TITLE": "Settings",
   "SETTINGS_DESCRIPTION": "Welcome back, %firstname%! You will find general <br> information about your account.",
   "SETTINGS_NAV":[
