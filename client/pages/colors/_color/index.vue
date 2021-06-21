@@ -111,9 +111,8 @@ export default {
         systemFile,
         jsons
       })
-
-      this.$store.commit('usage/save', colors.data)
       this.loading = false
+      this.$store.commit('usage/save', colors.data)
     }
   }
 }
