@@ -1,6 +1,7 @@
 <template>
   <div class="input" :class="{ error }">
     <p class="txt_body label" v-html="label" />
+    <p class="legende" v-if="description.length" v-html="description" />
     <input
       v-model="value"
       class="txt_body"
@@ -46,6 +47,11 @@ export default {
       default: null
     },
     errorMsg: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    description: {
       type: String,
       required: false,
       default: ''

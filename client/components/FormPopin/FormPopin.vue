@@ -107,22 +107,6 @@
                 />
               </div>
               <div class="step2" :class="{ 'is-hidden': step !== 2 }">
-                <!-- <CustomInput
-                  ref="signup-pass"
-                  label="Password"
-                  placeholder="***"
-                  type="password"
-                  :validator="(v) => checkString(v, 3)"
-                  error-msg="Invalid fields"
-                />
-                <CustomInput
-                  ref="signup-check"
-                  label="Confirm Password"
-                  placeholder="***"
-                  type="password"
-                  :validator="(v) => checkPassDouble(v)"
-                  error-msg="Invalid fields"
-                /> -->
                 <CustomInput
                   ref="signup-api"
                   label="API Key"
@@ -130,6 +114,7 @@
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
+                  description="You will find it in the settings, generate it"
                 />
                 <CustomInput
                   ref="signup-team"
@@ -138,6 +123,7 @@
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
+                  description="The team id can be found inside the search bar once the project is clicked"
                 />
                 <CustomInput
                   ref="signup-system"
@@ -146,6 +132,7 @@
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
+                  description="The file ID can be found inside the search bar once the file is opened"
                 />
               </div>
             </div>
