@@ -1,7 +1,7 @@
 <template>
   <aside>
     <h2 class="design-title txt_body" :class="{'txt-load-dark empty-txt-small': !name, 'hidden-label': (!loading && !name)}">
-      {{ name ? name : 'name' }} Design System
+      {{ name ? name : 'name' }} design system
     </h2>
     <p class="design-subtitle txt_note" :class="{'txt-load-dark empty-txt-small': !name, 'hidden-label': (!loading && !name)}">
       {{ getName(name) }}/design-system

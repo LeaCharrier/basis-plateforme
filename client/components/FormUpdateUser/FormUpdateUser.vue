@@ -8,23 +8,23 @@
           :base-value="user.email"
           type="mail"
           :validator="(v) => checkEmail(v)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         />
         <CustomInput
           ref="update-firstname"
-          label="Firstname"
+          label="First name"
           :base-value="user.firstname"
           type="text"
           :validator="(v) => checkString(v, 3)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         />
         <CustomInput
           ref="update-lastname"
-          label="Lastname"
+          label="Last name"
           :base-value="user.lastname"
           type="text"
           :validator="(v) => checkString(v, 3)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         />
         <!-- <CustomInput
           ref="update-team"
@@ -32,17 +32,17 @@
           :base-value="user.team"
           type="text"
           :validator="(v) => checkString(v, 0)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         /> -->
       </div>
       <div class="form-column">
         <CustomInput
           ref="update-passOld"
-          label=" Old Password"
+          label=" Old password"
           placeholder="***"
           type="password"
           :validator="(v) => checkOldPass(v)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         />
         <CustomInput
           ref="update-pass"
@@ -50,15 +50,15 @@
           placeholder="***"
           type="password"
           :validator="(v) => checkString(v, 3)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         />
         <CustomInput
           ref="update-check"
-          label="Confirm Password"
+          label="Confirm password"
           placeholder="***"
           type="password"
           :validator="(v) => checkPassDouble(v)"
-          error-msg="Invalid fields"
+          error-msg="Invalid field"
         />
       </div>
     </div>

@@ -12,7 +12,7 @@
           {{ name ? name : 'Project' }}
         </div>
         <p class="entreprise-plan txt_caption">
-          Entreprise plan
+          Enterprise plan
         </p>
       </div>
     </div>

@@ -20,7 +20,7 @@
                 placeholder="sab@gmail.com"
                 type="mail"
                 :validator="(v) => checkEmail(v)"
-                error-msg="Invalid fields"
+                error-msg="Invalid field"
               />
 
               <CustomInput
@@ -29,7 +29,7 @@
                 placeholder="*****"
                 type="password"
                 :validator="(v) => checkString(v, 3)"
-                error-msg="Invalid fields"
+                error-msg="Invalid field"
               />
 
               <div class="confirm">
@@ -56,7 +56,7 @@
           <div v-else class="popin-contentForm">
             <div>
               <h2 class="txt_title title">
-                Sign Up
+                Sign up
               </h2>
               <p class="txt_caption subtitle">
                 Get started with your free account today.
@@ -66,19 +66,19 @@
                 <div class="inline-input">
                   <CustomInput
                     ref="signup-firstname"
-                    label="Firstname"
+                    label="First name"
                     placeholder="Sabrina"
                     type="text"
                     :validator="(v) => checkString(v, 0)"
-                    error-msg="Invalid fields"
+                    error-msg="Invalid field"
                   />
                   <CustomInput
                     ref="signup-lastname"
-                    label="Lastname"
+                    label="Last name"
                     placeholder="Nedjah"
                     type="text"
                     :validator="(v) => checkString(v, 0)"
-                    error-msg="Invalid fields"
+                    error-msg="Invalid field"
                   />
                 </div>
                 <CustomInput
@@ -87,7 +87,7 @@
                   placeholder="sab@gmail.com"
                   type="mail"
                   :validator="(v) => checkEmail(v)"
-                  error-msg="Invalid fields"
+                  error-msg="Invalid field"
                 />
                 <CustomInput
                   ref="signup-pass"
@@ -95,15 +95,15 @@
                   placeholder="***"
                   type="password"
                   :validator="(v) => checkString(v, 3)"
-                  error-msg="Invalid fields"
+                  error-msg="Invalid field"
                 />
                 <CustomInput
                   ref="signup-check"
-                  label="Confirm Password"
+                  label="Confirm password"
                   placeholder="***"
                   type="password"
                   :validator="(v) => checkPassDouble(v)"
-                  error-msg="Invalid fields"
+                  error-msg="Invalid field"
                 />
               </div>
               <div class="step2" :class="{ 'is-hidden': step !== 2 }">
@@ -114,21 +114,21 @@
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
-                  description="You will find it in the settings, generate it"
+                  description="You will find it in the settings, generate it."
                 />
                 <CustomInput
                   ref="signup-team"
                   label="Team ID"
-                  placeholder="23456787654323456"
+                  placeholder="38209030493020"
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
-                  description="The team id can be found inside the search bar once the project is clicked"
+                  description="The team ID can be found inside the search bar once the project is clicked"
                 />
                 <CustomInput
                   ref="signup-system"
                   label="Design System ID"
-                  placeholder="23456787654323456"
+                  placeholder="aZueldpdl39"
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
                   error-msg="Invalid field"
@@ -146,7 +146,7 @@
               <div class="confirm" :class="{ 'is-hidden': step !== 2 }">
                 <button class="btn is-blue step2" @click="handleSignUp">
                   <p>
-                    Sign Up
+                    Sign up
                   </p>
                 </button>
                 <p v-if="errorSignUp === true" class="error">

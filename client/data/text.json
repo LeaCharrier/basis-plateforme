@@ -1,6 +1,6 @@
 {
   "DASHBOARD_TITLE": "Dashboard",
-  "DASHBOARD_DESCRIPTION": "Welcome back, %firstname%! <br> Here you will find all the data related to your design system",
+  "DASHBOARD_DESCRIPTION": "Welcome back, %firstname%! <br> Here you will find all the data related to your design system.",
   "COLORS_TITLE": "Color (84 tokens)",
   "COLORS_DESCRIPTION": "Colors are designed to be clear and accessible. They come in different <br> color themes, constituted each one of grays, semantic and label colors.",
   "COLORS_SELECT_TITLE_OPTIONS": "Color mode :",
@@ -20,7 +20,7 @@
   "ISSUES_STATUS_POPIN_NEW_TITLE": "Add an issue",
   "ISSUES_STATUS_POPIN_UPDATE_TITLE": "Edit Issue",
   "SETTINGS_TITLE": "Settings",
-  "SETTINGS_DESCRIPTION": "Welcome back, %firstname%! You will find general <br> information about your account",
+  "SETTINGS_DESCRIPTION": "Welcome back, %firstname%! You will find general <br> information about your account.",
   "SETTINGS_NAV":[
     {
       "title": "My account",
@@ -60,11 +60,11 @@
   "CONNECTED_DESTINATIONS_SOON_TITLE": "Coming soon destinations",
   "CONNECTED_SOON_DESTINATIONS": [
     {
-      "title": "Github",
+      "title": "GitHub",
       "img": "github.svg"
     },
     {
-      "title": "Gitlab",
+      "title": "GitLab",
       "img": "gitlab.svg"
     },
     {
