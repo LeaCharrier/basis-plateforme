@@ -71,25 +71,19 @@ export default {
   methods: {
     getData () {
       this.loading = true
-      if (this.user && this.user.team) {
-        const config = {
-          headers: { Authorization: `Bearer ${this.user.token}` }
-        }
+      this.$api.get(`auth/team/${this.user.team}`)
+        .then((res) => {
+          this.loading = false
 
-        this.$api.get(`auth/team/${this.user.team}`, config)
-          .then((res) => {
-            this.loading = false
-
-            if (res && res.data) {
-              this.totalDesigners = res.data.length
-            }
-          })
-          .catch((e) => {
-            this.loading = false
-            // eslint-disable-next-line no-console
-            console.log(e)
-          })
-      }
+          if (res && res.data) {
+            this.totalDesigners = res.data.length
+          }
+        })
+        .catch((e) => {
+          this.loading = false
+          // eslint-disable-next-line no-console
+          console.log(e)
+        })
     }
   }
 }

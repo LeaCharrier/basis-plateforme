@@ -1,15 +1,15 @@
 import fetch from "node-fetch";
 import {figmaApi, getFigmaApiHeaders} from "../utils/FigmaApi.js";
+import constants from "../config/constants.js";
 
 /**
- * @param apiKey
  * @param teamId
  * @returns {Promise<*>}
  */
-export async function apiGetFigmaTeamProjects(apiKey, teamId) {
+export async function apiGetFigmaTeamProjects(teamId) {
     const data = await fetch(figmaApi.teamProjects(teamId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(apiKey)
+        headers: getFigmaApiHeaders(constants.figmaAPIKey)
     })
 
     return await data.json()
@@ -17,58 +17,40 @@ export async function apiGetFigmaTeamProjects(apiKey, teamId) {
 
 
 /**
- * @param apiKey
  * @param projectId
  * @returns {Promise<*>}
  */
-export async function apiGetFigmaProjectFiles(apiKey, projectId) {
+export async function apiGetFigmaProjectFiles(projectId) {
     const data = await fetch(figmaApi.projectFiles(projectId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(apiKey)
+        headers: getFigmaApiHeaders(constants.figmaAPIKey)
     })
 
-    try {
-        return await data.json()
-    } catch (err) {
-        console.log(err)
-        return null
-    }
+    return await data.json()
 }
 
 
 /**
- * @param apiKey
  * @param fileId
  * @returns {Promise<*>}
  */
-export async function apiGetFigmaFile(apiKey, fileId) {
+export async function apiGetFigmaFile(fileId) {
     const data = await fetch(figmaApi.file(fileId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(apiKey)
-    })
+        headers: getFigmaApiHeaders(constants.figmaAPIKey)
+    }).catch(e => console.log(e))
 
-    console.log('data file')
-    console.log(data)
-    console.log(data.json)
-
-    try {
-        return await data.json()
-    } catch (err) {
-        console.log('file error')
-        console.log(err)
-        return null
-    }
+    return await data.json()
 }
 
 /**
- * @param apiKey
  * @param teamId
  * @returns {Promise<*>}
  */
- export async function apiGetFigmaTeamStyles(apiKey, teamId) {
+ export async function apiGetFigmaTeamStyles(teamId) {
     const data = await fetch(figmaApi.teamStyles(teamId), {
         method: 'GET',
-        headers: getFigmaApiHeaders(apiKey)
+        headers: getFigmaApiHeaders(constants.figmaAPIKey)
     }).catch(e => console.log(e))
 
     return await data.json()

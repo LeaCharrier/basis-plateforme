@@ -26,7 +26,7 @@ export const getters = {
     }
   },
   getUser (state) {
-    return (state.token) ? { ...(VueJwtDecode.decode(state.token)), token: state.token } : null
+    return (state.token) ? VueJwtDecode.decode(state.token) : null
   },
   getOnBoarding (state) {
     return state.onBoarding

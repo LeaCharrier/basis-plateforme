@@ -2,40 +2,40 @@
   <div v-if="user" class="dashboard">
     <div class="dashboard-colone">
       <GraphTime
-        :title="`Total usage (${objectColor.data.totalUsed || 0})`"
-        :total="Number((objectColor.data.percentUsed || 0).toFixed(1)) + '%'"
+        :title="'Total usage (' + objectColor.data.totalUsed +')'"
+        :total="Number((objectColor.data.percentUsed).toFixed(1)) + '%'"
         subtitle="Usage overtime"
-        :percent="`${objectColor.data.percentUsed || 0}`"
+        :percent="objectColor.data.percentUsed"
       />
       <List
         title="Projects"
-        :link="false"
-        :total="Number(((objectColor.data.projects.length || 0)).toFixed(1))"
-        :subtitle="'Top ' + (objectColor.data.projects.length || 0) + ' projects'"
-        :object-project="objectColor.data"
+        link="false"
+        :total="Number((objectColor.data.projects.length).toFixed(1))"
+        :subtitle="'Top ' + objectColor.data.projects.length + ' projects'"
+        :objectProject="objectColor.data"
       />
     </div>
     <div class="dashboard-colone">
       <GraphTime
-        :title="`Detaching rate (${objectColor.data.totalUsed || 0})`"
-        :total="Number((objectColor.data.percentDetached || 0).toFixed(1)) + '%'"
+        :title="'Detaching rate (' + objectColor.data.totalDetached +')'"
+        :total="Number((objectColor.data.percentDetached).toFixed(1)) + '%'"
         subtitle="Detaching overtime"
-        :percent="`${objectColor.data.percentDetached || 0}`"
+        :percent="objectColor.data.percentDetached"
       />
       <List
         title="Aliases"
-        :link="false"
-        :total="objectColor.data.types.length || 0"
-        :subtitle="'Top ' + (objectColor.data.types.length || 0) +' Aliases'"
-        :object-aliases="objectColor.data"
+        link="false"
+        :total="objectColor.data.types.length"
+        :subtitle="'Top ' + objectColor.data.types.length +' Aliases'"
+        :objectAliases="objectColor.data"
       />
     </div>
     <div class="dashboard-colone">
       <GraphTime
-        :title="`Total usage (${objectColor.data.totalAttached || 0})`"
-        :total="Number((objectColor.data.percentAttached || 0).toFixed(1)) + '%'"
+        :title="'Total usage (' + objectColor.data.totalAttached +')'"
+        :total="Number((objectColor.data.percentAttached).toFixed(1)) + '%'"
         subtitle="Usage overtime"
-        :percent="`${objectColor.data.percentAttached || 0}`"
+        :percent="objectColor.data.percentAttached"
       />
     </div>
   </div>
@@ -54,9 +54,9 @@ export default {
   },
   props: {
     objectColor: {
-      type: Object,
+      type: Array,
       required: false,
-      default: () => {}
+      default: () => []
     }
   },
   computed: {

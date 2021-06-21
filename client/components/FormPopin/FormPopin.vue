@@ -106,28 +106,12 @@
                   error-msg="Invalid fields"
                 />
                 <CustomInput
-                  ref="signup-api"
-                  label="API Key"
-                  placeholder="23456787654323456"
-                  type="text"
-                  :validator="(v) => checkTeam(v, 0)"
-                  error-msg="Invalid field"
-                />
-                <CustomInput
                   ref="signup-team"
                   label="Team ID"
                   placeholder="23456787654323456"
                   type="text"
                   :validator="(v) => checkTeam(v, 0)"
-                  error-msg="Invalid field"
-                />
-                <CustomInput
-                  ref="signup-system"
-                  label="Design System ID"
-                  placeholder="23456787654323456"
-                  type="text"
-                  :validator="(v) => checkTeam(v, 0)"
-                  error-msg="Invalid field"
+                  error-msg="Invalid fields"
                 />
               </div>
             </div>
@@ -202,16 +186,13 @@ export default {
     token () {
       return this.getToken
     },
-    user () {
-      return this.getUser
-    },
     onBoarding () {
       return this.getOnBoarding
     }
   },
   mounted () {
     if (this.token) {
-      this.getColorUsage(this.user.team)
+      this.getColorUsage(this.getUser.team)
     }
   },
   methods: {
@@ -232,7 +213,6 @@ export default {
     async handleLogin () {
       this.errorLogin = false
       this.errorSignUp = false
-
       if (!this.checkLogin()) {
         return false
       }
@@ -274,8 +254,6 @@ export default {
       const email = this.$refs['signup-email'].value
       const password = this.$refs['signup-pass'].value
       const team = this.$refs['signup-team'].value
-      const api = this.$refs['signup-api'].value
-      const system = this.$refs['signup-system'].value
 
       const teamName = await this.getTeam(team)
 
@@ -294,9 +272,7 @@ export default {
           firstname,
           email,
           password,
-          team,
-          api,
-          system
+          team
         })
 
         const { token } = res.data
@@ -324,42 +300,17 @@ export default {
       }
     },
     async getColorUsage (teamId) {
-      const api = (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
-      const system = (this.token && this.user && this.user.system) ? this.user.system : this.$refs['signup-system'].value
-
-      const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
-        api
-      })
-
-      let jsons = []
-      let systemFile = null
-
-      for (const file of data) {
-        const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
-
-        if (response.status === 200 && response.data && response.data.formated && response.data.formated.length) {
-          jsons = [...jsons, ...response.data.formated]
-
-          if (file.key === system) {
-            systemFile = response.data.raw
-          }
-        }
+      try {
+        const res = await this.$api.get(`figma/team/${teamId}/colors`)
+        this.$store.commit('usage/save', res.data.colors)
+      } catch (e) {
+        console.log(e)
+        return false
       }
-
-      const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
-        api,
-        system,
-        systemFile,
-        jsons
-      })
-
-      this.$store.commit('usage/save', colors.data)
     },
     async getTeam (teamId) {
       try {
-        const res = await this.$api.post(`figma/team/${teamId}/projects/`, {
-          api: (this.token && this.user && this.user.api) ? this.user.api : this.$refs['signup-api'].value
-        })
+        const res = await this.$api.get(`figma/team/${teamId}/projects/`)
         return res.data.name
       } catch (e) {
         // eslint-disable-next-line no-console
@@ -406,15 +357,7 @@ export default {
       const team = teamField.value
       teamField.handleChange()
 
-      const apiField = this.$refs['signup-api']
-      const api = apiField.value
-      apiField.handleChange()
-
-      const systemField = this.$refs['signup-system']
-      const system = systemField.value
-      systemField.handleChange()
-
-      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0) && this.checkString(api, 0) && this.checkString(system, 0)
+      return (pass === check) && this.checkString(pass, 3) && this.checkString(team, 0)
     },
     checkString (str, len) {
       return str.length > len

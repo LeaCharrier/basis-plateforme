@@ -1,25 +1,25 @@
 <template>
   <div class="list block-analyse">
     <div class="list-title">
-      <p class="txt_body title" :class="{'txt-load-white empty-txt-small': loading}">
+      <p class="txt_body title">
         {{ title }}
       </p>
     </div>
 
     <div class="graph">
       <div>
-        <p class="number" :class="{'txt-load-white empty-txt-small': loading}">
+        <p class="number">
           {{ pourcentageUsed }}%
         </p>
       </div>
-      <div class="graph-item" :class="{'txt-load-white empty-txt-small': loading}">
+      <div class="graph-item">
         <div class="jauge jauge-used" :style="'width: ' + pourcentageUsed + '%'" />
       </div>
       <div class="flex graph-infos">
-        <p class="title title-used" :class="{'txt-load-white empty-txt-small': loading}">
+        <p class="title title-used">
           Used ({{ totalUsed }})
         </p>
-        <p class="title title-unused" :class="{'txt-load-white empty-txt-small': loading}">
+        <p class="title title-unused">
           Unused ({{ totalUnused }})
         </p>
       </div>
@@ -46,11 +46,6 @@ export default {
     pourcentageUsed: {
       type: Number,
       required: true
-    },
-    loading: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   }
 }

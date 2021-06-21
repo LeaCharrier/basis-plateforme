@@ -14,9 +14,7 @@ export async function register(req, res) {
             lastname,
             team,
             email,
-            password,
-            api,
-            system
+            password
         } = req.body
 
         let isUser = await userModel.find({ email: req.body.email })
@@ -32,9 +30,7 @@ export async function register(req, res) {
             lastname,
             team,
             email,
-            password,
-            api,
-            system
+            password
         })
 
         const data = await user.save();
@@ -89,8 +85,7 @@ export async function update(req, res) {
         lastname,
         team,
         email,
-        id,
-        password
+        id
     } = req.body
 
     const user = await userModel.findById(id)
@@ -103,8 +98,6 @@ export async function update(req, res) {
         user.team = team
     if (email && email !== user.email)
         user.email = email
-    if (password.length)
-        user.password = password
 
     const data = await user.save()
 

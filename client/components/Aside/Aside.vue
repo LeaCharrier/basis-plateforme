@@ -125,11 +125,7 @@ export default {
       const teamId = (this.user) ? this.user.team : null
 
       if (teamId) {
-        const config = {
-          headers: { Authorization: `Bearer ${this.user.token}` }
-        }
-
-        this.$api.get(`figma/team/${teamId}/projects/`, config)
+        this.$api.get(`figma/team/${teamId}/projects/`)
           .then((res) => {
             this.loading = false
 

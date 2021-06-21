@@ -1,56 +1,48 @@
 <template>
   <div class="list block-analyse">
     <div class="list-title">
-      <p class="txt_body title" :class="{'txt-load-white empty-txt-small': loading}">
+      <p class="txt_body title">
         {{ title }}
       </p>
-      <router-link v-if="link" :to="{ name: 'colors' }" class="txt_caption link" :class="{'txt-load-white empty-txt-small': loading}">
+      <router-link v-if="link === 'true'" :to="{ name: 'colors' }" class="txt_caption link">
         View all
       </router-link>
     </div>
 
-    <p class="number" :class="{'txt-load-white empty-txt-small': loading}">
+    <p class="number">
       {{ total }}
     </p>
 
-    <div v-if="object1 && !loading" class="items">
-      <p v-if="object1.length" class="items-title txt_caption">
+    <div class="items" v-if="object1">
+      <p class="items-title txt_caption">
         {{ subtitle }}
       </p>
-      <div v-if="link" class="items-list link">
-        <div v-for="color in [...object1].slice(0, 3)" :key="color.hex" class="color">
+      <div v-if="link === 'true'" class="items-list link">
+        <div class="color" v-for="color in object1" :key="color.hex">
           <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="item item-link">
-            <p class="item-title">
-              {{ color.name }}
-            </p>
-            <p class="item-data">
-              {{ color.data.totalAttached }}
-            </p>
+            <p class="item-title">{{ color.name }}</p>
+            <p class="item-data">{{ color.data.totalAttached }}</p>
           </router-link>
         </div>
       </div>
 
       <div v-if="double === true && object2" class="items items2">
-        <p v-if="object2.length" class="items-title txt_caption">
+        <p class="items-title txt_caption">
           {{ subtitle2 }}
         </p>
         <div class="items-list link">
-          <div v-for="color in [...object2].reverse().slice(0, 3)" :key="color.hex" class="color">
+          <div class="color"  v-for="color in object2" :key="color.hex">
             <router-link :to="{ name: 'colors-color', params: { color: color.hex }}" class="item item-link">
-              <p class="item-title">
-                {{ color.name }}
-              </p>
-              <p class="item-data">
-                {{ color.totalDetached }}
-              </p>
+              <p class="item-title">{{ color.name }}</p>
+              <p class="item-data">{{ color.totalDetached }}</p>
             </router-link>
           </div>
         </div>
       </div>
 
       <!-- PROJECTS -->
-      <div v-if="!link && objectProject" class="items-list link">
-        <div v-for="project in objectProject.projects" :key="project.key" class="item">
+      <div v-if="link !== 'true' && objectProject" class="items-list link">
+        <div class="item" v-for="project in objectProject.projects" :key="project.key">
           <p class="item-title">
             {{ project.name }}
           </p>
@@ -61,51 +53,14 @@
       </div>
 
       <!-- ALIASES -->
-      <div v-if="!link && objectAliases" class="items-list link">
-        <div v-for="aliases in objectAliases.types" :key="aliases.key" class="item">
+      <div v-if="link !== 'true' && objectAliases" class="items-list link">
+        <div class="item" v-for="aliases in objectAliases.types" :key="aliases.key">
           <p class="item-title">
             {{ aliases.type }}
           </p>
           <p class="item-data">
             {{ aliases.used }}
           </p>
-        </div>
-      </div>
-    </div>
-    <div v-else-if="loading" class="items">
-      <p class="items-title txt_caption" :class="{'txt-load-white empty-txt-small': loading}">
-        TOP 3 COLORS USED
-      </p>
-      <div v-if="link" class="items-list link">
-        <div class="color">
-          <div class="item item-link">
-            <p class="item-title" :class="{'txt-load-white empty-txt-small': loading}">
-              primary-500
-            </p>
-            <p class="item-data" :class="{'txt-load-white empty-txt-small': loading}">
-              100
-            </p>
-          </div>
-        </div>
-        <div class="color">
-          <div class="item item-link">
-            <p class="item-title" :class="{'txt-load-white empty-txt-small': loading}">
-              primary-500
-            </p>
-            <p class="item-data" :class="{'txt-load-white empty-txt-small': loading}">
-              100
-            </p>
-          </div>
-        </div>
-        <div class="color">
-          <div class="item item-link">
-            <p class="item-title" :class="{'txt-load-white empty-txt-small': loading}">
-              primary-500
-            </p>
-            <p class="item-data" :class="{'txt-load-white empty-txt-small': loading}">
-              100
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -126,7 +81,7 @@ export default {
       default: false
     },
     link: {
-      type: Boolean,
+      type: String,
       required: true
     },
     total: {
@@ -153,19 +108,14 @@ export default {
       default: () => []
     },
     objectProject: {
-      type: Object,
+      type: Array,
       required: false,
-      default: () => {}
+      default: () => []
     },
     objectAliases: {
-      type: Object,
+      type: Array,
       required: false,
-      default: () => {}
-    },
-    loading: {
-      type: Boolean,
-      required: false,
-      default: false
+      default: () => []
     }
   }
 }
