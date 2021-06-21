@@ -26,7 +26,7 @@ class Color {
 }
 
 export class ColorUsage {
-    constructor(colors) {
+    constructor(colors, baseColor) {
         this.colors = {
             referenced: new Object(),
             unreferenced: new Object(),
@@ -45,11 +45,15 @@ export class ColorUsage {
                 mostAttached: [],                               // - Most used colors with their style (Array)
                 projects: new Object(),                         // - Projects in which colors are used
                 score: 0                                        // – Score out of 100 evaluating the ratio between referenced and non-referenced colors (X/100)
-            }                             
+            }
         };
 
-        [...colors].forEach(color => {
-            this.colors.referenced[color.hex.toLowerCase()] = new Color(color, true);
+        this.baseColor = baseColor;
+
+        ([...colors]).forEach(color => {
+            if (color.hex) {
+                this.colors.referenced[color.hex.toLowerCase()] = new Color(color, true);
+            }
         });
 
     }
@@ -57,7 +61,7 @@ export class ColorUsage {
     update(color) {
         let hex = color.hex.toLowerCase(),
             c = null;
-        
+
         if(this.colors.referenced[hex]) {
             // Referenced color
             c = this.colors.referenced[hex];
@@ -80,7 +84,7 @@ export class ColorUsage {
         c.data.types[color.type] ? c.data.types[color.type] += 1 : c.data.types[color.type] = 1;
 
         // Increment the number of times the color is used in this project
-        if(c.data.projects[color.project.key]) {
+        if(c.data.projects[color.project.key]) {
             c.data.projects[color.project.key].used += 1;
         } else {
             c.data.projects[color.project.key] = {
@@ -90,7 +94,7 @@ export class ColorUsage {
         }
 
         // Save projects in which colors are used
-        if(this.colors.data.projects[color.project.key]) {
+        if(this.colors.data.projects[color.project.key]) {
             this.colors.data.projects[color.project.key].used += 1;
         } else {
             this.colors.data.projects[color.project.key] = {
@@ -101,13 +105,13 @@ export class ColorUsage {
     }
 
     descending_order(arr, prop) {
-        arr.sort((a, b) => { 
-            return b[prop] - a[prop]; 
+        arr.sort((a, b) => {
+            return b[prop] - a[prop];
         });
     }
 
     alphabetical_order(arr) {
-      arr.sort((a, b) => { 
+      arr.sort((a, b) => {
         if(a.name < b.name) { return -1 }
         if(a.name > b.name) { return 1 }
         return 0;
@@ -190,8 +194,8 @@ export class ColorUsage {
                         delete color.data.percentAttached;
                         delete color.data.totalDetached;
                         delete color.data.percentDetached;
-                        
-                        break;    
+
+                        break;
                     default:
                         color.data.percentRefUsed =  undefined;
                         console.log(`Sorry, we are out of ${key}.`);
@@ -200,7 +204,7 @@ export class ColorUsage {
                 // Main type(s) of element(s) on which the color is applied.
                 let typeUsed = 0;
                 Object.entries(color.data.types).forEach(([type, used]) => {
-                    if(used >= typeUsed) {
+                    if(used >= typeUsed) {
                         used > typeUsed && (color.data.mainTypes = []);
                         color.data.mainTypes.push(type);
                         typeUsed = used;
@@ -214,7 +218,7 @@ export class ColorUsage {
                     color.data.types.push({
                         type: type,
                         used: used
-                    }); 
+                    });
                 });
 
                 // Order in descending order the types of elements on which the color is applied
@@ -228,7 +232,7 @@ export class ColorUsage {
                         key: key,
                         name: data.name,
                         used: data.used
-                    }); 
+                    });
                 });
 
                 // Order in descending order the projects in which color appears the most
@@ -245,7 +249,7 @@ export class ColorUsage {
                 key: key,
                 name: data.name,
                 used: data.used
-            }); 
+            });
         });
 
         // Order in descending order the projects in which color appears the most
@@ -258,7 +262,7 @@ export class ColorUsage {
         let tempReferenced = colors.referenced;
         colors.referenced = [];
         Object.entries(tempReferenced).forEach(([key, data], i) => {
-            colors.referenced.push(data); 
+            colors.referenced.push(data);
         });
         this.alphabetical_order(colors.referenced);
 
@@ -266,7 +270,7 @@ export class ColorUsage {
         let tempUnreferenced = colors.unreferenced;
         colors.unreferenced = [];
         Object.entries(tempUnreferenced).forEach(([key, data], i) => {
-            colors.unreferenced.push(data); 
+            colors.unreferenced.push(data);
         });
         this.alphabetical_order(colors.unreferenced);
 

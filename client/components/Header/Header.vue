@@ -19,11 +19,13 @@
 
     <div class="header-infos">
       <div class="header-infos-btn">
-        <button class="txt_body btn" v-if="!isLoad" @click="handleClick">
+        <button v-if="!isLoad" class="txt_body btn" @click="handleClick">
           Update data
         </button>
-        <div class="txt_body is-btn loading" v-else >
-          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        <div v-else class="txt_body is-btn loading">
+          <div class="lds-ring">
+            <div /><div /><div /><div />
+          </div>
           Update data
         </div>
       </div>
@@ -106,7 +108,11 @@ export default {
 
       const teamId = (this.user) ? this.user.team : null
       if (teamId) {
-        this.$api.get(`figma/team/${teamId}/projects/`)
+        const config = {
+          headers: { Authorization: `Bearer ${this.user.token}` }
+        }
+
+        this.$api.get(`figma/team/${teamId}/projects/`, config)
           .then((res) => {
             this.loading = false
 
@@ -132,18 +138,41 @@ export default {
       this.logout()
     },
     handleClick () {
-      this.getColorUsage(this.user.team)
-      this.isLoad = true
+      if (this.user) {
+        this.getColorUsage(this.user.team)
+        this.isLoad = true
+      }
     },
     async getColorUsage (teamId) {
-      try {
-        const res = await this.$api.get(`figma/team/${teamId}/colors`)
-        this.$store.commit('usage/save', res.data.colors)
-        this.isLoad = false
-      } catch (e) {
-        console.log(e)
-        return false
+      const api = this.user.api
+      const system = this.user.system
+      const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
+        api
+      })
+
+      let jsons = []
+      let systemFile = null
+
+      for (const file of data) {
+        const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
+
+        if (response.status === 200 && response.data && response.data.formated && response.data.formated.length) {
+          jsons = [...jsons, ...response.data.formated]
+
+          if (file.key === system) {
+            systemFile = response.data.raw
+          }
+        }
       }
+
+      const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+        api,
+        system,
+        systemFile,
+        jsons
+      })
+
+      this.$store.commit('usage/save', colors.data)
     }
   }
 }

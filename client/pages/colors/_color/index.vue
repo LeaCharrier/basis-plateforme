@@ -3,7 +3,7 @@
     <Header />
     <div class="container">
       <Aside page="colors" />
-      <div class="contentProject" v-if="objectColor && !loading">
+      <div v-if="objectColor && !loading" class="contentProject">
         <div class="nav">
           <router-link :to="{ name: 'colors' }" class="backColor" />
           <div class="color">
@@ -13,7 +13,7 @@
             <span class="color-item" :style="'background-color:'+ colorHex" />
           </div>
         </div>
-        <DashboardColor :objectColor='objectColor' />
+        <DashboardColor :object-color="objectColor" />
       </div>
     </div>
   </div>
@@ -32,13 +32,6 @@ export default {
     Aside,
     DashboardColor
   },
-  mounted () {
-    // console.log(this.getColorData('#a4232a'))
-    this.colorHex = this.$route.params.color
-    // console.log(this.colorHex)
-    this.objectColor = this.getColorData(this.colorHex)
-    // console.log(this.objectColor)
-  },
   data () {
     return {
       loading: false,
@@ -48,19 +41,79 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getTexts: 'text/getTexts'
+      getTexts: 'text/getTexts',
+      getColors: 'usage/getColors',
+      getUser: 'localStorage/getUser'
     }),
     texts () {
       return this.getTexts
     },
-    colorUsage () {
-      return this.$store.state.usage.colors
+    colors () {
+      return this.getColors
+    },
+    user () {
+      return this.getUser
+    }
+  },
+  watch: {
+    user (newVal) {
+      if (newVal) {
+        this.getColorUsage()
+      }
+    },
+    colors (newVal, oldVal) {
+      if (newVal && (!oldVal.referenced || oldVal.referenced.length !== newVal.referenced.length)) {
+        this.colorHex = this.$route.params.color
+        this.objectColor = this.getColorData(this.colorHex)
+      }
+    }
+  },
+  mounted () {
+    this.colorHex = this.$route.params.color
+
+    if (this.colors.length) {
+      this.objectColor = this.getColorData(this.colorHex)
+    } else if (this.user) {
+      this.getColorUsage()
     }
   },
   methods: {
     getColorData (hexa) {
-      const colors = this.$store.state.usage.colors.referenced
-      return colors.find(({ hex }) => hex === hexa)
+      return this.colors.referenced.find(({ hex }) => hex === hexa)
+    },
+    async getColorUsage () {
+      const teamId = this.user.team
+      const api = this.user.api
+      const system = this.user.system
+
+      const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
+        api
+      })
+
+      let jsons = []
+      let systemFile = null
+
+      for (const file of data) {
+        const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
+
+        if (response.status === 200 && response.data && response.data.formated && response.data.formated.length) {
+          jsons = [...jsons, ...response.data.formated]
+
+          if (file.key === system) {
+            systemFile = response.data.raw
+          }
+        }
+      }
+
+      const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+        api,
+        system,
+        systemFile,
+        jsons
+      })
+
+      this.$store.commit('usage/save', colors.data)
+      this.loading = false
     }
   }
 }

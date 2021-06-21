@@ -64,7 +64,7 @@
     </div>
 
     <div class="items last-issue">
-      <p class="items-title txt_caption">
+      <p v-if="issues.length || loading" class="items-title txt_caption" :class="{'txt-load-white empty-txt-small': loading}">
         Latest Issues
       </p>
       <div v-if="!loading" class="items-list link">
@@ -114,7 +114,11 @@ export default {
     }
   },
   fetch () {
-    this.getData()
+    if (this.user) {
+      this.getData()
+    } else {
+      this.loading = true
+    }
   },
   computed: {
     ...mapGetters({
@@ -126,10 +130,18 @@ export default {
   },
   watch: {
     user () {
-      this.getData()
+      if (this.user) {
+        this.getData()
+      } else {
+        this.loading = true
+      }
     },
     $route () {
-      this.getData()
+      if (this.user) {
+        this.getData()
+      } else {
+        this.loading = true
+      }
     }
   },
   methods: {
@@ -138,12 +150,16 @@ export default {
 
       const requests = []
 
-      requests.push(this.$api.get('issues/status/list'))
+      const config = {
+        headers: { Authorization: `Bearer ${this.user.token}` }
+      }
+
+      requests.push(this.$api.get('issues/status/list', config))
 
       const teamId = (this.user) ? this.user.team : null
 
       if (teamId) {
-        requests.push(this.$api.get(`issues/list/${teamId}`))
+        requests.push(this.$api.get(`issues/list/${teamId}`, config))
       }
 
       Promise.all(requests)

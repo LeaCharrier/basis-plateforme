@@ -1,15 +1,16 @@
 <template>
-  <div v-if="user && colorUsage.data && !loading" class="dashboard">
+  <div class="dashboard">
     <div class="dashboard-colone">
       <List
         title="Total colors on the library"
-        link="true"
-        :total="colorUsage.data.totalUsed"
+        :link="true"
+        :total="(!loading && colorUsage && colorUsage.baseColor && colorUsage.baseColor.length) ? colorUsage.baseColor.length : 0"
         subtitle="Top 3 colors used"
-        :object1="colorUsage.data.mostAttached"
-        :object2="colorUsage.data.mostDetached"
+        :object1="(!loading && colorUsage && colorUsage.data && colorUsage.data.mostAttached) ? colorUsage.data.mostAttached : []"
+        :object2="(!loading && colorUsage && colorUsage.data && colorUsage.data.mostDetached) ? colorUsage.data.mostDetached : []"
         :double="true"
         subtitle2="Top 3 colors DETACHED"
+        :loading="loading"
       />
       <!-- <Date
         title="Json Updated"
@@ -32,10 +33,11 @@
 
       <!-- mettre le chiffre entre parenthèse -->
       <Pourcentage
-        :title="'Referenced colors (' + colorUsage.data.totalReferenced + ')'"
-        :total-used="colorUsage.data.totalReferencedUsed"
-        :total-unused="colorUsage.data.totalUnreferencedUsed"
-        :pourcentage-used="colorUsage.data.percentReferenced"
+        :title="`Referenced colors (${(!loading && colorUsage && colorUsage.data && colorUsage.data.totalReferenced) ? colorUsage.data.totalReferenced : 0})`"
+        :total-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.totalReferencedUsed) ? colorUsage.data.totalReferencedUsed : 0"
+        :total-unused="(!loading && colorUsage && colorUsage.data && colorUsage.data.totalUnreferencedUsed) ? colorUsage.data.totalUnreferencedUsed : 0"
+        :pourcentage-used="(!loading && colorUsage && colorUsage.data && colorUsage.data.percentReferenced) ? Math.round(colorUsage.data.percentReferenced) : 0"
+        :loading="loading"
       />
 
       <Projects
@@ -72,7 +74,8 @@ export default {
   computed: {
     ...mapGetters({
       getTexts: 'text/getTexts',
-      getUser: 'localStorage/getUser'
+      getUser: 'localStorage/getUser',
+      getColors: 'usage/getColors'
     }),
     texts () {
       return this.getTexts
@@ -81,8 +84,16 @@ export default {
       return this.getUser
     },
     colorUsage () {
-      return this.$store.state.usage.colors
+      return this.getColors
     }
+  },
+  watch: {
+    colorUsage () {
+      this.loading = !this.colorUsage.data
+    }
+  },
+  mounted () {
+    this.loading = !this.colorUsage.data
   }
 }
 </script>

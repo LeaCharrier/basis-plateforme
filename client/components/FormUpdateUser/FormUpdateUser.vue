@@ -119,6 +119,7 @@ export default {
     async handleUser (e) {
       this.errorUpdate = false
       this.validUpdate = false
+
       if (!this.checkUpdate() && !(await this.needUpdatePass())) {
         return false
       }

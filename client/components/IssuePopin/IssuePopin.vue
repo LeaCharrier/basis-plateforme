@@ -2,6 +2,11 @@
   <transition v-if="popin" name="fade">
     <div class="bgPopin">
       <div class="popin">
+        <transition v-if="loading" name="fade">
+          <div class="popin__loader">
+            <TableLoader color="dark" />
+          </div>
+        </transition>
         <div class="popinTitle">
           <p v-if="isNew" class="titlePopin" v-text="texts.ISSUES_STATUS_POPIN_NEW_TITLE" />
           <p v-else class="titlePopin" v-text="texts.ISSUES_STATUS_POPIN_UPDATE_TITLE" />
@@ -76,11 +81,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import Select from '~/components/Fields/Select/Select'
+import TableLoader from '~/components/TableLoader/TableLoader'
 
 export default {
   name: 'IssuePopin',
   components: {
-    Select
+    Select,
+    TableLoader
   },
   data () {
     return {
@@ -135,14 +142,18 @@ export default {
     getData () {
       this.loading = true
 
+      const config = {
+        headers: { Authorization: `Bearer ${this.user.token}` }
+      }
+
       const requests = [
-        this.$api.get('issues/status/list'),
-        this.$api.get(`auth/team/${this.user.team}`),
-        this.$api.get(`figma/team/${this.user.team}/files`)
+        this.$api.get('issues/status/list', config),
+        this.$api.get(`auth/team/${this.user.team}`, config),
+        this.$api.get(`figma/team/${this.user.team}/files`, config)
       ]
 
       if (this.id) {
-        requests.push(this.$api.get(`issues/issue/${this.id}`))
+        requests.push(this.$api.get(`issues/issue/${this.id}`, config))
       } else {
         this.issue = null
         this.description = null

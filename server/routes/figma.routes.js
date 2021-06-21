@@ -2,56 +2,65 @@ import express from 'express';
 import {
     get,
     getTeamProjects,
+    getTeamProjectsPub,
     getTeamProjectsFiles,
+    getTeamProjectsFilesPub,
     getProjectFiles,
     getTeamProjectFilesByIndex,
     getFile,
+    getFilePub,
     getFileByIndex,
     getTeamProjectFileByIndexes,
     getTeamStyles,
     getColorAnalysis,
+    getColorAnalysisPub,
     push,
     test,
     getTeamFiles,
 } from '../controllers/figma.controller.js';
+import AuthMiddleware from "../middleware/Auth.js"
 
 const router = express.Router();
 
-router.get('', get);
+router.get('', AuthMiddleware, get);
 
-router.post('/push', push);
+router.post('/push', AuthMiddleware, push);
 
 // Get Team Projects By TeamID
-router.get('/team/:teamId/projects', getTeamProjects);
+router.get('/team/:teamId/projects', AuthMiddleware, getTeamProjects);
+router.post('/team/:teamId/projects', getTeamProjectsPub);
 
 // Get Team Projects and Files By TeamID
-router.get('/team/:teamId/projects/files', getTeamProjectsFiles);
-router.get('/team/:teamId/files', getTeamFiles);
+router.get('/team/:teamId/projects/files', AuthMiddleware, getTeamProjectsFiles);
+router.post('/team/:teamId/projects/files', getTeamProjectsFilesPub);
+router.get('/team/:teamId/files', AuthMiddleware, getTeamFiles);
 
 // Get Project Files By ProjectID
-router.get('/team/:teamId/projects/:projectId/files', getProjectFiles);
-router.get('/projects/:projectId/files', getProjectFiles);
+router.get('/team/:teamId/projects/:projectId/files', AuthMiddleware, getProjectFiles);
+router.get('/projects/:projectId/files', AuthMiddleware, getProjectFiles);
 
 // Get Team Project Files by index
-router.get('/team/:teamId/projects/i/:projectIndex/files', getTeamProjectFilesByIndex);
+router.get('/team/:teamId/projects/i/:projectIndex/files', AuthMiddleware, getTeamProjectFilesByIndex);
 
 // Get File By FileID
-router.get('/team/:teamId/projects/:projectId/files/:fileId', getFile);
-router.get('/projects/:projectId/files/:fileId', getFile);
-router.get('/files/:fileId', getFile);
+router.get('/team/:teamId/projects/:projectId/files/:fileId', AuthMiddleware, getFile);
+router.get('/projects/:projectId/files/:fileId', AuthMiddleware, getFile);
+router.get('/files/:fileId', getFilePub);
+router.post('/files/:fileId', getFilePub);
 
 // Get Project File by index
-router.get('/team/:teamId/projects/:projectId/files/i/:fileIndex', getFileByIndex);
-router.get('/projects/:projectId/files/i/:fileIndex', getFileByIndex);
+router.get('/team/:teamId/projects/:projectId/files/i/:fileIndex', AuthMiddleware, getFileByIndex);
+router.get('/projects/:projectId/files/i/:fileIndex', AuthMiddleware, getFileByIndex);
 
 // Get Team Project File by indexes
-router.get('/team/:teamId/projects/i/:projectIndex/files/i/:fileIndex', getTeamProjectFileByIndexes);
+router.get('/team/:teamId/projects/i/:projectIndex/files/i/:fileIndex', AuthMiddleware, getTeamProjectFileByIndexes);
 
 // Get Team Styles
-router.get('/team/:teamId/styles', getTeamStyles);
+router.get('/team/:teamId/styles', AuthMiddleware, getTeamStyles);
 
 // Get Color Analysis
-router.get('/team/:teamId/colors', getColorAnalysis);
+// router.get('/team/:teamId/colors', AuthMiddleware, getColorAnalysis);
+router.post('/team/:teamId/colors', getColorAnalysisPub);
 
 // TEST ROUTE ANLY FOR DEV PURPOSES
 router.post('/test', test);

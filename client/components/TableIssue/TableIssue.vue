@@ -37,6 +37,9 @@
     </div>
 
     <div>
+      <div v-if="loading">
+        <TableLoader />
+      </div>
       <TableIssueRow
         v-for="(item, key) in list"
         :key="item._id"
@@ -57,6 +60,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import TableIssueRow from '~/components/TableIssueRow/TableIssueRow'
+import TableLoader from '~/components/TableLoader/TableLoader'
 import BtnAdd from '~/components/Atoms/BtnAdd/BtnAdd'
 import IssuePopin from '~/components/IssuePopin/IssuePopin'
 import CheckIssue from '~/components/CheckIssue/CheckIssue'
@@ -65,6 +69,7 @@ export default {
   name: 'TableIssue',
   components: {
     TableIssueRow,
+    TableLoader,
     BtnAdd,
     IssuePopin,
     CheckIssue
@@ -98,25 +103,29 @@ export default {
     user () {
       this.getData()
     },
-    popin () {
-      this.getData()
+    popin (newVal) {
+      this.getData(newVal)
     }
   },
   methods: {
-    getData () {
-      this.loading = true
+    getData (list = false) {
+      this.loading = !list
 
       const teamId = (this.user) ? this.user.team : null
 
       const requests = []
 
-      if (teamId) {
-        requests.push(this.$api.get(`figma/team/${teamId}/projects/`))
-        requests.push(this.$api.get(`figma/team/${teamId}/files`))
-        requests.push(this.$api.get(`issues/list/${teamId}`))
+      const config = {
+        headers: { Authorization: `Bearer ${this.user.token}` }
       }
 
-      requests.push(this.$api.get('issues/status/list'))
+      if (teamId) {
+        requests.push(this.$api.get(`figma/team/${teamId}/projects/`, config))
+        requests.push(this.$api.get(`figma/team/${teamId}/files`, config))
+        requests.push(this.$api.get(`issues/list/${teamId}`, config))
+      }
+
+      requests.push(this.$api.get('issues/status/list', config))
 
       Promise.all(requests)
         .then((res) => {
