@@ -154,7 +154,9 @@ export default {
         })
     },
     getProjectName (id) {
-      return this.projects.find(p => p.key === id).name
+      const project = this.projects.find(p => p.key === id)
+
+      return (project && project.name) ? project.name : ''
     },
     handleFilter (v) {
       this.filter = v
