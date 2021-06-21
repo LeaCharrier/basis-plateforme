@@ -303,9 +303,9 @@ export async function getFilePub(req, res) {
             }
         )
 
-        res.status(200).send(formatedFile);
+        res.status(200).send({formated: formatedFile, raw: file});
     } catch (err) {
-        res.status(400).send({err});
+        res.status(200).send(null);
     }
 }
 

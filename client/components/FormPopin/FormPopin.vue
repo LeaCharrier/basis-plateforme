@@ -337,11 +337,11 @@ export default {
       for (const file of data) {
         const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
 
-        if (response.data) {
-          jsons = [...jsons, ...response.data]
+        if (response.status === 200 && response.data && response.data.formated && response.data.formated.length) {
+          jsons = [...jsons, ...response.data.formated]
 
           if (file.key === system) {
-            systemFile = response.data
+            systemFile = response.data.raw
           }
         }
       }

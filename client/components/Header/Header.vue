@@ -144,41 +144,35 @@ export default {
       }
     },
     async getColorUsage (teamId) {
-      try {
-        const api = this.user.api
-        const system = this.user.system
-        const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
-          api
-        })
+      const api = this.user.api
+      const system = this.user.system
+      const { data } = await this.$api.post(`figma/team/${teamId}/projects/files/`, {
+        api
+      })
 
-        let jsons = []
-        let systemFile = null
+      let jsons = []
+      let systemFile = null
 
-        for (const file of data) {
-          const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
+      for (const file of data) {
+        const response = await this.$api.get(`figma/files/${file.key}?api=${api}`, { api })
 
-          if (response.data) {
-            jsons = [...jsons, ...response.data]
+        if (response.status === 200 && response.data && response.data.formated && response.data.formated.length) {
+          jsons = [...jsons, ...response.data.formated]
 
-            if (file.key === system) {
-              systemFile = response.data
-            }
+          if (file.key === system) {
+            systemFile = response.data.raw
           }
         }
-
-        const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
-          api,
-          system,
-          systemFile,
-          jsons
-        })
-
-        this.$store.commit('usage/save', colors.data)
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log(e)
-        return false
       }
+
+      const colors = await this.$api.post(`figma/team/${teamId}/colors`, {
+        api,
+        system,
+        systemFile,
+        jsons
+      })
+
+      this.$store.commit('usage/save', colors.data)
     }
   }
 }
