@@ -17,7 +17,7 @@
     </div>
     <div class="dashboard-colone">
       <GraphTime
-        :title="`Detaching rate (${objectColor.data.totalUsed || 0})`"
+        :title="`Detaching rate (${objectColor.data.totalDetached || 0})`"
         :total="Number((objectColor.data.percentDetached || 0).toFixed(1)) + '%'"
         subtitle="Detaching overtime"
         :percent="`${objectColor.data.percentDetached || 0}`"
