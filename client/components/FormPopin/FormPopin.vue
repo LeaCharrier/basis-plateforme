@@ -4,6 +4,11 @@
       <div class="popin">
         <div class="content" :class="{ 'log-in': login }">
           <div v-if="login" class="popin-contentForm">
+            <transition v-if="loading" name="fade">
+              <div class="popin-contentForm__loader">
+                <TableLoader color="dark" />
+              </div>
+            </transition>
             <div>
               <h2 class="txt_title title">
                 You, again
@@ -54,6 +59,11 @@
             </div>
           </div>
           <div v-else class="popin-contentForm">
+            <transition v-if="loading" name="fade">
+              <div class="popin-contentForm__loader">
+                <TableLoader color="dark" />
+              </div>
+            </transition>
             <div>
               <h2 class="txt_title title">
                 Sign up
@@ -183,16 +193,19 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import CustomInput from '~/components/Fields/Input/Input'
+import TableLoader from '~/components/TableLoader/TableLoader'
 
 export default {
   name: 'FormPopin',
   components: {
-    CustomInput
+    CustomInput,
+    TableLoader
   },
   data () {
     return {
       step: 1,
       login: true,
+      loading: false,
       errorLogin: false,
       errorSignUp: false,
       errorTeam: false
@@ -235,6 +248,7 @@ export default {
       this.step = val
     },
     async handleLogin () {
+      this.loading = true
       this.errorLogin = false
       this.errorSignUp = false
 
@@ -254,6 +268,9 @@ export default {
         const { token } = res.data
         const team = res.data.user.team
 
+        this.loading = false
+        this.errorLogin = true
+
         if (token) {
           this.setToken(token)
           this.getColorUsage(team)
@@ -263,10 +280,12 @@ export default {
       } catch (err) {
         // eslint-disable-next-line no-console
         console.error('Error', err.response)
+        this.loading = false
         this.errorLogin = true
       }
     },
     async handleSignUp () {
+      this.loading = true
       this.errorLogin = false
       this.errorSignUp = false
 
@@ -290,6 +309,8 @@ export default {
         this.errorSignUp = true
         this.errorTeam = true
 
+        this.loading = false
+
         return false
       }
 
@@ -306,6 +327,8 @@ export default {
 
         const { token } = res.data
 
+        this.loading = false
+
         if (token) {
           this.setToken(token)
           this.getColorUsage(team)
@@ -318,6 +341,7 @@ export default {
         }
       } catch (err) {
         const error = err.response
+        this.loading = false
         this.errorSignUp = true
         if (error.status === 409) {
           // eslint-disable-next-line no-console

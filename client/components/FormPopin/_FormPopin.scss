@@ -24,6 +24,7 @@
   .popin {
     background: $white;
     border-radius: 16px;
+    overflow: hidden;
 
     .content {
       display: flex;
@@ -54,6 +55,19 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+
+      &__loader {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        background: rgba($white, 0.7);
+      }
 
       .title {
         margin-bottom: 16px;
