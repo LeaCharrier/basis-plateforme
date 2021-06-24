@@ -2,7 +2,7 @@
   <div v-if="user" class="dashboard">
     <div class="dashboard-colone">
       <GraphTime
-        :title="`Total usage (${objectColor.data.totalUsed || 0})`"
+        :title="`% use compared to other colors (${objectColor.data.totalUsed || 0})`"
         :total="Number((objectColor.data.percentUsed || 0).toFixed(1)) + '%'"
         subtitle="Usage overtime"
         :percent="`${objectColor.data.percentUsed || 0}`"
